@@ -1,1 +1,12 @@
 @use '../abstracts/' as *;
+
+.header {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 10rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: $marginInline;
+}

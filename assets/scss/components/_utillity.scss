@@ -1,1 +1,7 @@
 @use '../abstracts/' as *;
+
+.utility-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}

@@ -1,1 +1,71 @@
 @use '../abstracts/' as *;
+
+.form {
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-select {
+    width: 13rem;
+    height: 5rem;
+    padding-inline: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: $mainTextColor;
+    border-radius: 5rem;
+    border: 2px solid $borderColor;
+    outline: none;
+    background: url(../images/ico-downArrow.svg) calc(100% - 5px) center no-repeat;
+    background-size: 2rem;
+    color: #fff;
+
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    option {
+        color: $fontBlack;
+    }
+
+    html[data-mode="light"] & {
+        color: $fontBlack;
+        border: 2px solid $bgblack;
+        background: url(../images/ico-downArrow-black.svg) calc(100% - 5px) center no-repeat;
+        background-size: 2rem;
+    }
+}
+
+.form-input {
+    width: 30rem;
+    height: 5rem;
+    padding-inline: 1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    background-color: transparent;
+    color: $mainTextColor;
+    border-radius: 5rem;
+    border: 2px solid $borderColor;
+    outline: none;
+    color: #fff;
+
+    .filter-box & {
+        width: 100%;
+
+        html[data-mode="light"] & {
+            color: $fontBlack;
+            border: 2px solid $bgblack;
+        }
+    }
+}
+
+.filter-box {
+    width: 40rem;
+    position: relative;
+}
