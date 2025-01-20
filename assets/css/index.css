@@ -504,4 +504,69 @@ html[data-mode=light] * {
 
 html[data-mode=dark] * {
   color: #000;
+}
+
+.result-page .section {
+  margin: 10rem 5rem;
+}
+.result-page .section-wrapper {
+  display: flex;
+  gap: 5rem;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist {
+  display: inline-flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 20rem;
+  height: 30rem;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist .yearlist-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist label {
+  font-size: 1.7rem;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist {
+  display: inline-flex;
+  flex-direction: column;
+  border: 1px solid black;
+  width: 20rem;
+  height: 15rem;
+  gap: 1rem;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist .genrelist-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist label {
+  font-size: 1.7rem;
+}
+.result-page .wrapper-itemcontainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3rem;
+  align-items: flex-start;
+}
+.result-page .itemcontainer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.result-page .itemcontainer-card img {
+  height: 35rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 3rem;
+}
+.result-page .itemcontainer-card .itemcontainer-title {
+  font-size: 1.7rem;
+}
+.result-page .itemcontainer-card .itemcontainer-year {
+  font-size: 1.5rem;
 }/*# sourceMappingURL=index.css.map */
