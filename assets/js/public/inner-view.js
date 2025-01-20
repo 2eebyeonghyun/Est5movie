@@ -1,3 +1,5 @@
+import { darkMode } from '../components/dark-mode.js';
+
 // OMDb API 설정
 const API_KEY = "c2ca8aa";
 const MOVIE_ID = "tt3896198"; // 특정 영화의 ID: 예 "Guardians of the Galaxy Vol. 2"
@@ -19,16 +21,16 @@ async function fetchMovieDetails() {
         <div class="movie-img">
           <img src="${movie.Poster}" alt="${movie.Title} Poster" />
         </div>
-        <div class="movie-details">
-          <div class="move-viewtitle">${movie.Title}</div>
-          <div class="movie-control" ><button <i class="bi bi-play"></i>> WATCH</button></div>
-          <div class="movie-plot">${movie.Plot} </div>
-          <div class="movie-info">
-            <div class="movie-meta"><strong >평점</strong> ${movie.imdbRating}</div>
-            <div class="movie-yeaer"><strong>년도</strong> ${movie.Year}</div>
-            <div class="movie-meta"><strong>장르</strong> ${movie.Genre}</div>
-            <div class="movie-meta"><strong>배우</strong> ${movie.Actors}</div>
-            <div class="movie-meta"><strong>감독</strong> ${movie.Director}</div>
+        <div class="movie-detailsBox">
+          <div class="movie-title">${movie.Title}</div>
+          <a href="" class="btn-click" aria-label="예고편">WATCH</a>
+          <div class="movie-description">${movie.Plot} </div>
+          <div class="movie-informationBox">
+            <div class="movie-text movie-meta"><strong >평점</strong> ${movie.imdbRating}</div>
+            <div class="movie-text movie-yeaer"><strong>년도</strong> ${movie.Year}</div>
+            <div class="movie-text movie-meta"><strong>장르</strong> ${movie.Genre}</div>
+            <div class="movie-text movie-meta"><strong>배우</strong> ${movie.Actors}</div>
+            <div class="movie-text movie-meta"><strong>감독</strong> ${movie.Director}</div>
           </div>
         </div>
       </div>
@@ -47,3 +49,5 @@ fetchMovieDetails();
 
 //기능을 호출하여 동영상 세부 정보를 가져오고 표시합니다
 // fetchMovieDetails();
+
+darkMode();
