@@ -19,7 +19,7 @@ export function searchPoint() {
         const type = typeEl.value !== 'all' ? typeEl.value : '';
 
         // 페이지 이동하면서 파라미터 값도 전달
-        let newUrl = `Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
+        let newUrl = `/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
             newUrl += `&year=${encodeURIComponent(year)}`;
