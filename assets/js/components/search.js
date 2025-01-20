@@ -96,6 +96,18 @@ export async function getMovies(value, year, type, page = 1) {
         if(data.Search) {
             console.log(url);
             console.log(data.Search);
+            const movies = data.Search;
+            console.log(movies);
+            const itemCard = document.querySelector(".wrapper-itemcontainer");
+            const moviesList = 
+            movies.map((movie) => `
+            <div class="itemcontainer-card">
+                <img src=${movie.Poster}  onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
+                <h2 class="itemcontainer-title">${movie.Title}</h2>
+                <span class="itemcontainer-year">${movie.Year}</span> 
+            </div>
+            `).join("");
+            itemCard.innerHTML = moviesList;
         } else {
             console.log('error');
         }
