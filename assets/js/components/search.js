@@ -9,6 +9,13 @@ export const yearEl = get('.select-year');
 export const typeEl = get('.select-type');
 export const btn = get('.btn-search');
 
+export function buttonEvent() {
+    formEl.addEventListener('submit', (e) => {
+        e.preventDefault();
+        searchPoint();
+    });
+};
+
 export function searchPoint() {
 
     try {
@@ -19,7 +26,8 @@ export function searchPoint() {
         const type = typeEl.value !== 'all' ? typeEl.value : '';
 
         // 페이지 이동하면서 파라미터 값도 전달
-        let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
+        // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
+        let newUrl = `/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
             newUrl += `&year=${encodeURIComponent(year)}`;
