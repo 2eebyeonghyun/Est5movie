@@ -1,0 +1,54 @@
+@use "../abstracts/" as *;
+
+.view-inner {
+  .movie-header {
+    display: flex;
+    gap: 7rem;
+    margin: 0 auto;
+    padding: 5rem 0;
+    width: $maxWidth;
+  }
+
+  .movie-img > img {
+    border-radius: 1.5rem;
+  }
+
+  .move-viewtitle {
+    font-size: 4rem;
+    font-weight: bold;
+    color: $fontBlack;
+  }
+
+  .movie-control {
+    padding: 3rem 0;
+  }
+
+  .movie-control > button {
+    width: 17rem;
+    height: 5rem;
+    background-color: rgb(196, 196, 200);
+    font-size: 2rem;
+    font-weight: 600;
+    color: $fontBlack;
+    border-radius: 5rem;
+    border: none;
+  }
+
+  .movie-plot {
+    max-width: 60rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .movie-info {
+    display: flex;
+    padding: 3.5rem 0 0 1.5rem;
+    flex-direction: column;
+    gap: 1.6rem;
+    font-size: 1.5rem;
+  }
+
+  .movie-info > div > strong {
+    padding-right: 2rem;
+  }
+}
