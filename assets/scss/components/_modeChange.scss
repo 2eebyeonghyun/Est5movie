@@ -1,0 +1,15 @@
+@use '../abstracts/' as *;
+
+html[data-mode="light"] {
+
+    * {
+        color: $fontWhite;
+    }
+}
+
+html[data-mode="dark"] {
+
+    * {
+        color: $fontBlack;
+    }
+}

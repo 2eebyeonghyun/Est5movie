@@ -7,6 +7,7 @@
     <title>Team5 Project2 : Movie</title>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/index.css">
 
     <!-- Fontawesome CDN Link -->
@@ -15,16 +16,129 @@
 
 <body>
     <h2 class="a11y-hidden">헤더 영역</h2>
-    <header class="header"></header>
+    <header class="header">
+        <h1 class="logo">
+            <a href="#none" aria-label="5TMOVIE">5TMOVIE</a>
+        </h1>
 
-    <main class="main">
-        <section class="section"></section>
+        <h2 class="a11y-hidden">유틸리티</h2>
+        <div class="utility">
+            <ul class="utility-list">
+                <h2 class="a11y-hidden">검색창</h2>
+                <li class="utility-item">
+                    <form class="form">
+                        <select class="form-select select-year">
+                            <option value="all">전체</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <option value="2014">2014</option>
+                            <option value="2013">2013</option>
+                            <option value="2012">2012</option>
+                            <option value="2011">2011</option>
+                            <option value="2010">2010</option>
+                        </select>
+        
+                        <select class="form-select select-type">
+                            <option value="all">전체</option>
+                            <option value="movie">영화</option>
+                            <option value="series">시리즈</option>
+                            <option value="episode">에피소드</option>
+                        </select>
+        
+                        <div class="filter-box">
+                            <input type="text" class="form-input input">
+                            <button type="submit" class="btn-search" aria-label="검색"></button>
+                        </div>
+                    </form>
+                </li>
+                
+                <li class="utility-item">
+                    <button type="button" class="btn-change" aria-label="모드 변경"></button>
+                </li>
+            </ul>
+            
+        </div>
+    </header>
+
+    <main class="main-page">
+        <section class="section">
+            <div class="contents">
+                <h2 class="a11y-hidden">메인슬라이드 영역</h2>
+                <div class="swiper mainSwiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="movie-imgBox">
+                                <img src="./assets/images/poster-Avengers_Endgame.jpg">
+                            </div>
+                            <div class="movie-informationBox">
+                                <h2 class="movie-title">Avengers: Endgame</h2>
+                                <div class="movie-categoryBox">
+                                    <p class="movie-category">Type :</p>
+                                    <span class="movie-category">Action,  Adventure,  Drama</span>
+                                </div>
+                                <ul class="movie-ratingBox">
+                                    <li class="rating-row">
+                                        <div class="rating-logo">
+                                            <img src="./assets/images/logo-imdb.svg" alt="Internet Movie Database 로고">
+                                        </div>
+                                        <p class="rating-value">8.4/10</p>
+                                    </li>
+                                    <li class="rating-row">
+                                        <div class="rating-logo">
+                                            <img src="./assets/images/logo-tomato.svg" alt="Rotten Tomatoes 로고">
+                                        </div>
+                                        <p class="rating-value">94%</p>
+                                    </li>
+                                </ul>
+
+                                <p class="movie-description">After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.</p>
+                                <a href="./public/inner-view.html" class="btn-click" aria-label="영화 정보">More Info</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="swiper-option">
+                    <div class="swiper-navigation">
+                        <div class="swiper-button-prev"><button type="button" class="btn-prev" aria-label="이전"></button></div>  
+                        <div class="swiper-button-next"><button type="button" class="btn-next" aria-label="다음"></button></div>
+                    </div>
+                </div>
+
+                <h2 class="a11y-hidden">사람들이 많이 보는 영화</h2>
+                <div class="popular-seriesBox">
+                    <h2 class="item-title">Popular Series</h2>
+
+                    <div class="swiper mainBotSwiper">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide popular-item"><a href="#none">Avengers</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Spiderman</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Harry Potter</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Frozen</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Transformers</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Dune</a></li>
+                            <li class="swiper-slide popular-item"><a href="#none">Home Alone</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <h2 class="a11y-hidden">푸터 영역</h2>
     <footer class="footer"></footer>
 
-    <script src="assets/js/components/main.js" type="module"></script>
+    <script src="assets/js/components/swiper-bundle.min.js"></script>
+    <script src="assets/js/public/main.js" type="module"></script>
 </body>
 
 </html>

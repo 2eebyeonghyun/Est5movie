@@ -496,4 +496,12 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 .swiper-button-next,
 .swiper-rtl .swiper-button-prev {
   right: 0;
+}
+
+html[data-mode=light] * {
+  color: #fff;
+}
+
+html[data-mode=dark] * {
+  color: #000;
 }/*# sourceMappingURL=index.css.map */
