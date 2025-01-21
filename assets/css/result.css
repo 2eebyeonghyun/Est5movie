@@ -456,39 +456,86 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   right: 0;
 }
 
+html[data-mode=light] body {
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+html[data-mode=dark] body {
+  background-color: #000;
+  transition: background-color 0.3s;
+}
+
 .result-page .section {
-  margin: 10rem 5rem;
+  margin: 15rem 5rem;
 }
 .result-page .section-wrapper {
   display: flex;
   gap: 5rem;
 }
+.result-page .wrapper-chkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 .result-page .wrapper-chkbox .chkbox-yearlist {
   display: inline-flex;
   flex-direction: column;
-  border: 1px solid black;
-  width: 20rem;
-  height: 30rem;
+  border: 1px solid #fff;
+  width: 15rem;
   gap: 1rem;
+  height: 30rem;
   overflow-y: scroll;
 }
-.result-page .wrapper-chkbox .chkbox-yearlist .yearlist-title {
-  font-size: 3rem;
+html[data-mode=light] .result-page .wrapper-chkbox .chkbox-yearlist {
+  border: 1px solid #000;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist .item-title {
   margin-bottom: 1rem;
 }
-.result-page .wrapper-chkbox .chkbox-yearlist label {
-  font-size: 1.7rem;
+.result-page .wrapper-chkbox .chkbox-yearlist ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist ul li {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.result-page .wrapper-chkbox .chkbox-yearlist ul li .movie-text {
+  font-size: 1.8rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 .result-page .wrapper-chkbox .chkbox-genrelist {
-  height: 15rem;
+  display: inline-flex;
+  flex-direction: column;
+  border: 1px solid #fff;
+  width: 15rem;
   gap: 1rem;
+  height: 15rem;
 }
-.result-page .wrapper-chkbox .chkbox-genrelist .genrelist-title {
-  font-size: 3rem;
+html[data-mode=light] .result-page .wrapper-chkbox .chkbox-genrelist {
+  border: 1px solid #000;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist .item-title {
   margin-bottom: 1rem;
 }
-.result-page .wrapper-chkbox .chkbox-genrelist label {
-  font-size: 1.7rem;
+.result-page .wrapper-chkbox .chkbox-genrelist ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist ul li {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.result-page .wrapper-chkbox .chkbox-genrelist ul li .movie-text {
+  font-size: 1.8rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 .result-page .wrapper-itemcontainer {
   display: grid;
@@ -496,23 +543,21 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   gap: 3rem;
   align-items: flex-start;
 }
-.result-page .itemcontainer-card {
+.result-page .itemcontainer-card .card-item {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 1rem;
 }
-.result-page .itemcontainer-card img {
-  height: 35rem;
+.result-page .itemcontainer-card .card-item img {
+  height: 40rem;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 3rem;
 }
-.result-page .itemcontainer-card .itemcontainer-title {
+.result-page .itemcontainer-card .card-item .movie-text {
   font-size: 1.7rem;
-}
-.result-page .itemcontainer-card .itemcontainer-year {
-  font-size: 1.5rem;
+  line-height: 1;
 }/*# sourceMappingURL=result.css.map */
