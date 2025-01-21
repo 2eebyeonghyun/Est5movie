@@ -5,12 +5,9 @@
     aspect-ratio: 1;
     @include background('ico-darkMode.svg', center, null, size, cover);
 
-    .utility & {
-        filter: invert(1);
-
-        html[data-mode="light"] & {
-            filter: invert(0);
-        }
+    // 아이콘 변경
+    html[data-mode="dark"] & {
+        @include background('ico-lightMode.svg', center, null, size, cover);
     }
 }
 

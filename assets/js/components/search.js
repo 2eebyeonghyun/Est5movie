@@ -26,7 +26,7 @@ export function searchPoint() {
 
         // 페이지 이동하면서 파라미터 값도 전달
         // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
-        let newUrl = `/public/result.html?search=${encodeURIComponent(value)}`;
+        let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
             newUrl += `&year=${encodeURIComponent(year)}`;
@@ -117,11 +117,16 @@ export async function getMovies(value, year, type, page = 1) {
                 movieCard.className = "itemcontainer-card";
                 movieCard.innerHTML = `
                 <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-                    <img src="${movie.Poster}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
-                    <h2 class="itemcontainer-title movie-text">${movie.Title}</h2>
-                    <span class="itemcontainer-title movie-text">${movie.Year}</span>
+                    <img class="result-image" src="${movie.Poster}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
+                    <div class="result-informationBox">
+                        <h2 class="informationBox-title movie-title">${movie.Title}</h2>
+                        <ul class="informationBox-subList">
+                            <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
+                            <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
+                        </ul>
+                    </div>
                 </a>
-                    `;
+                `;
                 itemCard.appendChild(movieCard);
             });
         } else {

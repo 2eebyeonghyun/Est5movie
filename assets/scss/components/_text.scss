@@ -1,15 +1,15 @@
 @use "../abstracts/" as *;
 
 .item-title {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: $fontWhite;
-  margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: $fontWhite;
+    margin-bottom: 3rem;
 
-  html[data-mode="light"] & {
-    color: $fontBlack;
-  }
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
 }
 
 // 영화 관련 텍스트
@@ -22,13 +22,30 @@
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 
-  html[data-mode="light"] & {
-    color: $fontBlack;
-  }
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
 
     .movie-detailsBox & {
         font-size: 4rem;
         color: $fontBlack;
+    }
+
+    .result-informationBox & {
+        font-size: 2.3rem;
+        color: $fontBlack;
+        word-break: break-all;
+        margin-bottom: 2.5rem;
+        letter-spacing: -0.03rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        html[data-mode="dark"] & {
+            color: $fontWhite;
+        }
     }
 
     @include w1240 {
@@ -43,37 +60,90 @@
     // margin-bottom: 3.5rem;
     display: block;
 
-  html[data-mode="light"] & {
-    color: $fontBlack;
-  }
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
 }
 
 .movie-description {
-  font-size: 1.8rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: $fontWhite;
-  margin-bottom: 3.5rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $fontWhite;
+    margin-bottom: 3.5rem;
 
-  html[data-mode="light"] & {
-    color: $fontBlack;
-  }
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
 }
 
 .movie-text {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.3;
-  color: $fontWhite;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.3;
+    color: $fontWhite;
 
-  html[data-mode="light"] & {
-    color: $fontBlack;
-  }
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
 
-  strong {
+    .result-page & {
+
+        html[data-mode="dark"] & {
+            color: $fontBlack;
+        }
+    }
+
+    .informationBox-subList & {
+
+        html[data-mode="dark"] & {
+            color: $fontWhite;
+        }
+    }
+
+
+    strong {
+        font-weight: 700;
+        padding-right: 2rem;
+    }
+}
+
+.type-text {
+    padding: 0.5rem 1rem;
+    background-color: $darkModebg;
+    font-size: 1.6rem;
     font-weight: 700;
-    padding-right: 2rem;
-  }
+    color: $fontWhite;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.03rem;
+
+    &-movie {
+        background-color: #f00;
+    }
+
+    &-series {
+        background-color: #ffd011;
+    }
+
+    &-episode {
+        background-color: #1118ff;
+    }
+}
+
+.movie-year {
+    padding: 0.5rem 1rem;
+    background-color: $darkModebg;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $fontWhite;
+    border-radius: 0.5rem;
+    letter-spacing: -0.03rem;
+
+    html[data-mode="dark"] & {
+        background-color: $bgwhite;
+        color: $fontBlack;
+    }
 }

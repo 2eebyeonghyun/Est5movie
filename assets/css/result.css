@@ -126,11 +126,9 @@ html[data-mode=light] .logo {
   background: url(../images/ico-darkMode.svg) no-repeat center;
   background-size: cover;
 }
-.utility .btn-change {
-  filter: invert(1);
-}
-html[data-mode=light] .utility .btn-change {
-  filter: invert(0);
+html[data-mode=dark] .btn-change {
+  background: url(../images/ico-lightMode.svg) no-repeat center;
+  background-size: cover;
 }
 
 .btn-search {
@@ -282,6 +280,21 @@ html[data-mode=light] .movie-title {
   font-size: 4rem;
   color: #000;
 }
+.result-informationBox .movie-title {
+  font-size: 2.3rem;
+  color: #000;
+  word-break: break-all;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+html[data-mode=dark] .result-informationBox .movie-title {
+  color: #fff;
+}
 @media (width < 1240px) {
   .movie-title {
     font-size: 6.5rem;
@@ -320,9 +333,49 @@ html[data-mode=light] .movie-description {
 html[data-mode=light] .movie-text {
   color: #000;
 }
+html[data-mode=dark] .result-page .movie-text {
+  color: #000;
+}
+html[data-mode=dark] .informationBox-subList .movie-text {
+  color: #fff;
+}
 .movie-text strong {
   font-weight: 700;
   padding-right: 2rem;
+}
+
+.type-text {
+  padding: 0.5rem 1rem;
+  background-color: #07111e;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.03rem;
+}
+.type-text-movie {
+  background-color: #f00;
+}
+.type-text-series {
+  background-color: #ffd011;
+}
+.type-text-episode {
+  background-color: #1118ff;
+}
+
+.movie-year {
+  padding: 0.5rem 1rem;
+  background-color: #07111e;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 0.5rem;
+  letter-spacing: -0.03rem;
+}
+html[data-mode=dark] .movie-year {
+  background-color: #fff;
+  color: #000;
 }
 
 .form {
@@ -451,6 +504,37 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   }
 }
 
+.row-contentBox {
+  background-color: #f8f8f8;
+  border-radius: 1.5rem;
+  padding: 2rem;
+}
+.result-page .row-contentBox > ul {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+.result-page .row-contentBox > ul > li {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+@media (width < 1240px) {
+  .result-page .row-contentBox {
+    padding: 2rem 1rem;
+  }
+  .result-page .row-contentBox > ul {
+    gap: 1.8rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.result-informationBox {
+  width: 100%;
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -504,102 +588,87 @@ html[data-mode=light] body {
 }
 
 html[data-mode=dark] body {
-  background-color: #000;
+  background-color: #07111e;
   transition: background-color 0.3s;
 }
 
 .result-page .section {
-  margin: 15rem 5rem;
+  padding: 15rem 0 5rem;
+  margin-inline: 5rem;
+}
+@media (width < 1240px) {
+  .result-page .section {
+    margin-inline: 3rem;
+  }
 }
 .result-page .section-wrapper {
   display: flex;
   gap: 5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
 .result-page .wrapper-chkbox {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  position: sticky;
+  top: 5rem;
+  width: 30rem;
 }
-.result-page .wrapper-chkbox .chkbox-yearlist {
-  display: inline-flex;
-  flex-direction: column;
-  border: 1px solid #fff;
-  width: 15rem;
-  gap: 1rem;
-  height: 30rem;
-  overflow-y: scroll;
+.result-page .wrapper-chkbox .chkbox-row {
+  margin-bottom: 3rem;
 }
-html[data-mode=light] .result-page .wrapper-chkbox .chkbox-yearlist {
-  border: 1px solid #000;
+.result-page .wrapper-chkbox .chkbox-row:last-child {
+  margin-bottom: 0;
 }
-.result-page .wrapper-chkbox .chkbox-yearlist .item-title {
-  margin-bottom: 1rem;
+@media (width < 1240px) {
+  .result-page .wrapper-chkbox .chkbox-row:first-child .row-contentBox {
+    height: 30rem;
+    overflow: scroll;
+  }
 }
-.result-page .wrapper-chkbox .chkbox-yearlist ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.result-page .wrapper-chkbox .row-title {
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
-.result-page .wrapper-chkbox .chkbox-yearlist ul li {
-  display: flex;
-  flex-direction: row-reverse;
-}
-.result-page .wrapper-chkbox .chkbox-yearlist ul li .movie-text {
-  font-size: 1.8rem;
-  margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-}
-.result-page .wrapper-chkbox .chkbox-genrelist {
-  display: inline-flex;
-  flex-direction: column;
-  border: 1px solid #fff;
-  width: 15rem;
-  gap: 1rem;
-  height: 15rem;
-}
-html[data-mode=light] .result-page .wrapper-chkbox .chkbox-genrelist {
-  border: 1px solid #000;
-}
-.result-page .wrapper-chkbox .chkbox-genrelist .item-title {
-  margin-bottom: 1rem;
-}
-.result-page .wrapper-chkbox .chkbox-genrelist ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.result-page .wrapper-chkbox .chkbox-genrelist ul li {
-  display: flex;
-  flex-direction: row-reverse;
-}
-.result-page .wrapper-chkbox .chkbox-genrelist ul li .movie-text {
-  font-size: 1.8rem;
-  margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
+@media (width < 1240px) {
+  .result-page .wrapper-chkbox {
+    width: 13rem;
+  }
 }
 .result-page .wrapper-itemcontainer {
+  width: calc(100% - 35rem);
   display: grid;
+  gap: 5rem;
   grid-template-columns: repeat(5, 1fr);
-  gap: 3rem;
   align-items: flex-start;
 }
-.result-page .itemcontainer-card .card-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+@media (width < 1500px) {
+  .result-page .wrapper-itemcontainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width < 1240px) {
+  .result-page .wrapper-itemcontainer {
+    width: calc(100% - 18rem);
+    gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.result-page .card-item {
   gap: 1rem;
 }
-.result-page .itemcontainer-card .card-item img {
+.result-page .card-item .result-image {
   height: 40rem;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 3rem;
+  border-radius: 1.5rem;
+  margin-bottom: 1rem;
 }
-.result-page .itemcontainer-card .card-item .movie-text {
+.result-page .card-item .movie-text {
   font-size: 1.7rem;
   line-height: 1;
+}
+.result-page .informationBox-subList {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }/*# sourceMappingURL=result.css.map */

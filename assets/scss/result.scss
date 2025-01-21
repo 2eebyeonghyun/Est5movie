@@ -4,52 +4,95 @@
 @use "./components/" as *;
 
 .result-page {
+
     .section {
-        margin: 15rem 5rem;
+        padding: 15rem 0 5rem;
+        margin-inline: $marginInline;
+
+        @include w1240 {
+            margin-inline: 3rem;
+        }
     }
 
     .section-wrapper {
         display: flex;
         gap: 5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
     }
 
     .wrapper-chkbox {
-        @include flexcolumn;
-        gap: 3rem;
+        position: sticky;
+        top: 5rem;
+        width: 30rem;
 
-        .chkbox-yearlist {
-            @include checkbox;
-            height: 30rem;
-            overflow-y: scroll;
+        .chkbox-row {
+            margin-bottom: 3rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            @include w1240 {
+
+                &:first-child {
+
+                    .row-contentBox {
+                        height: 30rem;
+                        overflow: scroll;
+                    }
+                }
+            }
         }
 
-        .chkbox-genrelist {
-            @include checkbox;
-            height: 15rem;
+        .row-title {
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        @include w1240 {
+            width: 13rem;
         }
     }
 
     .wrapper-itemcontainer {
+        width: calc(100% - 35rem);
         display: grid;
+        gap: 5rem;
         grid-template-columns: repeat(5, 1fr);
-        gap: 3rem;
         align-items: flex-start;
+
+        @include w1500 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include w1240 {
+            width: calc(100% - 18rem);
+            gap: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
     
-    .itemcontainer-card {
-        .card-item {
-            @include flexcolumncenter;
-            gap: 1rem;
-            img {
-                height: 40rem;
-                object-fit: cover;
-                border-radius: 3rem;
-            }
+    .card-item {
+        gap: 1rem;
 
-            .movie-text {
-                font-size: 1.7rem;
-                line-height: 1;
-            }
+        .result-image {
+            height: 40rem;
+            object-fit: cover;
+            border-radius: 1.5rem;
+            margin-bottom: 1rem;
         }
+
+        .movie-text {
+            font-size: 1.7rem;
+            line-height: 1;
+        }
+    }  
+
+    .informationBox-subList {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
     }
 }

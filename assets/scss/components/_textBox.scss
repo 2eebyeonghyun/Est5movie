@@ -55,3 +55,39 @@
         }
     }
 }
+
+.row-contentBox {
+    background-color: $boxColor;
+    border-radius: 1.5rem;
+    padding: 2rem;
+
+    .result-page & {
+
+        > ul {
+            display: grid;
+            gap: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+
+            > li {
+                display: flex;
+                gap: 1rem;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        }
+
+        @include w1240 {
+            padding: 2rem 1rem;
+
+            > ul {
+                gap: 1.8rem;
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+}
+
+.result-informationBox {
+    width: 100%;
+}

@@ -11,7 +11,7 @@ html[data-mode="light"] {
 html[data-mode="dark"] {
 
     body {
-        background-color: $bgblack;
+        background-color: $darkModebg;
         transition: background-color .3s;
     }
 }
