@@ -4,37 +4,71 @@
 @use "./components/" as *;
 
 .detail-page {
+  // 2025.01.20 부모클래스에 넓이, 높이값 지정
+  // section에도 넓이 높이값 지정 수정
+  // container 추가( 이병현)
+  width: 100%;
+  height: 100vh;
 
-    // 2025.01.20 부모클래스에 넓이, 높이값 지정
-    // section에도 넓이 높이값 지정 수정
-    // container 추가( 이병현)
+  .section {
     width: 100%;
     height: 100vh;
+  }
 
-    .section {
-        width: 100%;
-        height: 100vh;
-    }
+  .container {
+    height: 100%;
+    padding-top: 15rem;
+    margin-inline: $marginInline;
+  }
 
-    .container {
-        height: 100%;
-        padding-top: 15rem;
-        margin-inline: $marginInline;
-    }
+  .movie-header {
+    display: flex;
+    gap: 7rem;
+  }
 
-    .movie-header {
-        display: flex;
-        gap: 7rem;
-        // margin: 0 auto;
-        // padding: 5rem 0;
-        // width: $maxWidth;
-    }
+  .movie-total-info {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .movie-description {
-        max-width: 60rem;
-        font-size: 1.8rem;
-        font-weight: 500;
-        line-height: 1.5;
-        color: $fontBlack;
-    }
+  .movie-detail-info {
+    display: flex;
+    gap: 2rem;
+    max-width: 75rem;
+  }
+
+  .movie-detail-info .movie-title {
+    font-size: 4rem;
+  }
+
+  .movie-description {
+    margin-bottom: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .movie-informationBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .movie-informationBox .movie-text {
+    font-size: 1.2rem;
+  }
+
+  .movie-info {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .movie-info > div {
+    border: 1px solid #000;
+    min-height: 50px;
+  }
+
+  .movie-info > div img {
+    width: 100%;
+  }
 }
