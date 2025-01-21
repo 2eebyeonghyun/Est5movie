@@ -10,23 +10,19 @@ formEl.addEventListener('submit', (e) => {
     searchPoint();
 });
 
-function swiper() {
-    const swiper2 = new Swiper(".mainBotSwiper", {
-        slidesPerView: 7,
-        spaceBetween: 30,
-    });
-}
-
+// 메인 슬라이드
 async function mainSlide() {
 
     try {
+        // json폴더의 main.json 호출
         const res = await fetch('../assets/json/main.json');
         const data = await res.json();
         const movies = data.movies;
         console.log(movies);
 
-        const slideBox = get('.swiper-wrapper');
+        const slideBox = get('.mainSwiper .swiper-wrapper');
 
+        // li 생성후 내용 만들기
         movies.forEach(movie => {
             const item = document.createElement('li');
             item.classList.add('swiper-slide');
@@ -62,8 +58,10 @@ async function mainSlide() {
                 </div>
             `;
 
+            // slideBox의 자식 요소로 뿌리기
             slideBox.appendChild(item);
 
+            // swiper 슬라이드 효과주기
             const swiper = new Swiper(".mainSwiper", {
                 navigation: {
                     nextEl: ".main-page .swiper-option .swiper-navigation .swiper-button-next",
@@ -76,6 +74,49 @@ async function mainSlide() {
     }
 }
 
-swiper();
+// 하단부 인기영화시리즈 버튼 만들기
+function popularSeries() {
+    const slideBox2 = get('.mainBotSwiper .swiper-wrapper');
+
+    // 영화 제목 배열화
+    const popularMovies = ['Avengers', 'Spider-Man', 'Harry Potter', 'Frozen', 'Transformers', 'Dune', 'Home Alone'];
+
+    // 버튼 구성하기
+    popularMovies.forEach((movie) => {
+        const slideList = document.createElement('li');
+        slideList.classList.add('swiper-slide', 'popular-item');
+
+        slideList.innerHTML = 
+        `
+            <a href="/public/result.html?search=${encodeURIComponent(movie)}">${movie}</a>
+        `;
+
+        slideBox2.appendChild(slideList);
+    });
+
+    // swiper 슬라이드로 만들기
+    const swiper2 = new Swiper(".mainBotSwiper", {
+        slidesPerView: 7,
+        spaceBetween: 30,
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+            },
+            1024: {
+                slidesPerView: 5,
+            },
+            1300: {
+                slidesPerView: 7,
+            }
+        }
+    });
+}
+
 darkMode();
 mainSlide();
+popularSeries();

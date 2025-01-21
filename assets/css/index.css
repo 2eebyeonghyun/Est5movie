@@ -99,6 +99,11 @@ td {
   align-items: center;
   margin-inline: 5rem;
 }
+@media (width < 1240px) {
+  .header {
+    margin-inline: 3rem;
+  }
+}
 
 .logo {
   font-size: 3rem;
@@ -268,6 +273,7 @@ html[data-mode=light] .item-title {
   letter-spacing: 0.1rem;
   color: #fff;
   margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 html[data-mode=light] .movie-title {
   color: #000;
@@ -276,12 +282,16 @@ html[data-mode=light] .movie-title {
   font-size: 4rem;
   color: #000;
 }
+@media (width < 1240px) {
+  .movie-title {
+    font-size: 6.5rem;
+  }
+}
 
 .movie-category {
   font-size: 1.6rem;
   font-weight: 400;
   color: #fff;
-  margin-bottom: 3.5rem;
   display: block;
 }
 html[data-mode=light] .movie-category {
@@ -352,6 +362,12 @@ html[data-mode=light] .form-select {
   background: url(../images/ico-downArrow-black.svg) calc(100% - 5px) center no-repeat;
   background-size: 2rem;
 }
+@media (width < 1240px) {
+  .form-select {
+    width: 10rem;
+    font-size: 1.4rem;
+  }
+}
 
 .form-input {
   width: 30rem;
@@ -377,6 +393,12 @@ html[data-mode=light] .filter-box .form-input {
 .filter-box {
   width: 40rem;
   position: relative;
+}
+@media (width < 1240px) {
+  .filter-box {
+    width: 25rem;
+    font-size: 1.4rem;
+  }
 }
 
 .movie-ratingBox {
@@ -406,12 +428,27 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   flex-direction: row;
   gap: 1.5rem;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .movie-informationBox {
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
+}
+.main-page .movie-informationBox {
+  display: block;
+  width: 100rem;
+  position: absolute;
+  top: 50%;
+  left: 20rem;
+  translate: 0 -50%;
+}
+@media (width < 1240px) {
+  .main-page .movie-informationBox {
+    width: calc(100% - 20rem);
+    left: 10rem;
+  }
 }
 
 .swiper {
@@ -432,6 +469,11 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   display: flex;
   justify-content: space-between;
   margin-inline: 5rem;
+}
+@media (width < 1240px) {
+  .swiper-navigation {
+    margin-inline: 3rem;
+  }
 }
 
 .main-page .swiper-button-next,
@@ -456,6 +498,16 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   right: 0;
 }
 
+html[data-mode=light] body {
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+html[data-mode=dark] body {
+  background-color: #000;
+  transition: background-color 0.3s;
+}
+
 .main-page {
   width: 100%;
   height: 100vh;
@@ -473,13 +525,6 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 .main-page .movie-imgBox {
   width: 100%;
   height: 100%;
-}
-.main-page .movie-informationBox {
-  width: 100rem;
-  position: absolute;
-  top: 50%;
-  left: 20rem;
-  translate: 0 -50%;
 }
 .main-page .popular-seriesBox {
   width: calc(100% - 10rem);

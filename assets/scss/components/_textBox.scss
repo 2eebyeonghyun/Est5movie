@@ -33,10 +33,25 @@
     flex-direction: row;
     gap: 1.5rem;
     align-items: center;
+    margin-bottom: 3rem;
 }
 
 .movie-informationBox {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+
+    .main-page & {
+        display: block;
+        width: 100rem;
+        position: absolute;
+        top: 50%;
+        left: 20rem;
+        translate: 0 -50%;
+
+        @include w1240 {
+            width: calc(100% - 20rem);
+            left: 10rem;
+        }
+    }
 }

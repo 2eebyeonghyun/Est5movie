@@ -20,6 +20,7 @@
     letter-spacing: 0.1rem;
     color: $fontWhite;
     margin-bottom: 1.5rem;
+    text-transform: uppercase;
 
     html[data-mode="light"] & {
         color: $fontBlack;
@@ -29,13 +30,17 @@
         font-size: 4rem;
         color: $fontBlack;
     }
+
+    @include w1240 {
+        font-size: 6.5rem;
+    }
 }
 
 .movie-category {
     font-size: 1.6rem;
     font-weight: 400;
     color: $fontWhite;
-    margin-bottom: 3.5rem;
+    // margin-bottom: 3.5rem;
     display: block;
 
     html[data-mode="light"] & {

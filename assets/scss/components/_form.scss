@@ -40,6 +40,11 @@
         background: url(../images/ico-downArrow-black.svg) calc(100% - 5px) center no-repeat;
         background-size: 2rem;
     }
+
+    @include w1240 {
+        width: 10rem;
+        font-size: 1.4rem;
+    }
 }
 
 .form-input {
@@ -68,4 +73,9 @@
 .filter-box {
     width: 40rem;
     position: relative;
+
+    @include w1240 {
+        width: 25rem;
+        font-size: 1.4rem;
+    }
 }

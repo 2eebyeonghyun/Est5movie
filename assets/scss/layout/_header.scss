@@ -9,4 +9,8 @@
     justify-content: space-between;
     align-items: center;
     margin-inline: $marginInline;
+
+    @include w1240 {
+        margin-inline: 3rem;
+    }
 }

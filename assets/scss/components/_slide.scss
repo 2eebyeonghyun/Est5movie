@@ -18,6 +18,10 @@
     display: flex;
     justify-content: space-between;
     margin-inline: $marginInline;
+
+    @include w1240 {
+        margin-inline: 3rem;
+    }
 }
 
 .swiper-button-next, 

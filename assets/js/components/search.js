@@ -22,8 +22,8 @@ export function searchPoint() {
         const value = filterEl.value.trim();
     
         // 선택된 값이 all이 아니면 선택된 값을 가져온다.
-        const year = yearEl.value !== 'all' ? yearEl.value : '';
-        const type = typeEl.value !== 'all' ? typeEl.value : '';
+        const year = yearEl.value !== 'all' ? yearEl.value : 'all';
+        const type = typeEl.value !== 'all' ? typeEl.value : 'all';
 
         // 페이지 이동하면서 파라미터 값도 전달
         // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
@@ -86,8 +86,10 @@ export async function getMovies(value, year, type, page = 1) {
             url += `&y=${year}`;
         }
 
-        if(type) {
+        if(type !== 'all') {
             url += `&type=${type}`;
+        } else if (type === 'all') {
+            url += `&t=${type}`;
         }
 
         const res = await fetch(url);
