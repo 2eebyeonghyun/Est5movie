@@ -26,7 +26,7 @@ export function searchPoint() {
 
         // 페이지 이동하면서 파라미터 값도 전달
         // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
-        let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
+        let newUrl = `/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
             newUrl += `&year=${encodeURIComponent(year)}`;

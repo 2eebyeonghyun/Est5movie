@@ -16,8 +16,8 @@ async function mainSlide() {
 
     try {
         // json폴더의 main.json 호출
-        // const res = await fetch('../assets/json/main.json');
-        const res = await fetch(`${api.GIT_URL}/assets/json/main.json`);
+        const res = await fetch('../assets/json/main.json');
+        // const res = await fetch(`${api.GIT_URL}/assets/json/main.json`);
         const data = await res.json();
         const movies = data.movies;
         console.log(movies);
@@ -56,7 +56,7 @@ async function mainSlide() {
                     </ul>
 
                     <p class="movie-description">${movie.Plot}</p>
-                    <a href="./public/inner-view.html" class="btn-click" aria-label="영화 정보">More Info</a>
+                    <a href="/public/inner-view.html" class="btn-click" aria-label="영화 정보">More Info</a>
                 </div>
             `;
 
@@ -95,7 +95,7 @@ function popularSeries() {
 
         slideList.innerHTML = 
         `
-            <a href="${api.GIT_URL}/public/result.html?search=${encodeURIComponent(movie)}">${movie}</a>
+            <a href="/public/result.html?search=${encodeURIComponent(movie)}">${movie}</a>
         `;
 
         slideBox2.appendChild(slideList);
