@@ -1,3 +1,4 @@
+import api from "../base/api.js";
 import { formEl, searchPoint, initializePage } from '../components/search.js';
 import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
