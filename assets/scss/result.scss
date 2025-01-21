@@ -5,7 +5,7 @@
 
 .result-page {
     .section {
-        margin: 10rem 5rem;
+        margin: 15rem 5rem;
     }
 
     .section-wrapper {
@@ -14,35 +14,18 @@
     }
 
     .wrapper-chkbox {
+        @include flexcolumn;
+        gap: 3rem;
+
         .chkbox-yearlist {
-            @include inlineflex;
+            @include checkbox;
             height: 30rem;
-            gap: 1rem;
             overflow-y: scroll;
-
-            .yearlist-title {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-            }
-
-            label {
-                font-size: 1.7rem;
-            }
         }
 
         .chkbox-genrelist {
-            // @include inlineflex;
+            @include checkbox;
             height: 15rem;
-            gap: 1rem;
-
-            .genrelist-title {
-                font-size: 3rem;
-                margin-bottom: 1rem;
-            }
-
-            label {
-                font-size: 1.7rem;
-            }
         }
     }
 
@@ -52,27 +35,21 @@
         gap: 3rem;
         align-items: flex-start;
     }
-
+    
     .itemcontainer-card {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+        .card-item {
+            @include flexcolumncenter;
+            gap: 1rem;
+            img {
+                height: 40rem;
+                object-fit: cover;
+                border-radius: 3rem;
+            }
 
-        img {
-            height: 35rem;
-            object-fit: cover;
-            border-radius: 3rem;
-        }
-
-        .itemcontainer-title {
-            font-size: 1.7rem;
-        }
-
-        .itemcontainer-year {
-            font-size: 1.5rem;
+            .movie-text {
+                font-size: 1.7rem;
+                line-height: 1;
+            }
         }
     }
 }

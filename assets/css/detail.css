@@ -525,10 +525,40 @@ html[data-mode=dark] body {
   display: flex;
   gap: 7rem;
 }
+.detail-page .movie-total-info {
+  display: flex;
+  flex-direction: column;
+}
+.detail-page .movie-detail-info {
+  display: flex;
+  gap: 2rem;
+  max-width: 75rem;
+}
+.detail-page .movie-detail-info .movie-title {
+  font-size: 4rem;
+}
 .detail-page .movie-description {
-  max-width: 60rem;
-  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  line-height: 1.5;
-  color: #000;
+}
+.detail-page .movie-informationBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 3rem;
+}
+.detail-page .movie-informationBox .movie-text {
+  font-size: 1.2rem;
+}
+.detail-page .movie-info {
+  display: flex;
+  gap: 3rem;
+}
+.detail-page .movie-info > div {
+  border: 1px solid #000;
+  min-height: 50px;
+}
+.detail-page .movie-info > div img {
+  width: 100%;
 }/*# sourceMappingURL=detail.css.map */
