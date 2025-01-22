@@ -77,7 +77,9 @@ export async function getMovies(value, year, type, page = 1) {
         }
 
         // encodeURIComponent 사용이유 : URI로 데이터를 정확하게 전달하기 위해서 문자열을 인코딩하기 위해 사용
-        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(value)}&page=${page}`;
+        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(
+            value
+        )}&page=${page}`;
 
         if (year) {
             url += `&y=${year}`;
@@ -93,24 +95,11 @@ export async function getMovies(value, year, type, page = 1) {
         const data = await res.json();
 
         if (data.Search) {
-            console.log(url);
-            console.log(data.Search);
             const movies = data.Search;
-            console.log(movies);
+            const errorCard = document.querySelector(".wrapper-errormessage");
+            errorCard.style = "display:none";
             const itemCard = document.querySelector(".wrapper-itemcontainer");
-            // moviesList 변수에 movies를 map함수를 사용해 새로운 배열로 만든다 (백틱으로 감싼 영역 하나가 배열 요소 하나이다)
-            // 이 배열 요소를 join을 사용해서 문자화(문자열 하나로 통합)해서 innerHTML을 통해 작성한다
-            // const moviesList =
-            // movies.map((movie) => `
-            // <div class="itemcontainer-card">
-            //     <img src=${movie.Poster}  onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
-            //     <h2 class="itemcontainer-title movie-text">${movie.Title}</h2>
-            //     <span class="itemcontainer-title movie-text">${movie.Year}</span>
-            // </div>
-            // `).join("");
-            // console.log(moviesList);
-            // itemCard.innerHTML = moviesList;
-
+            itemCard.style = "";
             itemCard.innerHTML = "";
             movies.forEach((movie) => {
                 const movieCard = document.createElement("div");
@@ -130,7 +119,18 @@ export async function getMovies(value, year, type, page = 1) {
                 itemCard.appendChild(movieCard);
             });
         } else {
-            console.log("error",data);
+            console.log("error", data);
+            const cardSection = document.querySelector(
+                ".wrapper-itemcontainer"
+            );
+            const errorSection = document.querySelector(
+                ".wrapper-errormessage"
+            );
+            cardSection.style = "display:none";
+            errorSection.style = "";
+            errorSection.innerHTML = `
+                <span class="row-title item-title">${data.Error}</span>
+            `;
         }
     } catch (error) {
         console.error("error", error);
