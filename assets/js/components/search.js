@@ -51,9 +51,6 @@ export function searchPoint() {
 
 export function initializePage() {
     try {
-        // URLSearchParams : 쿼리 매개변수를 읽고 가져온다.
-        // const urlParams = new URLSearchParams(window.location.search);
-
         // 파라미터 값을 읽어온다.
         const searchParam = fetchSearch();
         const year = fetchYear();
@@ -72,6 +69,7 @@ export function initializePage() {
 
 export async function getMovies(value, year, type, page = 1) {
     try {
+        
         if (filterEl) {
             // 결과값 초기화
             filterEl.innerHTML = "";
@@ -114,7 +112,7 @@ export async function getMovies(value, year, type, page = 1) {
 
                 // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
                 let Highposter;
-                if (movie.Poster !== "") {
+                if (movie.Poster !== "N/A") {
                     Highposter = movie.Poster.replace("SX300", "SX3000");
                 }
 

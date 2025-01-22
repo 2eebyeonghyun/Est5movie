@@ -56,7 +56,7 @@ async function mainSlide() {
                     </ul>
 
                     <p class="movie-description">${movie.Plot}</p>
-                    <a href="/public/inner-view.html" class="btn-click" aria-label="영화 정보">More Info</a>
+                    <a href="/public/inner-view.html?id=${movie.imdbID}" class="btn-click" aria-label="영화 정보">More Info</a>
                 </div>
             `;
 

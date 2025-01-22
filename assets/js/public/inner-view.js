@@ -1,19 +1,31 @@
 import api from "../base/api.js";
+import { get } from '../base/util.js';
 import { formEl, searchPoint } from "../components/search.js";
 import { darkMode } from "../components/dark-mode.js";
+
+const movieContainer = get("#movie-container");
 
 formEl.addEventListener("submit", (e) => {
     e.preventDefault();
     searchPoint();
 });
 
+// TMDB API 공부
+// export async function getActorProfile(actor) {
+    
+//     const res = await fetch(`https://api.themoviedb.org/3/search/person?api_key=${TMDB_KEY}&query=actor`);
+//     const data = await res.json();
+
+//     if (data.results) {}
+
+//     return null;
+// }
+
+
 function getMovieId(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
-
-// HTML 요소 참조
-const movieContainer = document.getElementById("movie-container");
 
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
@@ -35,6 +47,9 @@ async function fetchMovieDetails() {
     if(movie.Poster !== '') {
         Highposter = movie.Poster.replace("SX300", "SX3000");
     }
+
+    // 출연배우 이름 가져오기
+    let movieActors = movie.Actors.split(",");
 
     // 데이터를 HTML 구조로 렌더링
     movieContainer.innerHTML = 
@@ -96,17 +111,17 @@ async function fetchMovieDetails() {
                     <ul class="actors-list">
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[0]}</p>
+                            <p class="actors-name">${movieActors[0]}</p>
                         </li>
 
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[1]}</p>
+                            <p class="actors-name">${movieActors[1]}</p>
                         </li>
 
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[2]}</p>
+                            <p class="actors-name">${movieActors[2]}</p>
                         </li>
                     </ul>
                 </div>
