@@ -39,8 +39,10 @@ async function fetchMovieDetails() {
 
     // 영화 해상도 고해상도로 변경
     let Highposter;
-    if(movie.Poster !== 'N/A') {
+    if (movie.Poster !== "N/A") {
         Highposter = movie.Poster.replace("SX300", "SX3000");
+    } else {
+        Highposter = '/assets/images/poster-Avengers_Endgame.jpg';
     }
 
     // 출연배우 이름 가져오기
