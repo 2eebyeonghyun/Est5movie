@@ -4,109 +4,138 @@
 @use "./components/" as *;
 
 .detail-page {
-  // 2025.01.20 부모클래스에 넓이, 높이값 지정
-  // section에도 넓이 높이값 지정 수정
-  // container 추가( 이병현)
-  width: 100%;
-  height: 100vh;
-
-  .section {
+    // 2025.01.20 부모클래스에 넓이, 높이값 지정
+    // section에도 넓이 높이값 지정 수정
+    // container 추가( 이병현)
     width: 100%;
     height: 100vh;
-  }
 
-  .container {
-    height: 100%;
-    padding-top: 15rem;
-    margin-inline: $marginInline;
-  }
+    .section {
+        width: 100%;
+        height: 100vh;
+    }
 
-  .movie-header {
-    display: flex;
-    gap: 7rem;
-  }
-  .movie-img {
-    width: 50rem;
-  }
-  .movie-img img {
-    width: 100%;
-  }
-  .movie-total-info {
-    display: flex;
-    flex-direction: column;
-  }
+    .container {
+        height: 100%;
+        padding: 15rem 0 5rem;
+        margin-inline: $marginInline;
+    }
 
-  .movie-informationBox {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-bottom: 3rem;
-  }
+    // 2025.01.22 상세페이지 디자인 수정( 이병현)
+    .movie-detail-content {
+        display: flex;
+        gap: 10rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
 
-  .movie-detail-info {
-    display: flex;
-    gap: 2rem;
-  }
+    .detail-leftBox {
+        width: 55rem;
 
-  .movie-detail-info .movie-title {
-    font-size: 4rem;
-  }
+        .movie-img {
+            width: 100%;
+            margin-bottom: 5rem;
+        }
+    }
 
-  .movie-description {
-    margin-bottom: 2.5rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
+    .movie-options {
 
-  .movie-informationBox .movie-text {
-    font-size: 1.2rem;
-  }
+        > ul {
+            display: grid;
+            gap: 5rem;
+            grid-template-columns: repeat(3, 1fr);
 
-  .movie-info {
-    display: flex;
-    gap: 3rem;
-  }
+            .option-item {
+                display: flex;
+                justify-content: center;
+                
+                > a {
+                    display: inline-flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
 
-  .movie-info > div {
-    min-height: 50px;
-  }
+            .option-img {
+                margin-bottom: 3rem;
+            }
+        }
+    }
 
-  .movie-info > div img {
-    width: 100%;
-  }
+    .detail-rightBox {
+        width: calc(100% - 65rem);
+        display: flex;
+        gap: 10rem 5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
 
-  .movie-actors {
-    display: flex;
-    flex-direction: column;
-    width: 40rem;
-    gap: 0.5rem;
-    padding-top: 2rem;
-  }
+        .detail-row {
+            width: 100%;
+            margin-bottom: 7rem;
 
-  .movie-actors > div {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  // .movie-actors > div:first-child {
-  //   margin-bottom: 2rem;
-  // }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
 
-  .movie-actors > div {
-    border-radius: 50%;
-  }
+    .movie-detailsBox {
+        width: calc(100% - 50rem);
+    }
 
-  .movie-actors > div .poster-img {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 100%;
-  }
-  .movie-actors > div .poster-img img {
-    width: 100%;
-    border-radius: 100%;
-  }
-  .movie-actors > div p {
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
+    .movie-actors {
+        width: 45rem;
+
+        .actors-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            .actors-item {
+                display: flex;
+                gap: 5rem;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .actors-img {
+                width: 10rem;
+                aspect-ratio: 1;
+                border-radius: 100%;
+            }
+
+            .actors-name {
+                width: calc(100% - 15rem);
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: $fontWhite;
+
+                html[data-mode="light"] & {
+                    color: $fontBlack;
+                }
+            }
+        }
+    }
+
+    .another-series {
+        border-top: 2px solid #242E43;
+        padding-top: 3rem;
+        width: 100%;
+
+        html[data-mode="light"] & {
+            border-top: 2px solid $boxColor;
+        }
+
+        .series-list {
+            display: flex;
+            gap: 5rem;
+            flex-direction: row;
+            align-items: center;
+
+            > li {
+                height: 30rem;
+            }
+        }
+    }
 }

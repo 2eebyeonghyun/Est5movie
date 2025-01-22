@@ -253,6 +253,36 @@ html[data-mode=light] .main-page .btn-next {
   margin-bottom: 3rem;
 }
 
+.btn-favorite {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-favorite.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-favorite {
+  filter: invert(1);
+}
+
+.btn-later {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-bookmark.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-later {
+  filter: invert(1);
+}
+
+.btn-watched {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-watched.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-watched {
+  filter: invert(1);
+}
+
 .item-title {
   font-size: 3rem;
   font-weight: 700;
@@ -277,8 +307,11 @@ html[data-mode=light] .movie-title {
   color: #000;
 }
 .movie-detailsBox .movie-title {
-  font-size: 4rem;
+  font-size: 6rem;
   color: #000;
+}
+html[data-mode=dark] .movie-detailsBox .movie-title {
+  color: #fff;
 }
 .result-informationBox .movie-title {
   font-size: 2.3rem;
@@ -321,6 +354,11 @@ html[data-mode=light] .movie-category {
 html[data-mode=light] .movie-description {
   color: #000;
 }
+.movie-detailsBox .movie-description {
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0;
+}
 
 .movie-text {
   display: flex;
@@ -339,9 +377,12 @@ html[data-mode=dark] .result-page .movie-text {
 html[data-mode=dark] .informationBox-subList .movie-text {
   color: #fff;
 }
-.movie-text strong {
-  font-weight: 700;
-  padding-right: 2rem;
+
+.movie-infoTitle {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #606060;
 }
 
 .type-text {
@@ -375,6 +416,28 @@ html[data-mode=dark] .informationBox-subList .movie-text {
 }
 html[data-mode=dark] .movie-year {
   background-color: #fff;
+  color: #000;
+}
+
+.detail-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03rem;
+  margin-bottom: 2rem;
+  display: block;
+  text-transform: uppercase;
+}
+html[data-mode=light] .detail-text {
+  color: #000;
+}
+
+.option-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #fff;
+}
+html[data-mode=light] .option-title {
   color: #000;
 }
 
@@ -487,7 +550,7 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 .movie-informationBox {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2rem;
 }
 .main-page .movie-informationBox {
   display: block;
@@ -502,6 +565,10 @@ html[data-mode=light] .movie-ratingBox .rating-value {
     width: calc(100% - 20rem);
     left: 10rem;
   }
+}
+.movie-informationBox > div {
+  display: flex;
+  gap: 6rem;
 }
 
 .row-contentBox {
@@ -602,79 +669,99 @@ html[data-mode=dark] body {
 }
 .detail-page .container {
   height: 100%;
-  padding-top: 15rem;
+  padding: 15rem 0 5rem;
   margin-inline: 5rem;
 }
-.detail-page .movie-header {
+.detail-page .movie-detail-content {
   display: flex;
-  gap: 7rem;
+  gap: 10rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
 }
-.detail-page .movie-img {
-  width: 50rem;
+.detail-page .detail-leftBox {
+  width: 55rem;
 }
-.detail-page .movie-img img {
+.detail-page .detail-leftBox .movie-img {
   width: 100%;
+  margin-bottom: 5rem;
 }
-.detail-page .movie-total-info {
+.detail-page .movie-options > ul {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+.detail-page .movie-options > ul .option-item {
   display: flex;
+  justify-content: center;
+}
+.detail-page .movie-options > ul .option-item > a {
+  display: inline-flex;
   flex-direction: column;
+  align-items: center;
 }
-.detail-page .movie-informationBox {
+.detail-page .movie-options > ul .option-img {
+  margin-bottom: 3rem;
+}
+.detail-page .detail-rightBox {
+  width: calc(100% - 65rem);
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-bottom: 3rem;
+  gap: 10rem 5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.detail-page .movie-detail-info {
-  display: flex;
-  gap: 2rem;
-}
-.detail-page .movie-detail-info .movie-title {
-  font-size: 4rem;
-}
-.detail-page .movie-description {
-  margin-bottom: 2.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-.detail-page .movie-informationBox .movie-text {
-  font-size: 1.2rem;
-}
-.detail-page .movie-info {
-  display: flex;
-  gap: 3rem;
-}
-.detail-page .movie-info > div {
-  min-height: 50px;
-}
-.detail-page .movie-info > div img {
+.detail-page .detail-rightBox .detail-row {
   width: 100%;
+  margin-bottom: 7rem;
+}
+.detail-page .detail-rightBox .detail-row:last-of-type {
+  margin-bottom: 0;
+}
+.detail-page .movie-detailsBox {
+  width: calc(100% - 50rem);
 }
 .detail-page .movie-actors {
+  width: 45rem;
+}
+.detail-page .movie-actors .actors-list {
   display: flex;
   flex-direction: column;
-  width: 40rem;
-  gap: 0.5rem;
-  padding-top: 2rem;
+  gap: 3rem;
 }
-.detail-page .movie-actors > div {
+.detail-page .movie-actors .actors-list .actors-item {
   display: flex;
+  gap: 5rem;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
 }
-.detail-page .movie-actors > div {
-  border-radius: 50%;
-}
-.detail-page .movie-actors > div .poster-img {
-  width: 5rem;
-  height: 5rem;
+.detail-page .movie-actors .actors-list .actors-img {
+  width: 10rem;
+  aspect-ratio: 1;
   border-radius: 100%;
 }
-.detail-page .movie-actors > div .poster-img img {
+.detail-page .movie-actors .actors-list .actors-name {
+  width: calc(100% - 15rem);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #fff;
+}
+html[data-mode=light] .detail-page .movie-actors .actors-list .actors-name {
+  color: #000;
+}
+.detail-page .another-series {
+  border-top: 2px solid #242E43;
+  padding-top: 3rem;
   width: 100%;
-  border-radius: 100%;
 }
-.detail-page .movie-actors > div p {
-  font-size: 1.2rem;
-  font-weight: 500;
+html[data-mode=light] .detail-page .another-series {
+  border-top: 2px solid #f8f8f8;
+}
+.detail-page .another-series .series-list {
+  display: flex;
+  gap: 5rem;
+  flex-direction: row;
+  align-items: center;
+}
+.detail-page .another-series .series-list > li {
+  height: 30rem;
 }/*# sourceMappingURL=detail.css.map */

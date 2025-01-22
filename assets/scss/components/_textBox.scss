@@ -39,7 +39,7 @@
 .movie-informationBox {
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 2rem;
 
     .main-page & {
         display: block;
@@ -53,6 +53,11 @@
             width: calc(100% - 20rem);
             left: 10rem;
         }
+    }
+
+    > div {
+        display: flex;
+        gap: 6rem;
     }
 }
 

@@ -146,3 +146,33 @@
         margin-bottom: 3rem;
     }
 }
+
+.btn-favorite {
+    width: 3rem;
+    aspect-ratio: 1;
+    @include background('ico-favorite.svg', center, null, size, contain);
+
+    html[data-mode="dark"] & {
+        filter: invert(1);
+    }
+}
+
+.btn-later {
+    width: 3rem;
+    aspect-ratio: 1;
+    @include background('ico-bookmark.svg', center, null, size, contain);
+
+    html[data-mode="dark"] & {
+        filter: invert(1);
+    }
+}
+
+.btn-watched {
+    width: 3rem;
+    aspect-ratio: 1;
+    @include background('ico-watched.svg', center, null, size, contain);
+
+    html[data-mode="dark"] & {
+        filter: invert(1);
+    }
+}

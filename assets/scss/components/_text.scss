@@ -27,8 +27,12 @@
     }
 
     .movie-detailsBox & {
-        font-size: 4rem;
+        font-size: 6rem;
         color: $fontBlack;
+
+        html[data-mode="dark"] & {
+            color: $fontWhite;
+        }
     }
 
     .result-informationBox & {
@@ -75,6 +79,12 @@
     html[data-mode="light"] & {
         color: $fontBlack;
     }
+
+    .movie-detailsBox & {
+        font-size: 1.6rem;
+        font-weight: 300;
+        letter-spacing: 0;
+    }
 }
 
 .movie-text {
@@ -102,12 +112,13 @@
             color: $fontWhite;
         }
     }
+}
 
-
-    strong {
-        font-weight: 700;
-        padding-right: 2rem;
-    }
+.movie-infoTitle {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #606060;
 }
 
 .type-text {
@@ -144,6 +155,30 @@
 
     html[data-mode="dark"] & {
         background-color: $bgwhite;
+        color: $fontBlack;
+    }
+}
+
+.detail-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $fontWhite;
+    letter-spacing: -0.03rem;
+    margin-bottom: 2rem;
+    display: block;
+    text-transform: uppercase;
+
+    html[data-mode="light"] & {
+        color: $fontBlack;
+    }
+}
+
+.option-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $fontWhite;
+
+    html[data-mode="light"] & {
         color: $fontBlack;
     }
 }

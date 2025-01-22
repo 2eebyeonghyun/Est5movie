@@ -253,6 +253,36 @@ html[data-mode=light] .main-page .btn-next {
   margin-bottom: 3rem;
 }
 
+.btn-favorite {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-favorite.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-favorite {
+  filter: invert(1);
+}
+
+.btn-later {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-bookmark.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-later {
+  filter: invert(1);
+}
+
+.btn-watched {
+  width: 3rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-watched.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=dark] .btn-watched {
+  filter: invert(1);
+}
+
 .item-title {
   font-size: 3rem;
   font-weight: 700;
@@ -277,8 +307,11 @@ html[data-mode=light] .movie-title {
   color: #000;
 }
 .movie-detailsBox .movie-title {
-  font-size: 4rem;
+  font-size: 6rem;
   color: #000;
+}
+html[data-mode=dark] .movie-detailsBox .movie-title {
+  color: #fff;
 }
 .result-informationBox .movie-title {
   font-size: 2.3rem;
@@ -321,6 +354,11 @@ html[data-mode=light] .movie-category {
 html[data-mode=light] .movie-description {
   color: #000;
 }
+.movie-detailsBox .movie-description {
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0;
+}
 
 .movie-text {
   display: flex;
@@ -339,9 +377,12 @@ html[data-mode=dark] .result-page .movie-text {
 html[data-mode=dark] .informationBox-subList .movie-text {
   color: #fff;
 }
-.movie-text strong {
-  font-weight: 700;
-  padding-right: 2rem;
+
+.movie-infoTitle {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #606060;
 }
 
 .type-text {
@@ -375,6 +416,28 @@ html[data-mode=dark] .informationBox-subList .movie-text {
 }
 html[data-mode=dark] .movie-year {
   background-color: #fff;
+  color: #000;
+}
+
+.detail-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03rem;
+  margin-bottom: 2rem;
+  display: block;
+  text-transform: uppercase;
+}
+html[data-mode=light] .detail-text {
+  color: #000;
+}
+
+.option-title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #fff;
+}
+html[data-mode=light] .option-title {
   color: #000;
 }
 
@@ -487,7 +550,7 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 .movie-informationBox {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2rem;
 }
 .main-page .movie-informationBox {
   display: block;
@@ -502,6 +565,10 @@ html[data-mode=light] .movie-ratingBox .rating-value {
     width: calc(100% - 20rem);
     left: 10rem;
   }
+}
+.movie-informationBox > div {
+  display: flex;
+  gap: 6rem;
 }
 
 .row-contentBox {

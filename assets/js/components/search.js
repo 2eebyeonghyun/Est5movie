@@ -106,6 +106,7 @@ export async function getMovies(value, year, type, page = 1) {
                 const movieCard = document.createElement("div");
                 movieCard.className = "itemcontainer-card";
 
+                // 영화 포스터 고해상도로 변경
                 let Highposter;
                 if(movie.Poster !== '') {
                     Highposter = movie.Poster.replace("SX300", "SX3000");
