@@ -95,7 +95,7 @@ function popularSeries() {
 
         slideList.innerHTML = 
         `
-            <a href="/public/result.html?search=${encodeURIComponent(movie)}">${movie}</a>
+            <a href="/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
         `;
 
         slideBox2.appendChild(slideList);

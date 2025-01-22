@@ -93,31 +93,23 @@ export async function getMovies(value, year, type, page = 1) {
         const data = await res.json();
 
         if (data.Search) {
-            console.log(url);
-            console.log(data.Search);
             const movies = data.Search;
-            console.log(movies);
-            const itemCard = document.querySelector(".wrapper-itemcontainer");
-            // moviesList 변수에 movies를 map함수를 사용해 새로운 배열로 만든다 (백틱으로 감싼 영역 하나가 배열 요소 하나이다)
-            // 이 배열 요소를 join을 사용해서 문자화(문자열 하나로 통합)해서 innerHTML을 통해 작성한다
-            // const moviesList =
-            // movies.map((movie) => `
-            // <div class="itemcontainer-card">
-            //     <img src=${movie.Poster}  onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
-            //     <h2 class="itemcontainer-title movie-text">${movie.Title}</h2>
-            //     <span class="itemcontainer-title movie-text">${movie.Year}</span>
-            // </div>
-            // `).join("");
-            // console.log(moviesList);
-            // itemCard.innerHTML = moviesList;
 
+            const itemCard = document.querySelector(".wrapper-itemcontainer");
             itemCard.innerHTML = "";
+
             movies.forEach((movie) => {
                 const movieCard = document.createElement("div");
                 movieCard.className = "itemcontainer-card";
+
+                let Highposter;
+                if(movie.Poster !== '') {
+                    Highposter = movie.Poster.replace("SX300", "SX3000");
+                }
+
                 movieCard.innerHTML = `
                 <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-                    <img class="result-image" src="${movie.Poster}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
+                    <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
                     <div class="result-informationBox">
                         <h2 class="informationBox-title movie-title">${movie.Title}</h2>
                         <ul class="informationBox-subList">
@@ -127,6 +119,7 @@ export async function getMovies(value, year, type, page = 1) {
                     </div>
                 </a>
                 `;
+
                 itemCard.appendChild(movieCard);
             });
         } else {
