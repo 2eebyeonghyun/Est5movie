@@ -606,7 +606,6 @@ html[data-mode=dark] body {
   gap: 5rem;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
 }
 .result-page .wrapper-chkbox {
   position: sticky;
@@ -652,6 +651,12 @@ html[data-mode=dark] body {
     gap: 3rem;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+.result-page .wrapper-errormessage {
+  width: calc(100% - 35rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .result-page .card-item {
   gap: 1rem;
