@@ -11,6 +11,9 @@
 
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- JS -->
+    <script src="../assets/js/public/result.js" type="module"></script>
 </head>
 
 <body>
@@ -117,23 +120,24 @@
 
                         <div class="row-contentBox">
                             <ul>
-                                <li><label class="movie-text" for="yearall">All</label><input class="chkbox yearlist-yearchk" type="checkbox" id="yearall" value="all"></li>
-                                <li><label class="movie-text" for="year25">2025</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year25" value="2025"></li>
-                                <li><label class="movie-text" for="year24">2024</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year24" value="2024"></li>
-                                <li><label class="movie-text" for="year23">2023</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year23" value="2023"></li>
-                                <li><label class="movie-text" for="year22">2022</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year22" value="2022"></li>
-                                <li><label class="movie-text" for="year21">2021</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year21" value="2021"></li>
-                                <li><label class="movie-text" for="year20">2020</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year20" value="2020"></li>
-                                <li><label class="movie-text" for="year19">2019</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year19" value="2019"></li>
-                                <li><label class="movie-text" for="year18">2018</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year18" value="2018"></li>
-                                <li><label class="movie-text" for="year17">2017</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year17" value="2017"></li>
-                                <li><label class="movie-text" for="year16">2016</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year16" value="2016"></li>
-                                <li><label class="movie-text" for="year15">2015</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year15" value="2015"></li>
-                                <li><label class="movie-text" for="year14">2014</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year14" value="2014"></li>
-                                <li><label class="movie-text" for="year13">2013</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year13" value="2013"></li>
-                                <li><label class="movie-text" for="year12">2012</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year12" value="2012"></li>
-                                <li><label class="movie-text" for="year11">2011</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year11" value="2011"></li>
-                                <li><label class="movie-text" for="year10">2010</label><input class="chkbox yearlist-yearchk" type="checkbox" id="year10" value="2010"></li>
+                                <li><label class="movie-text" for="yearall">All</label><input class="radio yearlist-yearchk" type="radio" name="year" id="yearall" value="all"></li>
+                                <li><label class="movie-text" for="year25">2025</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year25" value="2025"></li>
+                                <li><label class="movie-text" for="year24">2024</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year24" value="2024"></li>
+                                <li><label class="movie-text" for="year23">2023</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year23" value="2023"></li>
+                                <li><label class="movie-text" for="year22">2022</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year22" value="2022"></li>
+                                <li><label class="movie-text" for="year21">2021</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year21" value="2021"></li>
+                                <li><label class="movie-text" for="year20">2020</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year20" value="2020"></li>
+                                <li><label class="movie-text" for="year19">2019</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year19" value="2019"></li>
+                                <li><label class="movie-text" for="year18">2018</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year18" value="2018"></li>
+                                <li><label class="movie-text" for="year17">2017</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year17" value="2017"></li>
+                                <li><label class="movie-text" for="year16">2016</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year16" value="2016"></li>
+                                <li><label class="movie-text" for="year15">2015</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year15" value="2015"></li>
+                                <li><label class="movie-text" for="year14">2014</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year14" value="2014"></li>
+                                <li><label class="movie-text" for="year13">2013</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year13" value="2013"></li>
+                                <li><label class="movie-text" for="year12">2012</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year12" value="2012"></li>
+                                <li><label class="movie-text" for="year11">2011</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year11" value="2011"></li>
+                                <li><label class="movie-text" for="year10">2010</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year10" value="2010"></li>
+                                <li><label class="movie-text" for="year09">2009</label><input class="radio yearlist-yearchk" type="radio" name="year" id="year09" value="2009"></li>
                             </ul>
                         </div>
                     </div>
@@ -143,49 +147,18 @@
 
                         <div class="row-contentBox">
                             <ul >
-                                <li><label class="movie-text" for="genreall">All</label><input class="chkbox genrelist-genrechk" type="checkbox" id="genreall" value="all" /></li>
-                                <li><label class="movie-text" for="genremovie">영화</label><input class="chkbox genrelist-genrechk" type="checkbox" id="genremovie" value="movie" /></li>
-                                <li><label class="movie-text" for="genreseries">시리즈</label><input class="chkbox genrelist-genrechk" type="checkbox" id="genreseries" value="series" /></li>
-                                <li><label class="movie-text" for="genreepisode">에피소드</label><input class="chkbox genrelist-genrechk" type="checkbox" id="genreepisode" value="episode" /></li>
+                                <li><label class="movie-text" for="genreall">All</label><input class="radio genrelist-genrechk" type="radio" name="genre" id="genreall" value="all"></li>
+                                <li><label class="movie-text" for="genremovie">영화</label><input class="radio genrelist-genrechk" type="radio" name="genre" id="genremovie" value="movie"></li>
+                                <li><label class="movie-text" for="genreseries">시리즈</label><input class="radio genrelist-genrechk" type="radio" name="genre" id="genreseries" value="series"></li>
+                                <li><label class="movie-text" for="genreepisode">에피소드</label><input class="radio genrelist-genrechk" type="radio" name="genre" id="genreepisode" value="episode"></li>
                             </ul>
                         </div>
                     </div>
-
-
-                    <!-- <fieldset class="chkbox-yearlist">
-                        <legend class="item-title">year</legend>
-                        <ul>
-                            <li><label class="movie-text" for="yearall">All</label><input class="yearlist-yearchk" type="checkbox" id="yearall" value="all"></li>
-                            <li><label class="movie-text" for="year25">2025</label><input class="yearlist-yearchk" type="checkbox" id="year25" value="2025"></li>
-                            <li><label class="movie-text" for="year24">2024</label><input class="yearlist-yearchk" type="checkbox" id="year24" value="2024"></li>
-                            <li><label class="movie-text" for="year23">2023</label><input class="yearlist-yearchk" type="checkbox" id="year23" value="2023"></li>
-                            <li><label class="movie-text" for="year22">2022</label><input class="yearlist-yearchk" type="checkbox" id="year22" value="2022"></li>
-                            <li><label class="movie-text" for="year21">2021</label><input class="yearlist-yearchk" type="checkbox" id="year21" value="2021"></li>
-                            <li><label class="movie-text" for="year20">2020</label><input class="yearlist-yearchk" type="checkbox" id="year20" value="2020"></li>
-                            <li><label class="movie-text" for="year19">2019</label><input class="yearlist-yearchk" type="checkbox" id="year19" value="2019"></li>
-                            <li><label class="movie-text" for="year18">2018</label><input class="yearlist-yearchk" type="checkbox" id="year18" value="2018"></li>
-                            <li><label class="movie-text" for="year17">2017</label><input class="yearlist-yearchk" type="checkbox" id="year17" value="2017"></li>
-                            <li><label class="movie-text" for="year16">2016</label><input class="yearlist-yearchk" type="checkbox" id="year16" value="2016"></li>
-                            <li><label class="movie-text" for="year15">2015</label><input class="yearlist-yearchk" type="checkbox" id="year15" value="2015"></li>
-                            <li><label class="movie-text" for="year14">2014</label><input class="yearlist-yearchk" type="checkbox" id="year14" value="2014"></li>
-                            <li><label class="movie-text" for="year13">2013</label><input class="yearlist-yearchk" type="checkbox" id="year13" value="2013"></li>
-                            <li><label class="movie-text" for="year12">2012</label><input class="yearlist-yearchk" type="checkbox" id="year12" value="2012"></li>
-                            <li><label class="movie-text" for="year11">2011</label><input class="yearlist-yearchk" type="checkbox" id="year11" value="2011"></li>
-                            <li><label class="movie-text" for="year10">2010</label><input class="yearlist-yearchk" type="checkbox" id="year10" value="2010"></li>
-                        </ul>
-                    </fieldset>
-                    <fieldset class="chkbox-genrelist">
-                        <legend class="item-title">genre</legend>
-                        <ul >
-                            <li><label class="movie-text" for="genreall">All</label><input class="genrelist-genrechk" type="checkbox" id="genreall" value="all" /></li>
-                            <li><label class="movie-text" for="genremovie">영화</label><input class="genrelist-genrechk" type="checkbox" id="genremovie" value="movie" /></li>
-                            <li><label class="movie-text" for="genreseries">시리즈</label><input class="genrelist-genrechk" type="checkbox" id="genreseries" value="series" /></li>
-                            <li><label class="movie-text" for="genreepisode">에피소드</label><input class="genrelist-genrechk" type="checkbox" id="genreepisode" value="episode" /></li>
-                        </ul>
-                    </fieldset> -->
                 </div>
 
-                <div class="wrapper-itemcontainer"></div>
+                <div class="wrapper-itemcontainer">
+
+                </div>
                 <div class="wrapper-errormessage"></div>
             </div>
         </section>
@@ -193,8 +166,6 @@
 
     <h2 class="a11y-hidden">푸터 영역</h2>
     <footer class="footer"></footer>
-
-    <script src="../assets/js/public/result.js" type="module"></script>
 </body>
 
 </html>
