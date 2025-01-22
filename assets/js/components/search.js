@@ -77,7 +77,9 @@ export async function getMovies(value, year, type, page = 1) {
         }
 
         // encodeURIComponent 사용이유 : URI로 데이터를 정확하게 전달하기 위해서 문자열을 인코딩하기 위해 사용
-        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(value)}&page=${page}`;
+        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(
+            value
+        )}&page=${page}`;
 
         if (year) {
             url += `&y=${year}`;
@@ -94,8 +96,10 @@ export async function getMovies(value, year, type, page = 1) {
 
         if (data.Search) {
             const movies = data.Search;
-
+            const errorCard = document.querySelector(".wrapper-errormessage");
+            errorCard.style = "display:none";
             const itemCard = document.querySelector(".wrapper-itemcontainer");
+            itemCard.style = "";
             itemCard.innerHTML = "";
 
             movies.forEach((movie) => {
@@ -123,7 +127,18 @@ export async function getMovies(value, year, type, page = 1) {
                 itemCard.appendChild(movieCard);
             });
         } else {
-            console.log("error",data);
+            console.log("error", data);
+            const cardSection = document.querySelector(
+                ".wrapper-itemcontainer"
+            );
+            const errorSection = document.querySelector(
+                ".wrapper-errormessage"
+            );
+            cardSection.style = "display:none";
+            errorSection.style = "";
+            errorSection.innerHTML = `
+                <span class="row-title item-title">${data.Error}</span>
+            `;
         }
     } catch (error) {
         console.error("error", error);

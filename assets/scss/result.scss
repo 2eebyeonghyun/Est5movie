@@ -19,7 +19,7 @@
         gap: 5rem;
         flex-direction: row;
         flex-wrap: wrap;
-        align-items: flex-start;
+        // align-items: flex-start;
     }
 
     .wrapper-chkbox {
@@ -72,6 +72,13 @@
             gap: 3rem;
             grid-template-columns: repeat(2, 1fr);
         }
+    }
+
+    .wrapper-errormessage {
+        width: calc(100% - 35rem);  // 넓이를 안주면 컨텐츠 부분만 넓이를 먹기 때문에 flex center가 안됨!
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .card-item {

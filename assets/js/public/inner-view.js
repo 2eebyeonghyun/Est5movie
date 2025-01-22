@@ -35,10 +35,12 @@ async function fetchMovieDetails() {
               </div>
               <div class="movie-actors">
                 <div>
-                  <img src="${movie.Poser}" alt="${movie.Actors} Poster" />
+                  <div class="poster-img"><img src="${movie.Poster}"/></div>
+                  <p>${movie.Director}</p>
                 </div>
                 <div>
-                  <img src="${movie.Poser}" alt="${movie.Actors} Poster" />
+                  <div class="poster-img"><img src="${movie.Poster}"/></div>
+                  <p>${movie.Director}</p>
                 </div>
               </div>
             </div>
