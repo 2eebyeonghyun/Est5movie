@@ -25,16 +25,27 @@
     display: flex;
     gap: 7rem;
   }
-
+  .movie-img {
+    width: 50rem;
+  }
+  .movie-img img {
+    width: 100%;
+  }
   .movie-total-info {
     display: flex;
     flex-direction: column;
   }
 
+  .movie-informationBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 3rem;
+  }
+
   .movie-detail-info {
     display: flex;
     gap: 2rem;
-    max-width: 75rem;
   }
 
   .movie-detail-info .movie-title {
@@ -47,13 +58,6 @@
     font-weight: 500;
   }
 
-  .movie-informationBox {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-bottom: 3rem;
-  }
-
   .movie-informationBox .movie-text {
     font-size: 1.2rem;
   }
@@ -64,11 +68,45 @@
   }
 
   .movie-info > div {
-    border: 1px solid #000;
     min-height: 50px;
   }
 
   .movie-info > div img {
     width: 100%;
+  }
+
+  .movie-actors {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    gap: 0.5rem;
+    padding-top: 2rem;
+  }
+
+  .movie-actors > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  // .movie-actors > div:first-child {
+  //   margin-bottom: 2rem;
+  // }
+
+  .movie-actors > div {
+    border-radius: 50%;
+  }
+
+  .movie-actors > div .poster-img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+  }
+  .movie-actors > div .poster-img img {
+    width: 100%;
+    border-radius: 100%;
+  }
+  .movie-actors > div p {
+    font-size: 1.2rem;
+    font-weight: 500;
   }
 }
