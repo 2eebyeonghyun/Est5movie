@@ -41,7 +41,6 @@ async function fetchMovieDetails() {
 
     const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
     const movie = await response.json(); // JSON 데이터로 변환
-    let movieActors = movie.Actors.split(",");
 
     // 영화 해상도 고해상도로 변경
     let Highposter;
