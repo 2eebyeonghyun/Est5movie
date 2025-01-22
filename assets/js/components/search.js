@@ -1,6 +1,7 @@
 // http://www.omdbapi.com/?apikey=2d7b9efb
 
 import api from "../base/api.js";
+import { fetchType, fetchSearch, fetchYear } from "../base/param.js";
 import { get } from "../base/util.js";
 
 export const formEl = get(".form");
@@ -51,12 +52,12 @@ export function searchPoint() {
 export function initializePage() {
     try {
         // URLSearchParams : 쿼리 매개변수를 읽고 가져온다.
-        const urlParams = new URLSearchParams(window.location.search);
+        // const urlParams = new URLSearchParams(window.location.search);
 
         // 파라미터 값을 읽어온다.
-        const searchParam = urlParams.get("search");
-        const year = urlParams.get("year");
-        const type = urlParams.get("type");
+        const searchParam = fetchSearch();
+        const year = fetchYear();
+        const type = fetchType();
         let page = 1;
 
         // 값이 있을 경우 검색 실행
@@ -95,23 +96,29 @@ export async function getMovies(value, year, type, page = 1) {
         const data = await res.json();
 
         if (data.Search) {
+            // 결과 데이터를 movies 변수에 저장
             const movies = data.Search;
-            const errorCard = document.querySelector(".wrapper-errormessage");
+            // error영역 display:none 처리
+            const errorCard = get(".wrapper-errormessage");
             errorCard.style = "display:none";
-            const itemCard = document.querySelector(".wrapper-itemcontainer");
+            // 검색결과영역 보이게 처리 후 초기화
+            const itemCard = get(".wrapper-itemcontainer");
             itemCard.style = "";
             itemCard.innerHTML = "";
 
+            // 검색결과영역 반복문을 통해서 card 삽입
             movies.forEach((movie) => {
+                // 리스트 중 한개의 카드영역을 위한 div 생성
                 const movieCard = document.createElement("div");
                 movieCard.className = "itemcontainer-card";
 
-                // 영화 포스터 고해상도로 변경
+                // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
                 let Highposter;
-                if(movie.Poster !== '') {
+                if (movie.Poster !== "") {
                     Highposter = movie.Poster.replace("SX300", "SX3000");
                 }
 
+                // 카드영역 코드
                 movieCard.innerHTML = `
                 <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
                     <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
@@ -125,17 +132,15 @@ export async function getMovies(value, year, type, page = 1) {
                 </a>
                 `;
 
+                // 카드 영역 하나씩 추가
                 itemCard.appendChild(movieCard);
             });
         } else {
-            console.log("error", data);
-            const cardSection = document.querySelector(
-                ".wrapper-itemcontainer"
-            );
-            const errorSection = document.querySelector(
-                ".wrapper-errormessage"
-            );
+            // 카드 영역이 grid로 분할하였기 때문에 에러메시지 창은 grid 영역이 아닌 기존 div에 보여주기 위해 display:none처리
+            const cardSection = get(".wrapper-itemcontainer");
             cardSection.style = "display:none";
+            // 에러 영역을 보이게 처리 후 에러 메시지 출력
+            const errorSection = get(".wrapper-errormessage");
             errorSection.style = "";
             errorSection.innerHTML = `
                 <span class="row-title item-title">${data.Error}</span>
