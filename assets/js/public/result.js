@@ -11,18 +11,6 @@ import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
 // 화면이 로드됐을 때 initializePage함수를 호출한다.
 document.addEventListener("DOMContentLoaded", initializePage);
 document.addEventListener("DOMContentLoaded", () => {
-    // URLSearchParams객체에서 window.location.search는 ?뒤의 쿼리스트링을 가져옴
-    // const urlParams = new URLSearchParams(window.location.search);
-    // 배열로 분리해서 각 type에 맞게 데이터값을 전달함
-    // const values = [...urlParams.values()];
-    // const searchValue = values[0];
-    // let yearValue = values[1];
-    // let genreValue = values[2];
-
-    // let searchValue = urlParams.get("search");
-    // let yearValue = urlParams.get("year");
-    // let genreValue = urlParams.get("type")
-
     let searchValue = fetchSearch();
     let yearValue = fetchYear();
     let genreValue = fetchType();
