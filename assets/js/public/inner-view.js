@@ -1,14 +1,9 @@
 import api from "../base/api.js";
 import { get } from '../base/util.js';
-import { formEl, searchPoint } from "../components/search.js";
+import { buttonEvent } from "../components/search.js";
 import { darkMode } from "../components/dark-mode.js";
 
 const movieContainer = get("#movie-container");
-
-formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    searchPoint();
-});
 
 // TMDB API 공부
 // export async function getActorProfile(actor) {
@@ -44,13 +39,16 @@ async function fetchMovieDetails() {
 
     // 영화 해상도 고해상도로 변경
     let Highposter;
-    if(movie.Poster !== '') {
+    if(movie.Poster !== 'N/A') {
         Highposter = movie.Poster.replace("SX300", "SX3000");
     }
 
     // 출연배우 이름 가져오기
     let movieActors = movie.Actors.split(",");
 
+    // 유튜브링크
+    const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
+    
     // 데이터를 HTML 구조로 렌더링
     movieContainer.innerHTML = 
     `
@@ -87,7 +85,7 @@ async function fetchMovieDetails() {
             <div class="detail-rightBox">
                 <div class="movie-detailsBox">
                     <div class="movie-title">${movie.Title}</div>
-                    <a href="" class="btn-click" aria-label="예고편">WATCH</a>
+                    <a href="${youtubeUrl}" target="_blank" class="btn-click" aria-label="예고편">WATCH</a>
                     
                     <div class="detail-row">
                         <span class="detail-text">STORYLINE</span>
@@ -152,4 +150,5 @@ fetchMovieDetails();
 //기능을 호출하여 동영상 세부 정보를 가져오고 표시합니다
 // fetchMovieDetails();
 
+buttonEvent();
 darkMode();

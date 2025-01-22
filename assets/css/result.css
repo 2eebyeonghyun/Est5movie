@@ -245,6 +245,12 @@ html[data-mode=light] .main-page .btn-next {
   background-color: #000;
   transition: all 0.3s ease-in-out;
 }
+html[data-mode=dark] .btn-click:hover {
+  color: #f00;
+}
+html[data-mode=dark] .btn-click::after {
+  background-color: #fff;
+}
 .btn-click:hover::after {
   left: 0;
   width: 100%;
@@ -660,7 +666,7 @@ html[data-mode=dark] body {
 }
 
 .result-page .section {
-  padding: 15rem 0 5rem;
+  padding: 15rem 0 10rem;
   margin-inline: 5rem;
 }
 @media (width < 1240px) {
@@ -675,12 +681,17 @@ html[data-mode=dark] body {
   flex-wrap: wrap;
 }
 .result-page .wrapper-chkbox {
+  align-self: flex-start;
   position: sticky;
   top: 5rem;
   width: 30rem;
 }
 .result-page .wrapper-chkbox .chkbox-row {
   margin-bottom: 3rem;
+}
+.result-page .wrapper-chkbox .chkbox-row:first-child .row-contentBox {
+  height: 60rem;
+  overflow: scroll;
 }
 .result-page .wrapper-chkbox .chkbox-row:last-child {
   margin-bottom: 0;
@@ -690,6 +701,9 @@ html[data-mode=dark] body {
     height: 30rem;
     overflow: scroll;
   }
+}
+.result-page .wrapper-chkbox .chkbox-row label {
+  cursor: pointer;
 }
 .result-page .wrapper-chkbox .row-title {
   text-transform: uppercase;
@@ -729,10 +743,10 @@ html[data-mode=dark] body {
   gap: 1rem;
 }
 .result-page .card-item .result-image {
-  height: 40rem;
+  height: 55rem;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   margin-bottom: 1rem;
 }
 .result-page .card-item .movie-text {

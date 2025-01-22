@@ -76,9 +76,7 @@ export async function getMovies(value, year, type, page = 1) {
         }
 
         // encodeURIComponent 사용이유 : URI로 데이터를 정확하게 전달하기 위해서 문자열을 인코딩하기 위해 사용
-        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(
-            value
-        )}&page=${page}`;
+        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(value)}&page=${page}`;
 
         if (year) {
             url += `&y=${year}`;
@@ -94,58 +92,64 @@ export async function getMovies(value, year, type, page = 1) {
         const data = await res.json();
 
         if (data.Search) {
-            // 결과 데이터를 movies 변수에 저장
-            const movies = data.Search;
-            // error영역 display:none 처리
-            const errorCard = get(".wrapper-errormessage");
-            errorCard.style = "display:none";
-            // 검색결과영역 보이게 처리 후 초기화
-            const itemCard = get(".wrapper-itemcontainer");
-            itemCard.style = "";
-            itemCard.innerHTML = "";
-
-            // 검색결과영역 반복문을 통해서 card 삽입
-            movies.forEach((movie) => {
-                // 리스트 중 한개의 카드영역을 위한 div 생성
-                const movieCard = document.createElement("div");
-                movieCard.className = "itemcontainer-card";
-
-                // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
-                let Highposter;
-                if (movie.Poster !== "N/A") {
-                    Highposter = movie.Poster.replace("SX300", "SX3000");
-                }
-
-                // 카드영역 코드
-                movieCard.innerHTML = `
-                <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-                    <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
-                    <div class="result-informationBox">
-                        <h2 class="informationBox-title movie-title">${movie.Title}</h2>
-                        <ul class="informationBox-subList">
-                            <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
-                            <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
-                        </ul>
-                    </div>
-                </a>
-                `;
-
-                // 카드 영역 하나씩 추가
-                itemCard.appendChild(movieCard);
-            });
+            renderMovies(data.Search)
         } else {
-            // 카드 영역이 grid로 분할하였기 때문에 에러메시지 창은 grid 영역이 아닌 기존 div에 보여주기 위해 display:none처리
-            const cardSection = get(".wrapper-itemcontainer");
-            cardSection.style = "display:none";
-            // 에러 영역을 보이게 처리 후 에러 메시지 출력
-            const errorSection = get(".wrapper-errormessage");
-            errorSection.style = "";
-            errorSection.innerHTML = `
-                <span class="row-title item-title">${data.Error}</span>
-            `;
+            errorPage(data);
         }
     } catch (error) {
         console.error("error", error);
         alert(error.message);
     }
+}
+
+function renderMovies(movieLists) {
+    // 결과 데이터를 movies 변수에 저장
+    const movies = movieLists;
+    // error영역 display:none 처리
+    const errorCard = get(".wrapper-errormessage");
+    errorCard.style = "display:none";
+    // 검색결과영역 보이게 처리 후 초기화
+    const itemCard = get(".wrapper-itemcontainer");
+    itemCard.style = "";
+    itemCard.innerHTML = "";
+
+    // 검색결과영역 반복문을 통해서 card 삽입
+    movies.forEach((movie) => {
+        // 리스트 중 한개의 카드영역을 위한 div 생성
+        const movieCard = document.createElement("div");
+        movieCard.className = "itemcontainer-card";
+
+        // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
+        let Highposter;
+        if (movie.Poster !== "N/A") {
+            Highposter = movie.Poster.replace("SX300", "SX3000");
+        }
+
+        // 카드영역 코드
+        movieCard.innerHTML = `
+        <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
+            <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-Avengers_Endgame.jpg'" />
+            <div class="result-informationBox">
+                <h2 class="informationBox-title movie-title">${movie.Title}</h2>
+                <ul class="informationBox-subList">
+                    <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
+                    <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
+                </ul>
+            </div>
+        </a>
+        `;
+
+        // 카드 영역 하나씩 추가
+        itemCard.appendChild(movieCard);
+    });
+}
+
+function errorPage(data) {
+    // 카드 영역이 grid로 분할하였기 때문에 에러메시지 창은 grid 영역이 아닌 기존 div에 보여주기 위해 display:none처리
+    const cardSection = get(".wrapper-itemcontainer");
+    cardSection.style = "display:none";
+    // 에러 영역을 보이게 처리 후 에러 메시지 출력
+    const errorSection = get(".wrapper-errormessage");
+    errorSection.style = "";
+    errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
 }

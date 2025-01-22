@@ -6,7 +6,7 @@
 .result-page {
 
     .section {
-        padding: 15rem 0 5rem;
+        padding: 15rem 0 10rem;
         margin-inline: $marginInline;
 
         @include w1240 {
@@ -23,12 +23,21 @@
     }
 
     .wrapper-chkbox {
+        align-self: flex-start;
         position: sticky;
         top: 5rem;
         width: 30rem;
 
         .chkbox-row {
             margin-bottom: 3rem;
+
+            &:first-child {
+
+                .row-contentBox {
+                    height: 60rem;
+                    overflow: scroll;
+                }
+            }
 
             &:last-child {
                 margin-bottom: 0;
@@ -43,6 +52,10 @@
                         overflow: scroll;
                     }
                 }
+            }
+
+            label {
+                cursor: pointer;
             }
         }
 
@@ -85,9 +98,9 @@
         gap: 1rem;
 
         .result-image {
-            height: 40rem;
+            height: 55rem;
             object-fit: cover;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             margin-bottom: 1rem;
         }
 

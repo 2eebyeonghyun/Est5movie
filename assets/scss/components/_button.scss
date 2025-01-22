@@ -134,6 +134,17 @@
         transition: all .3s ease-in-out;
     }
 
+    html[data-mode="dark"] & {
+
+        &:hover {
+            color: $infoButtonColor;
+        }
+        
+        &::after {
+            background-color: $bgwhite;
+        }
+    }
+
     &:hover {
         
         &::after {

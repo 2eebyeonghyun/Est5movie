@@ -245,6 +245,12 @@ html[data-mode=light] .main-page .btn-next {
   background-color: #000;
   transition: all 0.3s ease-in-out;
 }
+html[data-mode=dark] .btn-click:hover {
+  color: #f00;
+}
+html[data-mode=dark] .btn-click::after {
+  background-color: #fff;
+}
 .btn-click:hover::after {
   left: 0;
   width: 100%;
