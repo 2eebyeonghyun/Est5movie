@@ -29,6 +29,7 @@ async function fetchMovieDetails() {
 
     const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
     const movie = await response.json(); // JSON 데이터로 변환
+    let movieActors = movie.Actors.split(",");
 
     // 영화 해상도 고해상도로 변경
     let Highposter;
@@ -96,17 +97,17 @@ async function fetchMovieDetails() {
                     <ul class="actors-list">
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[0]}</p>
+                            <p class="actors-name">${movieActors[0]}</p>
                         </li>
 
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[1]}</p>
+                            <p class="actors-name">${movieActors[1]}</p>
                         </li>
 
                         <li class="actors-item">
                             <img class="actors-img" src="${movie.Poster}"/>
-                            <p class="actors-name">${movie.Actors[2]}</p>
+                            <p class="actors-name">${movieActors[2]}</p>
                         </li>
                     </ul>
                 </div>
