@@ -552,6 +552,9 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   align-items: center;
   margin-bottom: 3rem;
 }
+.main-page .movie-categoryBox {
+  gap: 2rem;
+}
 
 .movie-informationBox {
   display: flex;
