@@ -10,6 +10,10 @@
     html[data-mode="light"] & {
         color: $fontBlack;
     }
+
+    .result-page & {
+        font-size: 2rem;
+    }
 }
 
 // 영화 관련 텍스트
@@ -26,12 +30,33 @@
         color: $fontBlack;
     }
 
+    .main-page & {
+
+        @include w768 {
+            font-size: 4.5rem;
+            word-break: break-all;
+        }
+    }
+
     .movie-detailsBox & {
         font-size: 6rem;
         color: $fontBlack;
 
         html[data-mode="dark"] & {
             color: $fontWhite;
+        }
+
+        @include w1500 {
+            font-size: 4rem;
+        }
+
+        @include w768 {
+            font-size: 2.6rem;
+        }
+
+        @include w430 {
+            font-size: 2.3rem;
+            word-break: break-all;
         }
     }
 
@@ -49,6 +74,10 @@
 
         html[data-mode="dark"] & {
             color: $fontWhite;
+        }
+
+        @include w768 {
+            font-size: 1.8rem;
         }
     }
 
@@ -80,11 +109,22 @@
         color: $fontBlack;
     }
 
+    .main-page & {
+
+        @include w768 {
+            font-size: 1.5rem;
+        }
+    }
+
     .movie-detailsBox & {
         width: 70rem;
         font-size: 1.6rem;
         font-weight: 300;
         letter-spacing: 0;
+
+        @include w1920 {
+            width: 100%;
+        }
     }
 }
 
@@ -120,6 +160,10 @@
     font-weight: 500;
     line-height: 1.3;
     color: #606060;
+
+    @include w768 {
+        width: 100%;
+    }
 }
 
 .type-text {
@@ -143,6 +187,10 @@
     &-episode {
         background-color: #1118ff;
     }
+
+    @include w768 {
+        font-size: 1.2rem;
+    }
 }
 
 .movie-year {
@@ -157,6 +205,10 @@
     html[data-mode="dark"] & {
         background-color: $bgwhite;
         color: $fontBlack;
+    }
+
+    @include w768 {
+        font-size: 1.2rem;
     }
 }
 
@@ -177,9 +229,15 @@
 .option-title {
     font-size: 1.4rem;
     font-weight: 500;
+    line-height: 1.3;
     color: $fontWhite;
+    text-align: center;
 
     html[data-mode="light"] & {
         color: $fontBlack;
+    }
+
+    @include w430 {
+        font-size: 1.2rem;
     }
 }

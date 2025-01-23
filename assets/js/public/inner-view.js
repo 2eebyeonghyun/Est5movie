@@ -2,6 +2,7 @@ import api from "../base/api.js";
 import { get } from '../base/util.js';
 import { buttonEvent } from "../components/search.js";
 import { darkMode } from "../components/dark-mode.js";
+import { loadFooter } from "../components/loadHF.js";
 
 const movieContainer = get("#movie-container");
 
@@ -12,14 +13,13 @@ export async function getActorProfile(actor) {
           accept: 'application/json',
           Authorization: `${api.TMDB_KEY}`,
         }
-      };
+    };
       
     const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`, options);
     const data = await response.json();
-    console.log(data.results[0].profile_path);
+    // console.log(data.results[0].profile_path);
     return data.results[0].profile_path;
 }
-
 
 function getMovieId(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -140,24 +140,26 @@ async function fetchMovieDetails() {
                 <div class="another-series">
                     <span class="detail-text">another movies</span>
                     
-                    <div class="swiper anotherSwiper">
-                        <ul class="swiper-wrapper">
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                        </ul>
-                    </div>
+                    <div class="another-slideBox">
+                        <div class="swiper anotherSwiper">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            </ul>
+                        </div>
 
-                    <div class="swiper-option">
-                        <div class="swiper-navigation">
-                            <div class="swiper-button-prev"><button type="button" class="btn-prev" aria-label="이전"></button></div>  
-                            <div class="swiper-button-next"><button type="button" class="btn-next" aria-label="다음"></button></div>
+                        <div class="swiper-option">
+                            <div class="swiper-navigation">
+                                <div class="swiper-button-prev"><button type="button" class="btn-prev" aria-label="이전"></button></div>  
+                                <div class="swiper-button-next"><button type="button" class="btn-next" aria-label="다음"></button></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,13 +182,13 @@ async function fetchMovieDetails() {
                 spaceBetween: 10,
             },
             768: {
-                slidesPerView: 3,
+                slidesPerView: 2,
                 spaceBetween: 15,
             },
             1024: {
-                slidesPerView: 5,
+                slidesPerView: 2,
             },
-            1300: {
+            1500: {
                 slidesPerView: 5,
             }
         }
@@ -199,11 +201,8 @@ async function fetchMovieDetails() {
   }
 }
 
-// 페이지가 로드될 때 데이터를 가져옴
-fetchMovieDetails();
 
-//기능을 호출하여 동영상 세부 정보를 가져오고 표시합니다
-// fetchMovieDetails();
-
+loadFooter();
 buttonEvent();
 darkMode();
+fetchMovieDetails();

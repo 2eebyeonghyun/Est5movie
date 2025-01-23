@@ -1,5 +1,12 @@
 @use '../variables' as *;
 
+@mixin w1920 {
+
+    @media (width < #{$w1920}) {
+        @content;
+    }
+}
+
 @mixin w1500 {
 
     @media (width < #{$w1500}) {

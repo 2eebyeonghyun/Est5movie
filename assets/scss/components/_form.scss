@@ -45,6 +45,10 @@
         width: 10rem;
         font-size: 1.4rem;
     }
+
+    @include w768 {
+        display: none;
+    }
 }
 
 .form-input {
@@ -68,6 +72,14 @@
             border: 2px solid $bgblack;
         }
     }
+
+    @include w768 {
+        height: 4rem;
+    }
+
+    @include w430 {
+        height: 5rem;
+    }
 }
 
 .filter-box {
@@ -77,5 +89,13 @@
     @include w1240 {
         width: 25rem;
         font-size: 1.4rem;
+    }
+
+    @include w768 {
+        width: 20rem;
+    }
+
+    @include w430 {
+        width: 100%;
     }
 }

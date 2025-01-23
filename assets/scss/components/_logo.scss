@@ -8,4 +8,8 @@
     html[data-mode="light"] & {
         color: $fontBlack;
     }
+
+    @include w768 {
+        font-size: 1.8rem;
+    }
 }

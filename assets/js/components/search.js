@@ -45,7 +45,7 @@ export function searchPoint() {
         if (!value) {
             alert("검색어를 입력해주세요.");
             return;
-        }
+        } 
 
         // 페이지를 이동한다.
         window.location.href = newUrl;
@@ -74,6 +74,7 @@ export function initializePage() {
 
 export async function getMovies(value, year, type, page) {
     try {
+
         if (filterEl) {
             // 결과값 초기화
             filterEl.innerHTML = "";

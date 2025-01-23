@@ -8,17 +8,24 @@
     // section에도 넓이 높이값 지정 수정
     // container 추가( 이병현)
     width: 100%;
-    height: 100vh;
 
     .section {
         width: 100%;
-        height: 100vh;
     }
 
     .container {
         height: 100%;
         padding: 15rem 0 10rem;
         margin-inline: $marginInline;
+
+        @include w1240 {
+            margin-inline: 3rem;
+        }
+
+        @include w430 {
+            padding: 15rem 0 5rem;
+            margin-inline: 1.5rem
+        }
     }
 
     // 2025.01.22 상세페이지 디자인 수정( 이병현)
@@ -36,6 +43,22 @@
         .movie-img {
             width: 100%;
             margin-bottom: 5rem;
+        }
+
+        @include w1920 {
+            width: 45rem;
+        }
+
+        @include w1500 {
+            width: 40rem;
+            position: sticky;
+            top: 5rem;
+        }
+
+        @include w1240 {
+            width: 100%;
+            position: relative;
+            top: 0;
         }
     }
 
@@ -61,6 +84,13 @@
                 margin-bottom: 3rem;
             }
         }
+
+        @include w430 {
+
+            > ul {
+                gap: 2rem;
+            }
+        }
     }
 
     .detail-rightBox {
@@ -78,10 +108,26 @@
                 margin-bottom: 0;
             }
         }
+
+        @include w1920 {
+            width: calc(100% - 55rem);
+        }
+
+        @include w1240 {
+            width: 100%;
+        }
     }
 
     .movie-detailsBox {
         width: calc(100% - 50rem);
+
+        @include w1920 {
+            width: calc(100% - 35rem);
+        }
+
+        @include w1500 {
+            width: 100%;
+        }
     }
 
     .movie-actors {
@@ -116,17 +162,27 @@
                 }
             }
         }
+
+        @include w1920 {
+            width: 30rem;
+
+            .actors-list {
+
+                .actors-img {
+                    width: 8rem;
+                }
+            }
+        }
+
+        @include w1500 {
+            width: 100%;
+        }
     }
 
     .another-series {
         width: 100%;
-        display: inline-flex;
-        gap: 2rem 5rem;
-        flex-direction: row;
-        flex-wrap: wrap;
         border-top: 2px solid #242E43;
         padding-top: 3rem;
-        width: 100%;
 
         html[data-mode="light"] & {
             border-top: 2px solid $boxColor;
@@ -135,9 +191,32 @@
         .detail-text {
             width: 100%;
         }
+    }
+
+    .another-slideBox {
+        width: 100%;
+        display: inline-flex;
+        gap: 2rem 5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
 
         .anotherSwiper {
             width: calc(100% - 25rem);
+            height: auto;
+
+            a {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+
+        @include w768 {
+            gap: 5rem;
+
+            .anotherSwiper {
+                width: 100%;
+            }
         }
     }
 }

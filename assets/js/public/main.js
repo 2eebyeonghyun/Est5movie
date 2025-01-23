@@ -2,9 +2,8 @@ import api from "../base/api.js";
 import { buttonEvent, initializePage } from '../components/search.js';
 import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
+import { loadHeader, loadFooter } from "../components/loadHF.js";
 
-// 화면이 로드됐을 때 initializePage함수를 호출한다.
-// document.addEventListener('DOMContentLoaded', );
 
 // 메인 슬라이드
 async function mainSlide() {
@@ -61,7 +60,7 @@ async function mainSlide() {
             const swiper = new Swiper(".mainSwiper", {
                 loop: true,
                 autoplay: {
-                    delay: 5000,
+                    delay: 5000000,
                     disableOnInteraction: false,
                 },
                 navigation: {
@@ -118,6 +117,7 @@ function popularSeries() {
     });
 }
 
+loadFooter();
 buttonEvent();
 initializePage();
 darkMode();

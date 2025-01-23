@@ -43,6 +43,8 @@
     }
 
     .another-series & {
+        width: 100%;
+        height: 100%;
 
         html[data-mode="dark"] & {
             filter: invert(1);
@@ -64,6 +66,8 @@
     }
 
     .another-series & {
+        width: 100%;
+        height: 100%;
 
         html[data-mode="dark"] & {
             filter: invert(1);
@@ -169,6 +173,16 @@
 
     .movie-detailsBox & {
         margin-bottom: 3rem;
+
+        @include w430 {
+            width: 100%;
+            height: 5.5rem;
+        }
+    }
+
+    @include w768 {
+        width: 15rem;
+        height: 4.5rem;
     }
 }
 

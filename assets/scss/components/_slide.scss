@@ -8,7 +8,7 @@
 .swiper-slide {
 
     .another-series & {
-        height: 30rem;
+        // height: 30rem;
     }
 }
 
@@ -25,6 +25,10 @@
         position: relative;
         top: 0;
         translate: 0 0;
+
+        @include w768 {
+            width: 100%;
+        }
     }
 }
 
@@ -38,10 +42,21 @@
         gap: 5rem;
         justify-content: flex-end;
         margin: 0;
+
+        @include w768 {
+            justify-content: space-between;
+        }
     }
 
     @include w1240 {
         margin-inline: 3rem;
+    }
+
+    @include w768 {
+
+        .main-page & {
+            display: none;
+        }
     }
 }
 
@@ -60,6 +75,10 @@
         top: 0;
         margin-top: 0;
         width: 2.8rem;
+
+        @include w768 {
+            width: 2rem;
+        }
     }
 
     &::after {

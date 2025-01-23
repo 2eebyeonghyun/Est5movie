@@ -2,6 +2,7 @@ import { buttonEvent, initializePage, getMovies, loadMovies } from "../component
 import { darkMode } from "../components/dark-mode.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
+import { loadFooter } from "../components/loadHF.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     let searchValue = fetchSearch();
@@ -25,19 +26,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 // name을 통해서 genre와 year 구분해서 getMovies를 실행
                 const name = e.target.name;
                 const value = e.target.value;
+
                 if (name === "genre") {
                     genreValue = value;
+                    updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정 ( 챗지피티 활용)
                     loadMovies(searchValue, yearValue, genreValue, 1);
                 } else if (name === "year") {
                     yearValue = value;
+                    updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정 ( 챗지피티 활용)
                     loadMovies(searchValue, yearValue, genreValue, 1);
                 }
             });
         });
     }
+
+    // URL 주소 변경 작업( 2025.01.23 이병현)
+    // 라디오버튼 변경하면 리다이렉트하고 URL주소 변경
+    function updateUrl(search, year, genre) {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // 쿼리 매개변수 업데이트
+        urlParams.set("search", search || "all");
+        urlParams.set("year", year || "all");
+        urlParams.set("type", genre || "all");
+
+        // 현재 URL 업데이트
+        const newURL = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+        window.location.href = newURL;
+    }
 });
 
-
+loadFooter();
 buttonEvent();
 initializePage();
 darkMode();
