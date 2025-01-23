@@ -1,4 +1,4 @@
-import { buttonEvent, initializePage, getMovies } from "../components/search.js";
+import { buttonEvent, initializePage, getMovies, loadMovies } from "../components/search.js";
 import { darkMode } from "../components/dark-mode.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const value = e.target.value;
                 if (name === "genre") {
                     genreValue = value;
-                    getMovies(searchValue, yearValue, genreValue, 1);
+                    loadMovies(searchValue, yearValue, genreValue, 1);
                 } else if (name === "year") {
                     yearValue = value;
-                    getMovies(searchValue, yearValue, genreValue, 1);
+                    loadMovies(searchValue, yearValue, genreValue, 1);
                 }
             });
         });
