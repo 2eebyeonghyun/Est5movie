@@ -83,6 +83,7 @@ async function fetchMovieDetails() {
 
         let movieActors = movie.Actors.split(",");
 
+
         let imgArr = [];
         for (let i of movieActors) {
             imgArr.push(getActorProfile(i));

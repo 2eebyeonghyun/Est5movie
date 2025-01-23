@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (name === "genre") {
                     genreValue = value;
                     updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정 ( 챗지피티 활용)
-                    loadMovies(searchValue, yearValue, genreValue, 1);
+                    // loadMovies(searchValue, yearValue, genreValue, 1);
                 } else if (name === "year") {
                     yearValue = value;
                     updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정 ( 챗지피티 활용)
-                    loadMovies(searchValue, yearValue, genreValue, 1);
+                    // loadMovies(searchValue, yearValue, genreValue, 1);
                 }
             });
         });
