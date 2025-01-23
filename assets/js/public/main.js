@@ -60,7 +60,7 @@ async function mainSlide() {
             const swiper = new Swiper(".mainSwiper", {
                 loop: true,
                 autoplay: {
-                    delay: 5000000,
+                    delay: 5000,
                     disableOnInteraction: false,
                 },
                 navigation: {

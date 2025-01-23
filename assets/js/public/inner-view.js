@@ -50,7 +50,6 @@ async function fetchMovieDetails() {
     // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
     let actorImages = await Promise.all(imgArr);
 
-
     // 영화 해상도 고해상도로 변경
     let Highposter;
     if (movie.Poster !== "N/A") {
@@ -199,6 +198,19 @@ async function fetchMovieDetails() {
     `;
     console.error("Error fetching movie data:", error);
   }
+}
+
+export async function getMoviesId(moviename) {
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: '${api.TMDB_KEY}'
+        }
+    };
+
+    const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${moviename}&include_adult=false&language=en-US&page=1`, options);
+    const data = await res.json();
 }
 
 

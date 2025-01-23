@@ -114,7 +114,7 @@ function renderMovies(movies) {
     // 검색결과영역 보이게 처리 후 초기화
     const itemCard = get(".wrapper-itemcontainer");
     itemCard.style = "";
-    itemCard.innerHTML = "";
+    // itemCard.innerHTML = "";
 
     // 검색결과영역 반복문을 통해서 card 삽입
     movies.forEach((movie) => {
