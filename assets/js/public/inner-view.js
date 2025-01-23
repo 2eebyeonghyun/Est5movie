@@ -1,5 +1,5 @@
 import api from "../base/api.js";
-import { get } from '../base/util.js';
+import { get } from "../base/util.js";
 import { buttonEvent } from "../components/search.js";
 import { darkMode } from "../components/dark-mode.js";
 import { loadFooter } from "../components/loadHF.js";
@@ -8,17 +8,46 @@ const movieContainer = get("#movie-container");
 
 export async function getActorProfile(actor) {
     const options = {
-        method: 'GET',
+        method: "GET",
         headers: {
-          accept: 'application/json',
-          Authorization: `${api.TMDB_KEY}`,
-        }
+            accept: "application/json",
+            Authorization: `${api.TMDB_KEY}`,
+        },
     };
-      
-    const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`, options);
+
+    const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`,options);
     const data = await response.json();
     // console.log(data.results[0].profile_path);
     return data.results[0].profile_path;
+}
+
+async function getMovieTMDBID(movietitle) {
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization: `${api.TMDB_KEY}`,
+        },
+    };
+    const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${movietitle}&include_adult=false&language=en-US&page=1`,options);
+    const data = await response.json();
+    console.log(data.results[0].id);
+    return data.results[0].id;
+}
+
+async function getSimilarMovie(movieId) {
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization: `${api.TMDB_KEY}`,
+        },
+    };
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`,options)
+    const data = await response.json();
+    console.log(data.results);
+    return data.results;
 }
 
 function getMovieId(param) {
@@ -28,42 +57,53 @@ function getMovieId(param) {
 
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
-  try {
+    try {
+        // 영화의 id값을 가져와 저장한다.
+        const movieId = getMovieId("id");
 
-    // 영화의 id값을 가져와 저장한다.
-    const movieId = getMovieId('id');
+        // 정보가 없다면 에러창을 띄운다.
+        if (!movieId) {
+            throw new Error("영화 정보를 찾을 수 없습니다.");
+        }
 
-    // 정보가 없다면 에러창을 띄운다.
-    if(!movieId) {
-        throw new Error('영화 정보를 찾을 수 없습니다.');
-    }
+        const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
+        const movie = await response.json(); // JSON 데이터로 변환
 
-    const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
-    const movie = await response.json(); // JSON 데이터로 변환
+        const movieTitle = movie.Title;
+        const movieTMDBID = await Promise.resolve(getMovieTMDBID(movieTitle)); // TMDBID값 가져오기
+        console.log("id", movieTMDBID);
+        let similarImgArr = [];
+        const allIMG = await Promise.resolve(getSimilarMovie(movieTMDBID));
+        console.log("allIMG",allIMG);
+        for(let i = 1; i <= 9; i++) {
+            similarImgArr.push(allIMG[i].poster_path);
+        }
+        console.log(similarImgArr);
 
-    let movieActors = movie.Actors.split(",");
 
-    let imgArr = [];
-    for(let i of movieActors) {
-        imgArr.push(getActorProfile(i));
-    }
-    // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
-    let actorImages = await Promise.all(imgArr);
+        let movieActors = movie.Actors.split(",");
 
-    // 영화 해상도 고해상도로 변경
-    let Highposter;
-    if (movie.Poster !== "N/A") {
-        Highposter = movie.Poster.replace("SX300", "SX3000");
-    } else {
-        Highposter = '/assets/images/poster-NotAvailable.png';
-    }
 
-    // 유튜브링크
-    const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
-    
-    // 데이터를 HTML 구조로 렌더링
-    movieContainer.innerHTML = 
-    `
+        let imgArr = [];
+        for (let i of movieActors) {
+            imgArr.push(getActorProfile(i));
+        }
+        // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
+        let actorImages = await Promise.all(imgArr);
+
+        // 영화 해상도 고해상도로 변경
+        let Highposter;
+        if (movie.Poster !== "N/A") {
+            Highposter = movie.Poster.replace("SX300", "SX3000");
+        } else {
+            Highposter = "/assets/images/poster-NotAvailable.png";
+        }
+
+        // 유튜브링크
+        const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
+
+        // 데이터를 HTML 구조로 렌더링
+        movieContainer.innerHTML = `
         <div class="movie-detail-content">
             <div class="detail-leftBox">
                 <div class="movie-img">
@@ -142,15 +182,15 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[0]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[1]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[2]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[3]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[4]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[5]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[6]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[7]}" alt="${movie.Actors} Poster" /></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="https://image.tmdb.org/t/p/w500${similarImgArr[8]}" alt="${movie.Actors} Poster" /></a></li>
                             </ul>
                         </div>
 
@@ -166,53 +206,39 @@ async function fetchMovieDetails() {
         </div>
     `;
 
-    // swiper 슬라이드로 만들기
-    const swiper = new Swiper(".anotherSwiper", {
-        slidesPerView: 5,
-        spaceBetween: 30,
-        loop: true,
-        navigation: {
-            nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
-            prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 2,
-                spaceBetween: 10,
+        // swiper 슬라이드로 만들기
+        const swiper = new Swiper(".anotherSwiper", {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
+                prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
             },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 15,
+            breakpoints: {
+                320: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                1024: {
+                    slidesPerView: 2,
+                },
+                1500: {
+                    slidesPerView: 5,
+                },
             },
-            1024: {
-                slidesPerView: 2,
-            },
-            1500: {
-                slidesPerView: 5,
-            }
-        }
-    });
-  } catch (error) {
-      movieContainer.innerHTML = `
+        });
+    } catch (error) {
+        movieContainer.innerHTML = `
       <p>Failed to fetch movie details. Please try again later.</p>
     `;
-    console.error("Error fetching movie data:", error);
-  }
+        console.error("Error fetching movie data:", error);
+    }
 }
-
-export async function getMoviesId(moviename) {
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: '${api.TMDB_KEY}'
-        }
-    };
-
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${moviename}&include_adult=false&language=en-US&page=1`, options);
-    const data = await res.json();
-}
-
 
 loadFooter();
 buttonEvent();
