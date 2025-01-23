@@ -4,7 +4,7 @@ import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
 
 // 화면이 로드됐을 때 initializePage함수를 호출한다.
-document.addEventListener('DOMContentLoaded', initializePage);
+// document.addEventListener('DOMContentLoaded', );
 
 // 메인 슬라이드
 async function mainSlide() {
@@ -119,6 +119,7 @@ function popularSeries() {
 }
 
 buttonEvent();
+initializePage();
 darkMode();
 mainSlide();
 popularSeries();

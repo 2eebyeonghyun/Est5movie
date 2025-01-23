@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
 buttonEvent();
 initializePage();
 darkMode();

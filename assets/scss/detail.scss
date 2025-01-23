@@ -119,6 +119,11 @@
     }
 
     .another-series {
+        width: 100%;
+        display: inline-flex;
+        gap: 2rem 5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
         border-top: 2px solid #242E43;
         padding-top: 3rem;
         width: 100%;
@@ -127,15 +132,12 @@
             border-top: 2px solid $boxColor;
         }
 
-        .series-list {
-            display: flex;
-            gap: 5rem;
-            flex-direction: row;
-            align-items: center;
+        .detail-text {
+            width: 100%;
+        }
 
-            > li {
-                height: 30rem;
-            }
+        .anotherSwiper {
+            width: calc(100% - 25rem);
         }
     }
 }

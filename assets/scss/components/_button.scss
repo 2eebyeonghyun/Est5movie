@@ -41,6 +41,13 @@
             filter: invert(0);
         }
     }
+
+    .another-series & {
+
+        html[data-mode="dark"] & {
+            filter: invert(1);
+        }
+    }
 }
 
 .btn-next {
@@ -53,6 +60,13 @@
 
         html[data-mode="light"] & {
             filter: invert(0);
+        }
+    }
+
+    .another-series & {
+
+        html[data-mode="dark"] & {
+            filter: invert(1);
         }
     }
 }

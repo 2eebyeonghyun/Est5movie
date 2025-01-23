@@ -105,6 +105,25 @@ td {
   }
 }
 
+.footer {
+  border-top: 2px solid #f8f8f8;
+  padding: 2rem;
+}
+.footer .copyright-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #07111e;
+  letter-spacing: 0;
+  text-align: center;
+}
+html[data-mode=dark] .footer .copyright-text {
+  font-weight: 400;
+  color: #fff;
+}
+html[data-mode=dark] .footer {
+  border-top: 2px solid #242E43;
+}
+
 .logo {
   font-size: 3rem;
   font-weight: 800;
@@ -160,6 +179,9 @@ html[data-mode=light] .filter-box .btn-search {
 html[data-mode=light] .main-page .btn-prev {
   filter: invert(0);
 }
+html[data-mode=dark] .another-series .btn-prev {
+  filter: invert(1);
+}
 
 .btn-next {
   width: 9.4rem;
@@ -172,6 +194,9 @@ html[data-mode=light] .main-page .btn-prev {
 }
 html[data-mode=light] .main-page .btn-next {
   filter: invert(0);
+}
+html[data-mode=dark] .another-series .btn-next {
+  filter: invert(1);
 }
 
 .btn-watch {
@@ -361,6 +386,7 @@ html[data-mode=light] .movie-description {
   color: #000;
 }
 .movie-detailsBox .movie-description {
+  width: 70rem;
   font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: 0;
@@ -616,6 +642,10 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   height: 100%;
 }
 
+.another-series .swiper-slide {
+  height: 30rem;
+}
+
 .swiper-option {
   width: 100%;
   position: absolute;
@@ -624,11 +654,23 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   translate: 0 -50%;
   z-index: 100;
 }
+.another-series .swiper-option {
+  width: 20rem;
+  position: relative;
+  top: 0;
+  translate: 0 0;
+}
 
 .swiper-navigation {
   display: flex;
   justify-content: space-between;
   margin-inline: 5rem;
+}
+.another-series .swiper-navigation {
+  width: 100%;
+  gap: 5rem;
+  justify-content: flex-end;
+  margin: 0;
 }
 @media (width < 1240px) {
   .swiper-navigation {
@@ -638,6 +680,13 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 
 .main-page .swiper-button-next,
 .main-page .swiper-button-prev {
+  position: relative;
+  top: 0;
+  margin-top: 0;
+  width: 2.8rem;
+}
+.another-series .swiper-button-next,
+.another-series .swiper-button-prev {
   position: relative;
   top: 0;
   margin-top: 0;
@@ -758,6 +807,11 @@ html[data-mode=light] .detail-page .movie-actors .actors-list .actors-name {
   color: #000;
 }
 .detail-page .another-series {
+  width: 100%;
+  display: inline-flex;
+  gap: 2rem 5rem;
+  flex-direction: row;
+  flex-wrap: wrap;
   border-top: 2px solid #242E43;
   padding-top: 3rem;
   width: 100%;
@@ -765,12 +819,9 @@ html[data-mode=light] .detail-page .movie-actors .actors-list .actors-name {
 html[data-mode=light] .detail-page .another-series {
   border-top: 2px solid #f8f8f8;
 }
-.detail-page .another-series .series-list {
-  display: flex;
-  gap: 5rem;
-  flex-direction: row;
-  align-items: center;
+.detail-page .another-series .detail-text {
+  width: 100%;
 }
-.detail-page .another-series .series-list > li {
-  height: 30rem;
-}/*# sourceMappingURL=detail.css.map */
+.detail-page .another-series .anotherSwiper {
+  width: calc(100% - 25rem);
+}

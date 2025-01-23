@@ -5,16 +5,20 @@ import { darkMode } from "../components/dark-mode.js";
 
 const movieContainer = get("#movie-container");
 
-// TMDB API 공부
-// export async function getActorProfile(actor) {
-    
-//     const res = await fetch(`https://api.themoviedb.org/3/search/person?api_key=${TMDB_KEY}&query=actor`);
-//     const data = await res.json();
-
-//     if (data.results) {}
-
-//     return null;
-// }
+export async function getActorProfile(actor) {
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `${api.TMDB_KEY}`,
+        }
+      };
+      
+    const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`, options);
+    const data = await response.json();
+    console.log(data.results[0].profile_path);
+    return data.results[0].profile_path;
+}
 
 
 function getMovieId(param) {
@@ -37,16 +41,23 @@ async function fetchMovieDetails() {
     const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
     const movie = await response.json(); // JSON 데이터로 변환
 
+    let movieActors = movie.Actors.split(",");
+
+    let imgArr = [];
+    for(let i of movieActors) {
+        imgArr.push(getActorProfile(i));
+    }
+    // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
+    let actorImages = await Promise.all(imgArr);
+
+
     // 영화 해상도 고해상도로 변경
     let Highposter;
     if (movie.Poster !== "N/A") {
         Highposter = movie.Poster.replace("SX300", "SX3000");
     } else {
-        Highposter = '/assets/images/poster-Avengers_Endgame.jpg';
+        Highposter = '/assets/images/poster-NotAvailable.png';
     }
-
-    // 출연배우 이름 가져오기
-    let movieActors = movie.Actors.split(",");
 
     // 유튜브링크
     const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
@@ -57,7 +68,7 @@ async function fetchMovieDetails() {
         <div class="movie-detail-content">
             <div class="detail-leftBox">
                 <div class="movie-img">
-                    <img src="${Highposter}" />
+                    <img src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'" />
                 </div>
 
                 <div class="movie-options">
@@ -110,17 +121,17 @@ async function fetchMovieDetails() {
                     <span class="detail-text">actors</span>
                     <ul class="actors-list">
                         <li class="actors-item">
-                            <img class="actors-img" src="${movie.Poster}"/>
+                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[0]}"/>
                             <p class="actors-name">${movieActors[0]}</p>
                         </li>
 
                         <li class="actors-item">
-                            <img class="actors-img" src="${movie.Poster}"/>
+                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[1]}"/>
                             <p class="actors-name">${movieActors[1]}</p>
                         </li>
 
                         <li class="actors-item">
-                            <img class="actors-img" src="${movie.Poster}"/>
+                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[2]}"/>
                             <p class="actors-name">${movieActors[2]}</p>
                         </li>
                     </ul>
@@ -128,16 +139,58 @@ async function fetchMovieDetails() {
 
                 <div class="another-series">
                     <span class="detail-text">another movies</span>
-                    <ul class="series-list">
-                        <li><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                        <li><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                        <li><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                        <li><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
-                    </ul>
+                    
+                    <div class="swiper anotherSwiper">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                            <li class="swiper-slide"><a href="#none"><img src="${movie.Poster}" alt="${movie.Actors} Poster" /></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="swiper-option">
+                        <div class="swiper-navigation">
+                            <div class="swiper-button-prev"><button type="button" class="btn-prev" aria-label="이전"></button></div>  
+                            <div class="swiper-button-next"><button type="button" class="btn-next" aria-label="다음"></button></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     `;
+
+    // swiper 슬라이드로 만들기
+    const swiper = new Swiper(".anotherSwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
+            prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+            },
+            1024: {
+                slidesPerView: 5,
+            },
+            1300: {
+                slidesPerView: 5,
+            }
+        }
+    });
   } catch (error) {
       movieContainer.innerHTML = `
       <p>Failed to fetch movie details. Please try again later.</p>

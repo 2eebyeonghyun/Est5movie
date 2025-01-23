@@ -124,13 +124,13 @@ function renderMovies(movieLists) {
         if (movie.Poster !== "N/A") {
             Highposter = movie.Poster.replace("SX300", "SX3000");
         } else {
-            Highposter = '/assets/images/poster-Avengers_Endgame.jpg';
+            Highposter = '/assets/images/poster-NotAvailable.png';
         }
 
         // 카드영역 코드
         movieCard.innerHTML = `
         <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-            <img class="result-image" src="${Highposter}" />
+            <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'"/>
             <div class="result-informationBox">
                 <h2 class="informationBox-title movie-title">${movie.Title}</h2>
                 <ul class="informationBox-subList">
