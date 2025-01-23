@@ -10,6 +10,11 @@ export const yearEl = get(".select-year");
 export const typeEl = get(".select-type");
 export const btn = get(".btn-search");
 
+export let searchParam = fetchSearch();
+export let year = fetchYear();
+export let type = fetchType();
+export let page = 1;
+
 export function buttonEvent() {
     formEl.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -60,16 +65,15 @@ export function initializePage() {
         // 값이 있을 경우 검색 실행
         if (searchParam) {
             // 검색 결과 가져오기
-            getMovies(searchParam, year, type, page);
+            loadMovies(searchParam, year, type, page);
         }
     } catch (error) {
         alert("에러가 발생했습니다.");
     }
 }
 
-export async function getMovies(value, year, type, page = 1) {
+export async function getMovies(value, year, type, page) {
     try {
-        
         if (filterEl) {
             // 결과값 초기화
             filterEl.innerHTML = "";
@@ -92,7 +96,7 @@ export async function getMovies(value, year, type, page = 1) {
         const data = await res.json();
 
         if (data.Search) {
-            renderMovies(data.Search)
+            return data;
         } else {
             errorPage(data);
         }
@@ -102,9 +106,7 @@ export async function getMovies(value, year, type, page = 1) {
     }
 }
 
-function renderMovies(movieLists) {
-    // 결과 데이터를 movies 변수에 저장
-    const movies = movieLists;
+function renderMovies(movies) {
     // error영역 display:none 처리
     const errorCard = get(".wrapper-errormessage");
     errorCard.style = "display:none";
@@ -128,7 +130,7 @@ function renderMovies(movieLists) {
         }
 
         // 카드영역 코드
-        movieCard.innerHTML = `
+        movieCard.innerHTML += `
         <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
             <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'"/>
             <div class="result-informationBox">
@@ -140,10 +142,17 @@ function renderMovies(movieLists) {
             </div>
         </a>
         `;
-
-        // 카드 영역 하나씩 추가
         itemCard.appendChild(movieCard);
     });
+}
+
+export async function loadMovies(searchParam, year, type, page) {
+    try {
+        const response = await getMovies(searchParam, year, type, page);
+        renderMovies(response.Search);
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 function errorPage(data) {
