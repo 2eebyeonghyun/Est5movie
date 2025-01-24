@@ -1,6 +1,6 @@
 export async function loadHeader() {
     try {
-        const res = await fetch('../../components/header.html');
+        const res = await fetch(`${api.GIT_URL}/components/header.html`);
         const data = await res.text();
         
         const header = document.querySelector('.header');
@@ -16,7 +16,7 @@ export async function loadHeader() {
 
 export async function loadFooter() {
     try {
-        const res = await fetch('../../components/footer.html');
+        const res = await fetch(`${api.GIT_URL}/components/footer.html`);
         const data = await res.text();
         
         const footer = document.querySelector('.footer');

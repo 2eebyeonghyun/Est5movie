@@ -32,7 +32,7 @@ export function searchPoint() {
 
         // 페이지 이동하면서 파라미터 값도 전달
         // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
-        let newUrl = `/public/result.html?search=${encodeURIComponent(value)}`;
+        let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
             newUrl += `&year=${encodeURIComponent(year)}`;
@@ -80,9 +80,7 @@ export async function getMovies(value, year, type, page) {
         }
 
         // encodeURIComponent 사용이유 : URI로 데이터를 정확하게 전달하기 위해서 문자열을 인코딩하기 위해 사용
-        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(
-            value
-        )}&page=${page}`;
+        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(value)}&page=${page}`;
 
         if (year) {
             url += `&y=${year}`;
@@ -128,13 +126,13 @@ function renderMovies(movies) {
         if (movie.Poster !== "N/A") {
             Highposter = movie.Poster.replace("SX300", "SX3000");
         } else {
-            Highposter = "/assets/images/poster-NotAvailable.png";
+            Highposter = `${api.GIT_URL}/assets/images/poster-NotAvailable.png`;
         }
 
         // 카드영역 코드
         movieCard.innerHTML = `
-        <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-            <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'"/>
+        <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="card-item">
+            <img class="result-image" src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
             <div class="result-informationBox">
                 <h2 class="informationBox-title movie-title">${movie.Title}</h2>
                 <ul class="informationBox-subList">

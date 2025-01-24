@@ -16,10 +16,7 @@ async function getActorProfile(actor) {
             },
         };
 
-        const response = await fetch(
-            `https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`,
-            options
-        );
+        const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`, options);
         const data = await response.json();
         return data.results[0].profile_path;
     } catch (error) {
@@ -35,10 +32,7 @@ async function getMovieTMDBID(movieId) {
             Authorization: `${api.TMDB_KEY}`,
         },
     };
-    const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}?language=en-KO', options`,
-        options
-    );
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-KO', options`, options);
     const data = await response.json();
     console.log(data.id);
     if (!data.id) {
@@ -55,10 +49,7 @@ async function getSimilarMovie(movieId) {
             Authorization: `${api.TMDB_KEY}`,
         },
     };
-    const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`,
-        options
-    );
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`, options);
     const data = await response.json();
     console.log(data.results);
     return data.results;
@@ -84,22 +75,20 @@ async function fetchMovieDetails() {
             `${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`
         ); // OMDb API 호출
         const movie = await response.json(); // JSON 데이터로 변환
-        
+
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
         console.log(movieTMDBID);
         let similarImgArr = [];
         if (!movieTMDBID) {
             for (let i = 1; i <= 9; i++) {
-                similarImgArr.push("/assets/images/poster-NotAvailable.png");
+                similarImgArr.push(`${api.GIT_URL}/assets/images/poster-NotAvailable.png`);
             }
         } else {
             const allIMG = await getSimilarMovie(movieTMDBID);
 
             for (let i = 1; i <= 9; i++) {
-                similarImgArr.push(
-                    `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`
-                );
+                similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
             }
         }
         console.log(similarImgArr);
@@ -130,7 +119,7 @@ async function fetchMovieDetails() {
         <div class="movie-detail-content">
             <div class="detail-leftBox">
                 <div class="movie-img">
-                    <img src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'" />
+                    <img src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'" />
                 </div>
 
                 <div class="movie-options">
@@ -205,15 +194,15 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[0]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[1]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[2]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[3]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[4]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[5]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[6]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[7]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[8]}" alt="${movie.Actors} Poster" onerror="this.src='/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[0]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[1]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[2]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[3]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[4]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[5]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[6]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[7]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[8]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
                             </ul>
                         </div>
 
@@ -256,8 +245,8 @@ async function fetchMovieDetails() {
             },
         });
     } catch (error) {
-        movieContainer.innerHTML = `<p>Failed to fetch movie details. Please try again later.</p>`;
-        console.error("Error fetching movie data:", error);
+        movieContainer.innerHTML = `<p>영화 정보를 불러오지 못하고 있습니다. 잠시만 기다려주세요.</p>`;
+        console.error("영화 정보를 못불러옵니다.:", error);
     }
 }
 
