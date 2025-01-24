@@ -35,7 +35,8 @@
 
 ### 프로젝트 구조
 ```
-📦Est5movie
+ 📦Est5movie
+ ┣ 📂.vscode
  ┣ 📂assets
  ┃ ┣ 📂css
  ┃ ┣ 📂images
@@ -50,6 +51,7 @@
  ┃ ┃ ┣ 📂base
  ┃ ┃ ┣ 📂components
  ┃ ┃ ┣ 📂layout
+ ┃ ┃ ┣ 📂themes
  ┣ 📂components
  ┣ 📂public
  ┣ 📜index.html
