@@ -45,7 +45,7 @@ export function searchPoint() {
         if (!value) {
             alert("검색어를 입력해주세요.");
             return;
-        } 
+        }
 
         // 페이지를 이동한다.
         window.location.href = newUrl;
@@ -74,14 +74,15 @@ export function initializePage() {
 
 export async function getMovies(value, year, type, page) {
     try {
-
         if (filterEl) {
             // 결과값 초기화
             filterEl.innerHTML = "";
         }
 
         // encodeURIComponent 사용이유 : URI로 데이터를 정확하게 전달하기 위해서 문자열을 인코딩하기 위해 사용
-        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(value)}&page=${page}`;
+        let url = `${api.BASE_URL}?apikey=${api.API_KEY}&s=${encodeURIComponent(
+            value
+        )}&page=${page}`;
 
         if (year) {
             url += `&y=${year}`;
@@ -127,11 +128,11 @@ function renderMovies(movies) {
         if (movie.Poster !== "N/A") {
             Highposter = movie.Poster.replace("SX300", "SX3000");
         } else {
-            Highposter = '/assets/images/poster-NotAvailable.png';
+            Highposter = "/assets/images/poster-NotAvailable.png";
         }
 
         // 카드영역 코드
-        movieCard.innerHTML += `
+        movieCard.innerHTML = `
         <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
             <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'"/>
             <div class="result-informationBox">
@@ -151,6 +152,7 @@ export async function loadMovies(searchParam, year, type, page) {
     try {
         const response = await getMovies(searchParam, year, type, page);
         renderMovies(response.Search);
+        moreMovies(searchParam, year, type, page);
     } catch (error) {
         console.log(error.message);
     }
@@ -164,4 +166,28 @@ function errorPage(data) {
     const errorSection = get(".wrapper-errormessage");
     errorSection.style = "";
     errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
+    const moreBtn = get(".wrapper-btn");
+    moreBtn.style = "display:none";
+}
+
+async function moreMovies(searchParam, year, type, page) {
+    const response = await getMovies(searchParam, year, type, page);
+    let count = response.totalResults;
+    const moreBtn = get(".wrapper-btn");
+    if (count > 10) {
+        moreBtn.addEventListener("click", async () => {
+            page++;
+            let maxPage = Math.ceil(count / 10);
+            const movies = await getMovies(searchParam, year, type, page);
+            renderMovies(movies.Search);
+            console.log(page, maxPage);
+            if (page >= maxPage) { // 마지막 페이지 판별
+                moreBtn.style = "display:none";
+                console.log("last page!");
+            }
+        });
+    } else if (count < 10) {
+        moreBtn.style = "display:none";
+        console.log("last page!");
+    }
 }

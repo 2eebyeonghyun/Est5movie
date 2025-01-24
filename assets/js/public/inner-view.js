@@ -6,7 +6,21 @@ import { loadFooter } from "../components/loadHF.js";
 
 const movieContainer = get("#movie-container");
 
-export async function getActorProfile(actor) {
+// async function TMDBimdbId() {
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//           accept: 'application/json',
+//           Authorization: `${api.TMDB_KEY}`,
+//         }
+//       };
+
+//       const response = await fetch(`https://api.themoviedb.org/3/movie/tt0848228?language=en-US`, options);
+//       const data = await response.json();
+//     //   console.log(data);
+// }
+
+async function getActorProfile(actor) {
     const options = {
         method: "GET",
         headers: {
@@ -17,7 +31,6 @@ export async function getActorProfile(actor) {
 
     const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`,options);
     const data = await response.json();
-    // console.log(data.results[0].profile_path);
     return data.results[0].profile_path;
 }
 
@@ -29,10 +42,15 @@ async function getMovieTMDBID(movietitle) {
             Authorization: `${api.TMDB_KEY}`,
         },
     };
-    const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${movietitle}&include_adult=false&language=en-US&page=1`,options);
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movietitle}&include_adult=false&language=en-US&page=1`,options);
     const data = await response.json();
-    console.log(data.results[0].id);
+    // console.log(data.results[0].id);
+
+    console.log(data.results[0]);
+    const movieId2 = data.results[0].id;
+    const TMDBimdbId = await fetch(`https://api.themoviedb.org/3/movie/${movieId2}?language=en-US`, options);
+    console.log(TMDBimdbId);
+
     return data.results[0].id;
 }
 
@@ -69,20 +87,22 @@ async function fetchMovieDetails() {
         const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
         const movie = await response.json(); // JSON 데이터로 변환
 
+        // console.log(movie.imdbID);
+        // const tmdbapi = movie.imdbID;
+        // const sssss = await (TMDBimdbId(tmdbapi));
+        // console.log(sssss);
+
         const movieTitle = movie.Title;
-        const movieTMDBID = await Promise.resolve(getMovieTMDBID(movieTitle)); // TMDBID값 가져오기
-        console.log("id", movieTMDBID);
+        const movieTMDBID = await (getMovieTMDBID(movieTitle)); // TMDBID값 가져오기
+
         let similarImgArr = [];
-        const allIMG = await Promise.resolve(getSimilarMovie(movieTMDBID));
-        console.log("allIMG",allIMG);
+        const allIMG = await (getSimilarMovie(movieTMDBID));
+
         for(let i = 1; i <= 9; i++) {
             similarImgArr.push(allIMG[i].poster_path);
         }
-        console.log(similarImgArr);
-
 
         let movieActors = movie.Actors.split(",");
-
 
         let imgArr = [];
         for (let i of movieActors) {
@@ -233,9 +253,7 @@ async function fetchMovieDetails() {
             },
         });
     } catch (error) {
-        movieContainer.innerHTML = `
-      <p>Failed to fetch movie details. Please try again later.</p>
-    `;
+        movieContainer.innerHTML = `<p>Failed to fetch movie details. Please try again later.</p>`;
         console.error("Error fetching movie data:", error);
     }
 }
