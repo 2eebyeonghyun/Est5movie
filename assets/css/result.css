@@ -975,10 +975,6 @@ html[data-mode=dark] body {
 }
 .result-page .wrapper-itemcontainer {
   width: calc(100% - 35rem);
-  display: grid;
-  gap: 5rem;
-  grid-template-columns: repeat(5, 1fr);
-  align-items: flex-start;
 }
 @media (width < 1920px) {
   .result-page .wrapper-itemcontainer {
@@ -1002,6 +998,13 @@ html[data-mode=dark] body {
     width: 100%;
     gap: 5rem 3rem;
   }
+}
+.result-page .itemcontainer-cardlist {
+  display: grid;
+  gap: 5rem;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: flex-start;
+  padding-bottom: 5rem;
 }
 .result-page .wrapper-errormessage {
   width: calc(100% - 35rem);
@@ -1056,4 +1059,8 @@ html[data-mode=dark] body {
     align-items: flex-start;
     gap: 2.5rem;
   }
+}
+.result-page .itemcontainer-btnbox {
+  display: flex;
+  justify-content: center;
 }

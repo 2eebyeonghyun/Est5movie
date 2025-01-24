@@ -112,14 +112,14 @@ function renderMovies(movies) {
     const errorCard = get(".wrapper-errormessage");
     errorCard.style = "display:none";
     // 검색결과영역 보이게 처리 후 초기화
-    const itemCard = get(".wrapper-itemcontainer");
+    const itemCard = get(".itemcontainer-cardlist");
     itemCard.style = "";
     // itemCard.innerHTML = "";
 
     // 검색결과영역 반복문을 통해서 card 삽입
     movies.forEach((movie) => {
         // 리스트 중 한개의 카드영역을 위한 div 생성
-        const movieCard = document.createElement("div");
+        const movieCard = document.createElement("li");
         movieCard.className = "itemcontainer-card";
 
         // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
@@ -127,11 +127,11 @@ function renderMovies(movies) {
         if (movie.Poster !== "N/A") {
             Highposter = movie.Poster.replace("SX300", "SX3000");
         } else {
-            Highposter = '/assets/images/poster-NotAvailable.png';
+            Highposter = "/assets/images/poster-NotAvailable.png";
         }
 
         // 카드영역 코드
-        movieCard.innerHTML += `
+        movieCard.innerHTML = `
         <a href="/public/inner-view.html?id=${movie.imdbID}" class="card-item">
             <img class="result-image" src="${Highposter}" onerror="this.src='/assets/images/poster-NotAvailable.png'"/>
             <div class="result-informationBox">
@@ -151,6 +151,7 @@ export async function loadMovies(searchParam, year, type, page) {
     try {
         const response = await getMovies(searchParam, year, type, page);
         renderMovies(response.Search);
+        moreMovies(searchParam, year, type, page);
     } catch (error) {
         console.log(error.message);
     }
@@ -164,4 +165,28 @@ function errorPage(data) {
     const errorSection = get(".wrapper-errormessage");
     errorSection.style = "";
     errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
+    const moreBtn = get(".itemcontainer-btn");
+    moreBtn.style = "display:none";
+}
+
+async function moreMovies(searchParam, year, type, page) {
+    const response = await getMovies(searchParam, year, type, page);
+    let count = response.totalResults;
+    const moreBtn = get(".itemcontainer-btn");
+    if (count > 10) {
+        moreBtn.addEventListener("click", async () => {
+            page++;
+            let maxPage = Math.ceil(count / 10);
+            const movies = await getMovies(searchParam, year, type, page);
+            renderMovies(movies.Search);
+            console.log(page, maxPage);
+            if (page >= maxPage) { // 마지막 페이지 판별
+                moreBtn.style = "display:none";
+                console.log("last page!");
+            }
+        });
+    } else if (count < 10) {
+        moreBtn.style = "display:none";
+        console.log("last page!");
+    }
 }

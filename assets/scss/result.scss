@@ -92,10 +92,10 @@
 
     .wrapper-itemcontainer {
         width: calc(100% - 35rem);
-        display: grid;
-        gap: 5rem;
-        grid-template-columns: repeat(5, 1fr);
-        align-items: flex-start;
+        // display: grid;
+        // gap: 5rem;
+        // grid-template-columns: repeat(5, 1fr);
+        // align-items: flex-start;
 
         @include w1920 {
             grid-template-columns: repeat(4, 1fr);
@@ -115,6 +115,14 @@
             width: 100%;
             gap: 5rem 3rem;
         }
+    }
+
+    .itemcontainer-cardlist {
+        display: grid;
+        gap: 5rem;
+        grid-template-columns: repeat(5, 1fr);
+        align-items: flex-start;
+        padding-bottom: 5rem;
     }
 
     .wrapper-errormessage {
@@ -173,5 +181,10 @@
             align-items: flex-start;
             gap: 2.5rem;
         }
+    }
+
+    .itemcontainer-btnbox {
+        display: flex;
+        justify-content: center;
     }
 }
