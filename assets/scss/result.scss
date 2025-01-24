@@ -1,6 +1,7 @@
 @use "./abstracts/" as *;
 @use "./base/" as *;
 @use "./layout/" as *;
+@use "./themes/" as *;
 @use "./components/" as *;
 
 .result-page {
@@ -92,10 +93,6 @@
 
     .wrapper-itemcontainer {
         width: calc(100% - 35rem);
-        // display: grid;
-        // gap: 5rem;
-        // grid-template-columns: repeat(5, 1fr);
-        // align-items: flex-start;
 
         @include w1920 {
             grid-template-columns: repeat(4, 1fr);
@@ -118,11 +115,29 @@
     }
 
     .itemcontainer-cardlist {
+        width: 100%;
         display: grid;
         gap: 5rem;
         grid-template-columns: repeat(5, 1fr);
         align-items: flex-start;
-        padding-bottom: 5rem;
+        padding-bottom: 10rem;
+
+        @include w1920 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @include w1500 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include w1240 {
+            gap: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include w768 {
+            gap: 5rem 3rem;
+        }
     }
 
     .wrapper-errormessage {

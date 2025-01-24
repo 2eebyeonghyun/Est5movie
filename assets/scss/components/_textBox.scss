@@ -134,4 +134,8 @@
 
 .result-informationBox {
     width: 100%;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

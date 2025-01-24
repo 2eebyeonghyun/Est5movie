@@ -6,20 +6,6 @@ import { loadFooter } from "../components/loadHF.js";
 
 const movieContainer = get("#movie-container");
 
-// async function TMDBimdbId() {
-//     const options = {
-//         method: 'GET',
-//         headers: {
-//           accept: 'application/json',
-//           Authorization: `${api.TMDB_KEY}`,
-//         }
-//       };
-
-//       const response = await fetch(`https://api.themoviedb.org/3/movie/tt0848228?language=en-US`, options);
-//       const data = await response.json();
-//     //   console.log(data);
-// }
-
 async function getActorProfile(actor) {
     const options = {
         method: "GET",
@@ -44,13 +30,6 @@ async function getMovieTMDBID(movietitle) {
     };
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movietitle}&include_adult=false&language=en-US&page=1`,options);
     const data = await response.json();
-    // console.log(data.results[0].id);
-
-    console.log(data.results[0]);
-    const movieId2 = data.results[0].id;
-    const TMDBimdbId = await fetch(`https://api.themoviedb.org/3/movie/${movieId2}?language=en-US`, options);
-    console.log(TMDBimdbId);
-
     return data.results[0].id;
 }
 
@@ -86,11 +65,6 @@ async function fetchMovieDetails() {
 
         const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
         const movie = await response.json(); // JSON 데이터로 변환
-
-        // console.log(movie.imdbID);
-        // const tmdbapi = movie.imdbID;
-        // const sssss = await (TMDBimdbId(tmdbapi));
-        // console.log(sssss);
 
         const movieTitle = movie.Title;
         const movieTMDBID = await (getMovieTMDBID(movieTitle)); // TMDBID값 가져오기
