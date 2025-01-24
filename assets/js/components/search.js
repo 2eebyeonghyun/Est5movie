@@ -92,7 +92,7 @@ export async function getMovies(value, year, type, page) {
             url += `&t=${type}`;
         }
 
-        const res = await fetch(url);
+        const res = await fetch(url, {mode: 'cors'});
         const data = await res.json();
 
         if (data.Search) {
