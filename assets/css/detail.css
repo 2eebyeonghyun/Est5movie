@@ -38,6 +38,12 @@
     color: #000;
   }
 }
+.main-index body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
 }
