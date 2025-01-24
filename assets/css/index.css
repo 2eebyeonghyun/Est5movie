@@ -38,10 +38,12 @@
     color: #000;
   }
 }
-.main-index body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+@media (width < 430px) {
+  .main-index body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 * {
@@ -1093,7 +1095,6 @@ html[data-mode=light] .main-page .popular-item:hover > a {
 @media (width < 430px) {
   .main-page {
     height: auto;
-    padding: 15rem 0 5rem;
   }
   .main-page .movie-imgBox {
     width: calc(100% - 3rem);
