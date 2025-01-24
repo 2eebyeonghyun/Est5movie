@@ -113,14 +113,14 @@ function renderMovies(movies) {
     const errorCard = get(".wrapper-errormessage");
     errorCard.style = "display:none";
     // 검색결과영역 보이게 처리 후 초기화
-    const itemCard = get(".wrapper-itemcontainer");
+    const itemCard = get(".itemcontainer-cardlist");
     itemCard.style = "";
     // itemCard.innerHTML = "";
 
     // 검색결과영역 반복문을 통해서 card 삽입
     movies.forEach((movie) => {
         // 리스트 중 한개의 카드영역을 위한 div 생성
-        const movieCard = document.createElement("div");
+        const movieCard = document.createElement("li");
         movieCard.className = "itemcontainer-card";
 
         // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
@@ -166,14 +166,14 @@ function errorPage(data) {
     const errorSection = get(".wrapper-errormessage");
     errorSection.style = "";
     errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
-    const moreBtn = get(".wrapper-btn");
+    const moreBtn = get(".itemcontainer-btn");
     moreBtn.style = "display:none";
 }
 
 async function moreMovies(searchParam, year, type, page) {
     const response = await getMovies(searchParam, year, type, page);
     let count = response.totalResults;
-    const moreBtn = get(".wrapper-btn");
+    const moreBtn = get(".itemcontainer-btn");
     if (count > 10) {
         moreBtn.addEventListener("click", async () => {
             page++;
