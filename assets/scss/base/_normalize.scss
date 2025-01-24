@@ -2,7 +2,7 @@
 
 body {
 
-    .main-index & {
+    &.main-index {
 
         @include w430 {
             min-height: 100vh;

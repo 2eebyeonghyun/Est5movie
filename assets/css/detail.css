@@ -39,7 +39,7 @@
   }
 }
 @media (width < 430px) {
-  .main-index body {
+  body.main-index {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
