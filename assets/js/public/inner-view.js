@@ -91,6 +91,8 @@ async function fetchMovieDetails() {
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
         console.log(movieTMDBID);
+
+        // 비슷한 영화데이터 가져오기
         let similarImgArr = [];
         if (!movieTMDBID) {
             for (let i = 1; i <= 9; i++) {
@@ -100,11 +102,17 @@ async function fetchMovieDetails() {
             const allIMG = await getSimilarMovie(movieTMDBID);
 
             for (let i = 1; i <= 9; i++) {
-                similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
+                // similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
+
+                // poster_path 속성이 있는지 확인한다.
+                const posterPath = allIMG[i]?.poster_path ? `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}` : `/assets/images/poster-NotAvailable.png`;
+                similarImgArr.push(posterPath);
             }
         }
-        console.log(similarImgArr);
-        let movieActors = movie.Actors.split(",");
+
+        // let movieActors = movie.Actors.split(",");
+        // 만약 movie.Actors에 값이 없으면 빈 배열로 만든다.
+        let movieActors = movie.Actors ? movie.Actors.split(',') : [];
 
         let imgArr = [];
         for (let i of movieActors) {
@@ -122,9 +130,7 @@ async function fetchMovieDetails() {
         }
 
         // 유튜브링크
-        const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(
-            movie.Title
-        )}+trailer`;
+        const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
 
         // 데이터를 HTML 구조로 렌더링
         movieContainer.innerHTML = `
@@ -257,7 +263,13 @@ async function fetchMovieDetails() {
             },
         });
     } catch (error) {
-        movieContainer.innerHTML = `<p>영화 정보를 불러오지 못하고 있습니다. 잠시만 기다려주세요.</p>`;
+        movieContainer.innerHTML = 
+        `
+            <div class="error-box">
+                <div class="spinner-img"></div>
+                <p class="error-text">영화 정보를 불러오지 못하고 있습니다. 잠시만 기다려주세요.</p>
+            </div>
+        `;
         console.error("영화 정보를 못불러옵니다.:", error);
     }
 }
