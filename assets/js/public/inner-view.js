@@ -25,34 +25,46 @@ async function getActorProfile(actor) {
 }
 
 async function getMovieTMDBID(movieId) {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${api.TMDB_KEY}`,
-        },
-    };
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-KO', options`, options);
-    const data = await response.json();
-    console.log(data.id);
-    if (!data.id) {
-        return null;
+
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `${api.TMDB_KEY}`,
+            },
+        };
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-KO', options`, options);
+        const data = await response.json();
+        console.log(data.id);
+        if (!data.id) {
+            return null;
+        }
+        return data.id;
+        
+    } catch (error) {
+        console.error('error', error);
     }
-    return data.id;
 }
 
 async function getSimilarMovie(movieId) {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${api.TMDB_KEY}`,
-        },
-    };
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`, options);
-    const data = await response.json();
-    console.log(data.results);
-    return data.results;
+
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `${api.TMDB_KEY}`,
+            },
+        };
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`, options);
+        const data = await response.json();
+        console.log(data.results);
+        return data.results;
+        
+    } catch (error) {
+        console.error('error', error);
+    }
 }
 
 function getMovieId(param) {
