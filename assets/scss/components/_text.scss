@@ -14,6 +14,10 @@
     .result-page & {
         font-size: 2rem;
     }
+
+    @include w430 {
+        font-size: 2rem;
+    }
 }
 
 // 영화 관련 텍스트
@@ -35,6 +39,10 @@
         @include w768 {
             font-size: 4.5rem;
             word-break: break-all;
+        }
+
+        @include w430 {
+            font-size: 3.5rem;
         }
     }
 
@@ -96,6 +104,13 @@
     html[data-mode="light"] & {
         color: $fontBlack;
     }
+
+    .main-page & {
+
+        @include w430 {
+            font-size: 1.4rem;
+        }
+    }
 }
 
 .movie-description {
@@ -113,6 +128,10 @@
 
         @include w768 {
             font-size: 1.5rem;
+        }
+
+        @include w430 {
+            font-size: 1.3rem;
         }
     }
 
