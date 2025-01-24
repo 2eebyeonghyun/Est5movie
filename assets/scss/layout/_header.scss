@@ -10,6 +10,14 @@
     align-items: center;
     margin-inline: $marginInline;
 
+    .main-index & {
+
+        @include w430 {
+            height: 15rem;
+            position: relative;
+        }
+    }
+
     @include w1240 {
         margin-inline: 3rem;
     }

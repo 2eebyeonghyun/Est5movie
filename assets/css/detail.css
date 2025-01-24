@@ -117,6 +117,12 @@ td {
   align-items: center;
   margin-inline: 5rem;
 }
+@media (width < 430px) {
+  .main-index .header {
+    height: 15rem;
+    position: relative;
+  }
+}
 @media (width < 1240px) {
   .header {
     margin-inline: 3rem;

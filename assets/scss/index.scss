@@ -100,6 +100,13 @@
         }
     }
 
+    .main-index & {
+
+        @include w430 {
+            flex: 1;
+        }
+    }
+
     @include w430 {
         height: auto;
         padding: 15rem 0 5rem;
