@@ -177,7 +177,7 @@ async function fetchMovieDetails() {
                 </div>
 
                 <div class="another-series">
-                    <span class="detail-text">another movies</span>
+                    <span class="detail-text">similar movies</span>
                     
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">

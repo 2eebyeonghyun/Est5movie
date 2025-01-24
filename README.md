@@ -20,7 +20,6 @@
 - [x]  검색사이트 서비스를 배포하세요. (GitHub Pages, Netlify, Vercel 등)
 
 **선택 기능** 
-
 - [ ]  더보기로 영화목록을 추가로 불러오도록 하세요.
 - [x]  영화 개봉연도로 검색할 수 있게 하세요.
 - [ ]  영화 목록 검색하는 동안 로딩애니메이션 넣으세요.
@@ -30,6 +29,27 @@
 
 **추가기능** 
 - [x]  다크모드 기능 구현
-- [x]  메인 슬라이드 구현
+- [x]  swiper 슬라이드 기능 사용
+- [x]  TMDb API를 활용하여 상세페이지에 출연 배우와 비슷한 영화 보여주는 기능 구현
+- [x]  라디오버튼으로 검색 내용 수정 기능 구현
 
 ### 프로젝트 구조
+📦Est5movie
+ ┣ 📂assets
+ ┃ ┣ 📂css
+ ┃ ┣ 📂images
+ ┃ ┣ 📂js
+ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┗ 📂public
+ ┃ ┣ 📂json
+ ┃ ┗ 📂scss
+ ┃ ┃ ┣ 📂abstracts
+ ┃ ┃ ┃ ┣ 📂mixin
+ ┃ ┃ ┣ 📂base
+ ┃ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂layout
+ ┣ 📂components
+ ┣ 📂public
+ ┣ 📜index.html
+ ┗ 📜README.md
