@@ -24,6 +24,10 @@ export let page = 1;
 
 export function searchPoint() {
     try {
+        const filterEl = get(".input");
+        const yearEl = get(".select-year");
+        const typeEl = get(".select-type");
+
         const value = filterEl.value.trim();
 
         // 선택된 값이 all이 아니면 선택된 값을 가져온다.
@@ -31,7 +35,6 @@ export function searchPoint() {
         const type = typeEl.value !== "all" ? typeEl.value : "all";
 
         // 페이지 이동하면서 파라미터 값도 전달
-        // let newUrl = `https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(value)}`;
         let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
