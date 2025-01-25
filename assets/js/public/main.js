@@ -1,5 +1,5 @@
 import api from "../base/api.js";
-// import { buttonEvent, initializePage } from '../components/search.js';
+import { buttonEvent, initializePage } from '../components/search.js';
 import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
 import { loadHeader, loadFooter } from "../components/loadHF.js";
@@ -11,8 +11,7 @@ async function mainSlide() {
     try {
         // json폴더의 main.json 호출
         // const res = await fetch('../assets/json/main.json');
-        // const res = await fetch(`${api.GIT_URL}/assets/json/main.json`, {mode: 'cors', cache: 'no-store'});
-        const res = await fetch('https://2eebyeonghyun.github.io/Est5movie/assets/json/main.json');
+        const res = await fetch(`${api.GIT_URL}/assets/json/main.json`, {mode: 'cors', cache: 'no-store'});
         const data = await res.json();
         const movies = data.movies;
 
@@ -37,20 +36,20 @@ async function mainSlide() {
                     <ul class="movie-ratingBox">
                         <li class="rating-row">
                             <div class="rating-logo">
-                                <img src="https://2eebyeonghyun.github.io/Est5movie/assets/images/logo-imdb.svg" alt="Internet Movie Database 로고">
+                                <img src="${api.GIT_URL}/assets/images/logo-imdb.svg" alt="Internet Movie Database 로고">
                             </div>
                             <p class="rating-value">${movie.Ratings[0].Value}</p>
                         </li>
                         <li class="rating-row">
                             <div class="rating-logo">
-                                <img src="https://2eebyeonghyun.github.io/Est5movie/assets/images/logo-tomato.svg" alt="Rotten Tomatoes 로고">
+                                <img src="${api.GIT_URL}/assets/images/logo-tomato.svg" alt="Rotten Tomatoes 로고">
                             </div>
                             <p class="rating-value">${movie.Ratings[1].Value}</p>
                         </li>
                     </ul>
 
                     <p class="movie-description">${movie.Plot}</p>
-                    <a href="https://2eebyeonghyun.github.io/Est5movie/public/inner-view.html?id=${movie.imdbID}" class="btn-click" aria-label="영화 정보">More Info</a>
+                    <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="btn-click" aria-label="영화 정보">More Info</a>
                 </div>
             `;
 
@@ -89,7 +88,7 @@ function popularSeries() {
 
         slideList.innerHTML = 
         `
-            <a href="https://2eebyeonghyun.github.io/Est5movie/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
+            <a href="${api.GIT_URL}/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
         `;
 
         slideBox2.appendChild(slideList);
@@ -119,8 +118,8 @@ function popularSeries() {
 }
 
 loadFooter();
-// buttonEvent();
-// initializePage();
+buttonEvent();
+initializePage();
 darkMode();
 mainSlide();
 popularSeries();
