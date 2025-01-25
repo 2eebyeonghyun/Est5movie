@@ -16,29 +16,29 @@ export let year = fetchYear();
 export let type = fetchType();
 export let page = 1;
 
-// export function buttonEvent() {
-//     formEl.addEventListener("submit", (e) => {
-//         e.preventDefault();
-//         searchPoint();
-//     });
-// }
-
-// 2025-01-25 추가
-export async function buttonEvent() {
-
-    try {
-        await loadHeader();
-    
-        const formEl = get(".form");
-
-        formEl.addEventListener("submit", (e) => {
-            e.preventDefault();
-            searchPoint();
-        });
-    } catch (error) {
-        console.error('error :', error);
-    }
+export function buttonEvent() {
+    formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+        searchPoint();
+    });
 }
+
+// // 2025-01-25 추가
+// export async function buttonEvent() {
+
+//     try {
+//         await loadHeader();
+    
+//         const formEl = get(".form");
+
+//         formEl.addEventListener("submit", (e) => {
+//             e.preventDefault();
+//             searchPoint();
+//         });
+//     } catch (error) {
+//         console.error('error :', error);
+//     }
+// }
 
 export function searchPoint() {
     try {

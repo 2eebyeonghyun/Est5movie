@@ -1,17 +1,17 @@
 import api from "../base/api.js";
 import { loadHeader, loadFooter } from "../components/loadHF.js";
 import { buttonEvent, initializePage } from '../components/search.js';
-import { initDarkMode } from '../components/dark-mode.js';
+import { darkMode, initDarkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
 
 // 2025-01-25 추가
-export const initWeb = () => {
-    loadHeader();
-    loadFooter();
-    initDarkMode();
-    buttonEvent();
-    initializePage();
-};
+// export const initWeb = () => {
+//     loadHeader();
+//     loadFooter();
+//     initDarkMode();
+//     buttonEvent();
+//     initializePage();
+// };
 
 // 메인 슬라이드
 async function mainSlide() {
@@ -127,10 +127,10 @@ function popularSeries() {
     });
 }
 
-// loadFooter();
-// buttonEvent();
-// initializePage();
-// darkMode();
+loadFooter();
+buttonEvent();
+initializePage();
+darkMode();
 initWeb();
 mainSlide();
 popularSeries();
