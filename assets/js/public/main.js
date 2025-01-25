@@ -1,7 +1,7 @@
 import api from "../base/api.js";
 import { loadHeader, loadFooter } from "../components/loadHF.js";
 import { buttonEvent, initializePage } from '../components/search.js';
-import { darkMode, initDarkMode } from '../components/dark-mode.js';
+import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
 
 // 2025-01-25 추가
@@ -131,6 +131,6 @@ loadFooter();
 buttonEvent();
 initializePage();
 darkMode();
-initWeb();
+// initWeb();
 mainSlide();
 popularSeries();
