@@ -1,5 +1,5 @@
 import { loadHeader, loadFooter } from "../components/loadHF.js";
-import { initializeEvents } from '../base/event-manager.js';
+import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";

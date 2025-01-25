@@ -1,7 +1,7 @@
 import api from "../base/api.js";
 import { get } from "../base/util.js";
 import { loadHeader, loadFooter } from "../components/loadHF.js";
-import { initializeEvents } from '../base/event-manager.js';
+import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
 
 export const initWeb = () => {
