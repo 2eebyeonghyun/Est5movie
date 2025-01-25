@@ -1,6 +1,7 @@
 // http://www.omdbapi.com/?apikey=2d7b9efb
 
 import api from "../base/api.js";
+import { loadHeader } from "../components/loadHF.js";
 import { fetchType, fetchSearch, fetchYear } from "../base/param.js";
 import { get } from "../base/util.js";
 
@@ -15,11 +16,28 @@ export let year = fetchYear();
 export let type = fetchType();
 export let page = 1;
 
-export function buttonEvent() {
-    formEl.addEventListener("submit", (e) => {
-        e.preventDefault();
-        searchPoint();
-    });
+// export function buttonEvent() {
+//     formEl.addEventListener("submit", (e) => {
+//         e.preventDefault();
+//         searchPoint();
+//     });
+// }
+
+// 2025-01-25 추가
+export async function buttonEvent() {
+
+    try {
+        await loadHeader();
+    
+        const formEl = get(".form");
+
+        formEl.addEventListener("submit", (e) => {
+            e.preventDefault();
+            searchPoint();
+        });
+    } catch (error) {
+        console.error('error :', error);
+    }
 }
 
 export function searchPoint() {

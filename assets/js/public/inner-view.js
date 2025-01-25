@@ -59,8 +59,20 @@ async function getSimilarMovie(movieId) {
         };
         const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`, options);
         const data = await response.json();
-        console.log(data.results);
-        return data.results;
+        // 2025-01-25 추가 작업
+        const similarData = data.results;
+
+        // imdb_id값 가져오기
+        const getImdbID = await Promise.all(similarData.map(async (movie) => {
+            const detailResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}`, options);
+            const detailData = await detailResponse.json();
+            // 기존 데이터에 imdb_id값을 더한다.
+            return {...movie, imdb_id: detailData.imdb_id};
+        }));
+        
+        console.log(getImdbID);
+        return getImdbID;
+        // return data.results;
         
     } catch (error) {
         console.error('error', error);
