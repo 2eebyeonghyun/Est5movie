@@ -58,7 +58,9 @@ async function mainSlide() {
 
             // swiper 슬라이드 효과주기
             const swiper = new Swiper(".mainSwiper", {
-                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: false,
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false,
