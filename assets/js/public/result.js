@@ -1,8 +1,15 @@
-import { buttonEvent, initializePage, getMovies, loadMovies } from "../components/search.js";
-import { darkMode } from "../components/dark-mode.js";
+import { loadHeader, loadFooter } from "../components/loadHF.js";
+import { initializeEvents } from '../base/event-manager.js';
+import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
-import { loadFooter } from "../components/loadHF.js";
+
+export const initWeb = () => {
+    loadHeader();
+    loadFooter();
+    initializeEvents();
+    initializePage();
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     let searchValue = fetchSearch();
@@ -56,7 +63,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-loadFooter();
-buttonEvent();
-initializePage();
-darkMode();
+initWeb();
