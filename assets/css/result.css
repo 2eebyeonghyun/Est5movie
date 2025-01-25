@@ -1032,21 +1032,21 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 .result-page .wrapper-chkbox .chkbox-row {
   margin-bottom: 3rem;
 }
-.result-page .wrapper-chkbox .chkbox-row:first-child .row-contentBox {
+.result-page .wrapper-chkbox .chkbox-row:first-of-type .row-contentBox {
   height: 60rem;
   overflow: scroll;
 }
-.result-page .wrapper-chkbox .chkbox-row:last-child {
+.result-page .wrapper-chkbox .chkbox-row:last-of-type {
   margin-bottom: 0;
 }
 @media (width < 1240px) {
-  .result-page .wrapper-chkbox .chkbox-row:first-child .row-contentBox {
+  .result-page .wrapper-chkbox .chkbox-row:first-of-type .row-contentBox {
     height: 30rem;
     overflow: scroll;
   }
 }
 @media (width < 768px) {
-  .result-page .wrapper-chkbox .chkbox-row:first-child .row-contentBox {
+  .result-page .wrapper-chkbox .chkbox-row:first-of-type .row-contentBox {
     height: 10rem;
   }
 }
