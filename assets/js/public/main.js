@@ -1,8 +1,8 @@
 import api from "../base/api.js";
-import { buttonEvent, initializePage } from '../components/search.js';
+// import { buttonEvent, initializePage } from '../components/search.js';
 import { darkMode } from '../components/dark-mode.js';
 import { get } from '../base/util.js';
-import { loadHeader, loadFooter } from "../components/loadHF.js";
+// import { loadHeader, loadFooter } from "../components/loadHF.js";
 
 
 // 메인 슬라이드
@@ -118,8 +118,8 @@ function popularSeries() {
 }
 
 loadFooter();
-buttonEvent();
-initializePage();
+// buttonEvent();
+// initializePage();
 darkMode();
 mainSlide();
 popularSeries();
