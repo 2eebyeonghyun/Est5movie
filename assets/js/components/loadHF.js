@@ -2,7 +2,7 @@ import api from "../base/api.js";
 
 export async function loadHeader() {
     try {
-        const res = await fetch(`../../../components/header.html`);
+        const res = await fetch(`${api.GIT_URL}/components/header.html`);
         const data = await res.text();
         
         const header = get('.header');
