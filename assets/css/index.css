@@ -929,6 +929,7 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   align-items: center;
   border-radius: 1rem;
   transition: all 0.3s ease-in-out;
+  z-index: 1000;
 }
 .topButton-box.scroll {
   display: flex;

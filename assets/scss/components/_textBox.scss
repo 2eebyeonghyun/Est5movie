@@ -164,6 +164,7 @@
     align-items: center;
     border-radius: 1rem;
     transition: all .3s ease-in-out;
+    z-index: 1000;
 
     &.scroll {
         display: flex;
