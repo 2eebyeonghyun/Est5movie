@@ -3,6 +3,7 @@ import { get } from '../base/util.js';
 import { loadHeader, loadFooter } from "../components/loadHF.js";
 import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from '../components/search.js';
+import { topButton } from '../components/topButton.js';
 
 // 2025-01-25 추가
 export const initWeb = () => {
@@ -10,6 +11,7 @@ export const initWeb = () => {
     loadFooter();
     initializeEvents();
     initializePage();
+    topButton();
 };
 
 // 메인 슬라이드

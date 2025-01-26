@@ -215,3 +215,13 @@
         filter: invert(1);
     }
 }
+
+.btn-top {
+    width: 3.4rem;
+    aspect-ratio: 1;
+    @include background('ico-topArrow.svg', center, null, size, contain);
+
+    html[data-mode="light"] & {
+        filter: invert(1);
+    }
+}

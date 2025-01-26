@@ -151,3 +151,25 @@
     flex-direction: column;
     align-items: center;
 }
+
+.topButton-box {
+    display: none;
+    position: fixed;
+    bottom: 5rem;
+    right: 5rem;
+    width: 5rem;
+    aspect-ratio: 1;
+    background-color: $darkModebg;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    transition: all .3s ease-in-out;
+
+    &.scroll {
+        display: flex;
+    }
+
+    html[data-mode="dark"] & {
+        background-color: $bgwhite;
+    }
+}

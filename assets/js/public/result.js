@@ -3,12 +3,14 @@ import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
+import { topButton } from '../components/topButton.js';
 
 export const initWeb = () => {
     loadHeader();
     loadFooter();
     initializeEvents();
     initializePage();
+    topButton();
 };
 
 document.addEventListener("DOMContentLoaded", () => {

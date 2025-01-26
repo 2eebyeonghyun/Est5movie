@@ -3,12 +3,14 @@ import { get } from "../base/util.js";
 import { loadHeader, loadFooter } from "../components/loadHF.js";
 import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
+import { topButton } from '../components/topButton.js';
 
 export const initWeb = () => {
     loadHeader();
     loadFooter();
     initializeEvents();
     initializePage();
+    topButton();
 };
 
 const movieContainer = get("#movie-container");

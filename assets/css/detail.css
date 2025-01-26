@@ -38,6 +38,9 @@
     color: #000;
   }
 }
+body {
+  scroll-behavior: smooth;
+}
 @media (width < 430px) {
   body.main-index {
     min-height: 100vh;
@@ -87,6 +90,10 @@ th,
 td {
   text-align: left;
   padding: 0;
+}
+
+main {
+  position: relative;
 }
 
 .spinner-img {
@@ -513,6 +520,16 @@ html[data-mode=dark] .btn-watched {
   filter: invert(1);
 }
 
+.btn-top {
+  width: 3.4rem;
+  aspect-ratio: 1;
+  background: url(../images/ico-topArrow.svg) no-repeat center;
+  background-size: contain;
+}
+html[data-mode=light] .btn-top {
+  filter: invert(1);
+}
+
 .item-title {
   font-size: 3rem;
   font-weight: 700;
@@ -898,6 +915,26 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   gap: 3rem;
   flex-direction: column;
   align-items: center;
+}
+
+.topButton-box {
+  display: none;
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  width: 5rem;
+  aspect-ratio: 1;
+  background-color: #07111e;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+.topButton-box.scroll {
+  display: flex;
+}
+html[data-mode=dark] .topButton-box {
+  background-color: #fff;
 }
 
 .swiper {

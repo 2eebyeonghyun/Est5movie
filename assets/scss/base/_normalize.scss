@@ -1,6 +1,7 @@
 @use "../abstracts/" as *;
 
 body {
+    scroll-behavior: smooth;
 
     &.main-index {
 
@@ -62,6 +63,10 @@ th,
 td {
     text-align: left;
     padding: 0;
+}
+
+main {
+    position: relative;
 }
 
 .spinner-img {
