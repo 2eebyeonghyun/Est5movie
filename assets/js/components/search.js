@@ -134,17 +134,18 @@ function renderMovies(movies) {
         }
 
         // 카드영역 코드
-        movieCard.innerHTML = `
-        <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-            <img class="result-image" src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
-            <div class="result-informationBox">
-                <h2 class="informationBox-title movie-title">${movie.Title}</h2>
-                <ul class="informationBox-subList">
-                    <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
-                    <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
-                </ul>
-            </div>
-        </a>
+        movieCard.innerHTML = 
+        `
+            <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="card-item">
+                <img class="result-image" src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
+                <div class="result-informationBox">
+                    <h2 class="informationBox-title movie-title">${movie.Title}</h2>
+                    <ul class="informationBox-subList">
+                        <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
+                        <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
+                    </ul>
+                </div>
+            </a>
         `;
         itemCard.appendChild(movieCard);
     });

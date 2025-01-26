@@ -2,14 +2,35 @@ import api from "../base/api.js";
 
 export async function loadHeader() {
     try {
-        const res = await fetch(`${api.GIT_URL}/components/header.html`);
+        const res = await fetch(`../../../components/header.html`);
         const data = await res.text();
         
-        const header = document.querySelector('.header');
+        const header = get('.header');
 
+        // 헤더가 있으면 데이터 값을 넣는다.
         if (header) {
             header.innerHTML = data;
-        } 
+        }
+
+        const selectYear = get('.select-year');
+
+        // 현재날짜와 시작날짜를 만든다.
+        const currentYear = new Date().getFullYear();
+        const startYear = currentYear - 50;
+
+        // 요소를 만든다.
+        const selectOption = document.createElement("option");
+        selectOption.value = "all";
+        selectOption.textContent = "전체";
+        selectYear.appendChild(selectOption);
+
+        // 연도 옵션 만들기
+        for (let year = currentYear; year >= startYear; year--) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            selectYear.appendChild(option);
+        }
 
     } catch (error) {
         console.error('error:', error);

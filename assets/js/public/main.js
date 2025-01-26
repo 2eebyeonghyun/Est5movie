@@ -36,6 +36,8 @@ async function mainSlide() {
                 <div class="movie-imgBox">
                     <img src="${movie.Poster}">
                 </div>
+
+                <h2 class="a11y-hidden">영화 소개 영역</h2>
                 <div class="movie-informationBox">
                     <h2 class="movie-title">${movie.Title}</h2>
                     <div class="movie-categoryBox">

@@ -157,27 +157,29 @@ async function fetchMovieDetails() {
         movieContainer.innerHTML = `
         <div class="movie-detail-content">
             <div class="detail-leftBox">
+                <h2 class="a11y-hidden">영화 이미지 영역</h2>
                 <div class="movie-img">
                     <img src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'" />
                 </div>
 
+                <h2 class="a11y-hidden">옵션 선택 영역</h2>
                 <div class="movie-options">
                     <ul>
                         <li class="option-item">
                             <a href="#none">
-                                <button type="button" class="option-img btn-favorite"></button>
+                                <button type="button" class="option-img btn-favorite" aria-label="관심영화"></button>
                                 <span class="option-title">Favorite</span>
                             </a>
                         </li>
                         <li class="option-item">
                             <a href="#none">
-                                <button type="button" class="option-img btn-later"></button>
+                                <button type="button" class="option-img btn-later" aria-label="나중에보기"></button>
                                 <span class="option-title">Watch Later</span>
                             </a>
                         </li>
                         <li class="option-item">
                             <a href="#none">
-                                <button type="button" class="option-img btn-watched"></button>
+                                <button type="button" class="option-img btn-watched" aria-label="이미 본 영화"></button>
                                 <span class="option-title">Watched</span>
                             </a>
                         </li>
@@ -185,6 +187,7 @@ async function fetchMovieDetails() {
                 </div>
             </div>
 
+            <h2 class="a11y-hidden">영화 소개 영역</h2>
             <div class="detail-rightBox">
                 <div class="movie-detailsBox">
                     <div class="movie-title">${movie.Title}</div>
@@ -207,6 +210,7 @@ async function fetchMovieDetails() {
                     </div>
                 </div>
 
+                <h2 class="a11y-hidden">영화 출연배우 영역</h2>
                 <div class="movie-actors">
                     <span class="detail-text">actors</span>
                     <ul class="actors-list">
@@ -227,6 +231,7 @@ async function fetchMovieDetails() {
                     </ul>
                 </div>
 
+                <h2 class="a11y-hidden">추천 영화 영역</h2>
                 <div class="another-series">
                     <span class="detail-text">similar movies</span>
                     
@@ -286,6 +291,7 @@ async function fetchMovieDetails() {
     } catch (error) {
         movieContainer.innerHTML = 
         `
+            <h2 class="a11y-hidden">에러페이지 영역</h2>
             <div class="error-box">
                 <div class="spinner-img"></div>
                 <p class="error-text">영화 정보를 불러오지 못하고 있습니다. 잠시만 기다려주세요.</p>
