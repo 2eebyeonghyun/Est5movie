@@ -176,4 +176,10 @@
     html[data-mode="dark"] & {
         background-color: $bgwhite;
     }
+
+    @include w430 {
+        bottom: 3rem;
+        right: 3rem;
+        width: 4.5rem;
+    }
 }

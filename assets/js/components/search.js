@@ -3,6 +3,7 @@
 import api from "../base/api.js";
 import { get } from "../base/util.js";
 import { fetchType, fetchSearch, fetchYear } from "../base/param.js";
+import { getHighPoster } from "../components/highPoster.js";
 
 export const formEl = get(".form");
 export const filterEl = get(".input");
@@ -126,12 +127,7 @@ function renderMovies(movies) {
         movieCard.className = "itemcontainer-card";
 
         // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
-        let Highposter;
-        if (movie.Poster !== "N/A") {
-            Highposter = movie.Poster.replace("SX300", "SX3000");
-        } else {
-            Highposter = `${api.GIT_URL}/assets/images/poster-NotAvailable.png`;
-        }
+        const Highposter = getHighPoster(movie.Poster);
 
         // 카드영역 코드
         movieCard.innerHTML = 

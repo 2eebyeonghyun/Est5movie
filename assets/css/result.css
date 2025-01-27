@@ -333,6 +333,11 @@ html[data-mode=light] .logo {
   .utility-list .utility-item:first-of-type {
     width: 100%;
   }
+  .utility-list .utility-item:last-of-type {
+    position: absolute;
+    top: 3rem;
+    right: 0;
+  }
 }
 
 .btn-change {
@@ -949,6 +954,13 @@ html[data-mode=light] .movie-ratingBox .rating-value {
 }
 html[data-mode=dark] .topButton-box {
   background-color: #fff;
+}
+@media (width < 430px) {
+  .topButton-box {
+    bottom: 3rem;
+    right: 3rem;
+    width: 4.5rem;
+  }
 }
 
 .swiper {

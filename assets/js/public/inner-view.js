@@ -4,6 +4,7 @@ import { loadHeader, loadFooter } from "../components/loadHF.js";
 import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
 import { topButton } from '../components/topButton.js';
+import { getHighPoster } from "../components/highPoster.js";
 
 export const initWeb = () => {
     loadHeader();
@@ -143,12 +144,7 @@ async function fetchMovieDetails() {
         let actorImages = await Promise.all(imgArr);
 
         // 영화 해상도 고해상도로 변경
-        let Highposter;
-        if (movie.Poster !== "N/A") {
-            Highposter = movie.Poster.replace("SX300", "SX3000");
-        } else {
-            Highposter = "/assets/images/poster-NotAvailable.png";
-        }
+        const Highposter = getHighPoster(movie.Poster);
 
         // 유튜브링크
         const youtubeUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.Title)}+trailer`;
