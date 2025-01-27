@@ -26,6 +26,8 @@ export async function initializeEvents() {
         applyDarkMode();
     } else if (theme === 'light') {
         applyLightMode();
+    } else {
+        applyLightMode();
     }
 
     // 버튼 클릭 이벤트
