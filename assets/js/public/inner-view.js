@@ -103,7 +103,7 @@ async function fetchMovieDetails() {
             </div>
         `;
 
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         // 영화의 id값을 가져와 저장한다.
         const movieId = getMovieId("id");
