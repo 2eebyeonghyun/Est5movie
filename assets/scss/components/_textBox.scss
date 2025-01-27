@@ -183,3 +183,11 @@
         width: 4.5rem;
     }
 }
+
+.spinner-box {
+    width: 100%;
+    height: calc(100vh - 14rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

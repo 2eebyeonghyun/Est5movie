@@ -12,6 +12,19 @@
     }
 }
 
+.swiper-slide {
+
+    .main-page & {
+
+        &-active {
+
+            .movie-title {
+                animation: 1s showText forwards;
+            }
+        }
+    }
+}
+
 .swiper-option {
     width: 100%;
     position: absolute;

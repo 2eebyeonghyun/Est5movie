@@ -46,7 +46,6 @@ async function getMovieTMDBID(movieId) {
         };
         const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-KO', options`, options);
         const data = await response.json();
-        console.log(data.id);
         if (!data.id) {
             return null;
         }
@@ -80,7 +79,6 @@ async function getSimilarMovie(movieId) {
             return {...movie, imdb_id: detailData.imdb_id};
         }));
         
-        console.log(getImdbID);
         return getImdbID;
         // return data.results;
         
@@ -97,13 +95,18 @@ function getMovieId(param) {
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
     try {
+        // 로딩애니메이션을 3초동안보여주고 아래 기능을 사용한다.
+        movieContainer.innerHTML = 
+        `
+            <div class="spinner-box">
+                <div class="spinner-img"></div>
+            </div>
+        `;
+
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
         // 영화의 id값을 가져와 저장한다.
         const movieId = getMovieId("id");
-
-        // 정보가 없다면 에러창을 띄운다.
-        if (!movieId) {
-            throw new Error("영화 정보를 찾을 수 없습니다.");
-        }
 
         const response = await fetch(
             `${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`
@@ -112,7 +115,6 @@ async function fetchMovieDetails() {
 
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
-        console.log(movieTMDBID);
 
         // 비슷한 영화데이터 가져오기
         let similarImgArr = [];
