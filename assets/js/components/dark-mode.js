@@ -48,29 +48,29 @@ export async function initDarkMode() {
         let status = false;
     
         if (theme === 'dark') {
-            applyDarkMode();
+            themeDarkMode();
         } else if (theme === 'light') {
-            applyLightMode();
+            themeLightMode();
         }
     
         // 버튼 클릭 이벤트
         button.addEventListener('click', () => {
             if (!status) {
-                applyDarkMode();
+                themeDarkMode();
             } else {
-                applyLightMode();
+                themeLightMode();
             }
         });
     
         // 다크 모드 적용
-        function applyDarkMode() {
+        function themeDarkMode() {
             localStorage.setItem("mode", "dark");
             document.documentElement.setAttribute('data-mode', 'dark');
             status = true;
         }
     
         // 라이트 모드 적용
-        function applyLightMode() {
+        function themeLightMode() {
             localStorage.setItem("mode", "light");
             document.documentElement.setAttribute('data-mode', 'light');
             status = false;
