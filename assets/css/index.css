@@ -630,6 +630,11 @@ html[data-mode=dark] .result-informationBox .movie-title {
     font-size: 1.8rem;
   }
 }
+@media (width < 430px) {
+  .result-informationBox .movie-title {
+    font-size: 1.4rem;
+  }
+}
 @media (width < 1240px) {
   .movie-title {
     font-size: 6.5rem;
@@ -737,6 +742,12 @@ html[data-mode=dark] .informationBox-subList .movie-text {
     font-size: 1.2rem;
   }
 }
+@media (width < 430px) {
+  .type-text {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
 
 .movie-year {
   padding: 0.5rem 1rem;
@@ -754,6 +765,12 @@ html[data-mode=dark] .movie-year {
 @media (width < 768px) {
   .movie-year {
     font-size: 1.2rem;
+  }
+}
+@media (width < 430px) {
+  .movie-year {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
   }
 }
 
@@ -922,6 +939,11 @@ html[data-mode=light] .movie-ratingBox .rating-value {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+@media (width < 430px) {
+  .result-informationBox {
+    height: auto;
+  }
 }
 
 .error-box {
