@@ -5,6 +5,7 @@ import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from "../components/search.js";
 import { topButton } from '../components/topButton.js';
 import { getHighPoster } from "../components/highPoster.js";
+import { SwiperGroup } from '../components/swiperGroup.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -261,31 +262,7 @@ async function fetchMovieDetails() {
     `;
 
         // swiper 슬라이드로 만들기
-        const swiper = new Swiper(".anotherSwiper", {
-            slidesPerView: 5,
-            spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
-                prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 2,
-                    spaceBetween: 10,
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                1024: {
-                    slidesPerView: 2,
-                },
-                1500: {
-                    slidesPerView: 5,
-                },
-            },
-        });
+        SwiperGroup();
     } catch (error) {
         movieContainer.innerHTML = 
         `
