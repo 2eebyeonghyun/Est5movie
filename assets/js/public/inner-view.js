@@ -251,7 +251,7 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                ${similarArray.map(movie => `<li class="swiper-slide"><a href="/public/inner-view.html?id=${movie.imdb_id}"><img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>`).join('')}
+                                ${similarArray.map(movie => `<li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdb_id}"><img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>`).join('')}
                             </ul>
                         </div>
 
