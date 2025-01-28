@@ -116,24 +116,38 @@ async function fetchMovieDetails() {
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
 
         // 비슷한 영화데이터 가져오기
-        let similarImgArr = [];
-        if (!movieTMDBID) {
-            for (let i = 1; i <= 9; i++) {
-                similarImgArr.push(`${api.GIT_URL}/assets/images/poster-NotAvailable.png`);
-            }
-        } else {
+        // let similarImgArr = [];
+        // if (!movieTMDBID) {
+        //     for (let i = 1; i <= 9; i++) {
+        //         similarImgArr.push(`${api.GIT_URL}/assets/images/poster-NotAvailable.png`);
+        //     }
+        // } else {
+        //     const allIMG = await getSimilarMovie(movieTMDBID);
+
+        //     for (let i = 1; i <= 9; i++) {
+        //         // similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
+
+        //         // poster_path 속성이 있는지 확인한다.
+        //         const posterPath = allIMG[i]?.poster_path ? `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}` : `/assets/images/poster-NotAvailable.png`;
+        //         const similarMovieTitle = allIMG[i]?.original_title ? allIMG[i].original_title : '';
+        //         const similarMovieImdbID = allIMG[i]?.imdb_id ? allIMG[i].imdb_id : '';
+        //         similarImgArr.push({image: posterPath, title: similarMovieTitle, imdb_id: similarMovieImdbID});
+        //     }
+        // }
+
+        // 25.01.28 이병현 비슷한 영화데이터 가져오기 수정
+        let similarArray = [];
+        if (movieTMDBID) {
             const allIMG = await getSimilarMovie(movieTMDBID);
-
-            for (let i = 1; i <= 9; i++) {
-                // similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
-
-                // poster_path 속성이 있는지 확인한다.
-                const posterPath = allIMG[i]?.poster_path ? `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}` : `/assets/images/poster-NotAvailable.png`;
-                const similarMovieTitle = allIMG[i]?.original_title ? allIMG[i].original_title : '';
-                const similarMovieImdbID = allIMG[i]?.imdb_id ? allIMG[i].imdb_id : '';
-                similarImgArr.push({image: posterPath, title: similarMovieTitle, imdb_id: similarMovieImdbID});
-            }
+            // 비슷한 영화를 최대 10개까지 보이도록 한다.
+            // 참/거짓을 통해 값을 불러온다.
+            similarArray = allIMG.slice(0, 9).map(movie => ({
+                image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+                title: movie.original_title || '',
+                imdb_id: movie.imdb_id || ''
+            }));
         }
+
 
         // let movieActors = movie.Actors.split(",");
         // 만약 movie.Actors에 값이 없으면 빈 배열로 만든다.
@@ -237,15 +251,7 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[0].imdb_id}"><img src="${similarImgArr[0].image}" alt="${similarImgArr[0].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[1].imdb_id}"><img src="${similarImgArr[1].image}" alt="${similarImgArr[1].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[2].imdb_id}"><img src="${similarImgArr[2].image}" alt="${similarImgArr[2].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[3].imdb_id}"><img src="${similarImgArr[3].image}" alt="${similarImgArr[3].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[4].imdb_id}"><img src="${similarImgArr[4].image}" alt="${similarImgArr[4].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[5].imdb_id}"><img src="${similarImgArr[5].image}" alt="${similarImgArr[5].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[6].imdb_id}"><img src="${similarImgArr[6].image}" alt="${similarImgArr[6].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[7].imdb_id}"><img src="${similarImgArr[7].image}" alt="${similarImgArr[7].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[8].imdb_id}"><img src="${similarImgArr[8].image}" alt="${similarImgArr[8].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                ${similarArray.map(movie => `<li class="swiper-slide"><a href="/public/inner-view.html?id=${movie.imdb_id}"><img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>`).join('')}
                             </ul>
                         </div>
 
