@@ -95,7 +95,6 @@ function getMovieId(param) {
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
     try {
-        // 로딩애니메이션을 3초동안보여주고 아래 기능을 사용한다.
         movieContainer.innerHTML = 
         `
             <div class="spinner-box">
@@ -103,14 +102,13 @@ async function fetchMovieDetails() {
             </div>
         `;
 
+        // 1.5초 동안 위에 코드를 보여준다.
         await new Promise(resolve => setTimeout(resolve, 1500));
 
         // 영화의 id값을 가져와 저장한다.
         const movieId = getMovieId("id");
 
-        const response = await fetch(
-            `${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`
-        ); // OMDb API 호출
+        const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
         const movie = await response.json(); // JSON 데이터로 변환
 
         const movieimdbID = movie.imdbID;
@@ -130,7 +128,9 @@ async function fetchMovieDetails() {
 
                 // poster_path 속성이 있는지 확인한다.
                 const posterPath = allIMG[i]?.poster_path ? `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}` : `/assets/images/poster-NotAvailable.png`;
-                similarImgArr.push(posterPath);
+                const similarMovieTitle = allIMG[i]?.original_title ? allIMG[i].original_title : '';
+                const similarMovieImdbID = allIMG[i]?.imdb_id ? allIMG[i].imdb_id : '';
+                similarImgArr.push({image: posterPath, title: similarMovieTitle, imdb_id: similarMovieImdbID});
             }
         }
 
@@ -236,15 +236,15 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[0]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[1]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[2]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[3]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[4]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[5]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[6]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[7]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
-                                <li class="swiper-slide"><a href="#none"><img src="${similarImgArr[8]}" alt="${movie.Actors} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[0].imdb_id}"><img src="${similarImgArr[0].image}" alt="${similarImgArr[0].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[1].imdb_id}"><img src="${similarImgArr[1].image}" alt="${similarImgArr[1].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[2].imdb_id}"><img src="${similarImgArr[2].image}" alt="${similarImgArr[2].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[3].imdb_id}"><img src="${similarImgArr[3].image}" alt="${similarImgArr[3].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[4].imdb_id}"><img src="${similarImgArr[4].image}" alt="${similarImgArr[4].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[5].imdb_id}"><img src="${similarImgArr[5].image}" alt="${similarImgArr[5].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[6].imdb_id}"><img src="${similarImgArr[6].image}" alt="${similarImgArr[6].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[7].imdb_id}"><img src="${similarImgArr[7].image}" alt="${similarImgArr[7].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
+                                <li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${similarImgArr[8].imdb_id}"><img src="${similarImgArr[8].image}" alt="${similarImgArr[8].title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>
                             </ul>
                         </div>
 
