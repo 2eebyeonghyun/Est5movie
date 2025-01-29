@@ -1,5 +1,3 @@
-// http://www.omdbapi.com/?apikey=2d7b9efb
-
 import api from "../base/api.js";
 import { get } from "../base/util.js";
 import { fetchType, fetchSearch, fetchYear } from "../base/param.js";
@@ -16,12 +14,6 @@ export let year = fetchYear();
 export let type = fetchType();
 export let page = 1;
 
-// export function buttonEvent() {
-//     formEl.addEventListener("submit", (e) => {
-//         e.preventDefault();
-//         searchPoint();
-//     });
-// }
 
 export function searchPoint() {
     try {
