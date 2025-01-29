@@ -143,9 +143,9 @@ async function fetchMovieDetails() {
             // 참/거짓을 통해 값을 불러온다.
             similarArray = allIMG.slice(0, 9).map(movie => ({
                 image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                title: movie.original_title || '',
-                imdb_id: movie.imdb_id || ''
-            }));
+                title: movie.original_title ? movie.original_title : '',
+                imdb_id: movie.imdb_id ? movie.imdb_id : ''
+            })).filter(movie => movie.image && movie.title && movie.imdb_id);
         }
 
 
