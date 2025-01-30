@@ -115,37 +115,18 @@ async function fetchMovieDetails() {
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
 
-        // 비슷한 영화데이터 가져오기
-        // let similarImgArr = [];
-        // if (!movieTMDBID) {
-        //     for (let i = 1; i <= 9; i++) {
-        //         similarImgArr.push(`${api.GIT_URL}/assets/images/poster-NotAvailable.png`);
-        //     }
-        // } else {
-        //     const allIMG = await getSimilarMovie(movieTMDBID);
-
-        //     for (let i = 1; i <= 9; i++) {
-        //         // similarImgArr.push(`https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}`);
-
-        //         // poster_path 속성이 있는지 확인한다.
-        //         const posterPath = allIMG[i]?.poster_path ? `https://image.tmdb.org/t/p/w500/${allIMG[i].poster_path}` : `/assets/images/poster-NotAvailable.png`;
-        //         const similarMovieTitle = allIMG[i]?.original_title ? allIMG[i].original_title : '';
-        //         const similarMovieImdbID = allIMG[i]?.imdb_id ? allIMG[i].imdb_id : '';
-        //         similarImgArr.push({image: posterPath, title: similarMovieTitle, imdb_id: similarMovieImdbID});
-        //     }
-        // }
-
         // 25.01.28 이병현 비슷한 영화데이터 가져오기 수정
         let similarArray = [];
         if (movieTMDBID) {
             const allIMG = await getSimilarMovie(movieTMDBID);
             // 비슷한 영화를 최대 10개까지 보이도록 한다.
             // 참/거짓을 통해 값을 불러온다.
+            // filter를 통해 해당 내용이 있는 영화만 가져온다.
             similarArray = allIMG.slice(0, 9).map(movie => ({
                 image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
                 title: movie.original_title ? movie.original_title : '',
                 imdb_id: movie.imdb_id ? movie.imdb_id : ''
-            })).filter(movie => movie.image && movie.title && movie.imdb_id);
+            })).filter(movie => movie.title && movie.imdb_id);
         }
 
 
@@ -251,7 +232,14 @@ async function fetchMovieDetails() {
                     <div class="another-slideBox">
                         <div class="swiper anotherSwiper">
                             <ul class="swiper-wrapper">
-                                ${similarArray.map(movie => `<li class="swiper-slide"><a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdb_id}"><img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/></a></li>`).join('')}
+                                ${similarArray.map(movie => 
+                                `
+                                    <li class="swiper-slide">
+                                        <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdb_id}">
+                                            <img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
+                                        </a>
+                                    </li>
+                                `).join('')}
                             </ul>
                         </div>
 
