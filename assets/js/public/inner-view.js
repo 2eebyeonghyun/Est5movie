@@ -92,7 +92,7 @@ function getMovieId(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
-
+ 
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
     try {
