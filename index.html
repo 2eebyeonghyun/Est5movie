@@ -15,7 +15,7 @@
 
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- <script src="assets/js/public/main.js" type="module"></script> -->
+    <script src="assets/js/public/main.js" type="module"></script>
 </head>
 
 <body class="main-index">
@@ -24,10 +24,6 @@
 
     <main class="main-page">
         <section class="section">
-            <div class="test">
-                <img src="" alt="">
-            </div> 
-
             <div class="contents">
                 <h2 class="a11y-hidden">메인슬라이드 영역</h2>
                 <div class="swiper mainSwiper">
@@ -56,33 +52,5 @@
     <h2 class="a11y-hidden">푸터 영역</h2>
     <footer class="footer main-footer"></footer>
 </body>
-<script>
-const tmdb = async () => {
-const options = {
-    method: "GET",
-    headers: {
-        accept: "application/json",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMDgzZjA4NGZlYjFmMzQyZmUzYTcxZmU1ZDQzMTgyZiIsIm5iZiI6MTcwNDE3NzQ4OS40LCJzdWIiOiI2NTkzYWY1MWZjMzFkMzcxNTA0NmRhYjAiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.xKBbcPqAWJP5u4ydfMvb5hTt3N8ZzeR1vM7616B6Ng0",
-    },
-};
 
-    try {
-    const response = await fetch("https://api.themoviedb.org/3/movie/900901/images", options);
-
-    const data = await response.json();
-
-    // 응답 데이터 확인
-    console.log("API Response:", data);
-    return data;
-    } catch (err) {
-    console.error("Error fetching TMDB API:", err);
-    }
-};
-
-tmdb().then((data) => {
-    console.log(data.posters[0].file_path);
-
-    document.querySelector(".test img").setAttribute("src", `https://image.tmdb.org/t/p/w500${data.posters[0].file_path}`);
-});
-</script>
 </html>
