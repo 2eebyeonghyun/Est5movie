@@ -4,7 +4,6 @@ import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
 import { topButton } from '../components/topButton.js';
-import { header } from '../components/header.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -12,7 +11,6 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
-    header();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
