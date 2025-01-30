@@ -107,6 +107,7 @@ function renderMovies(movies) {
     // error영역 display:none 처리
     const errorCard = get(".wrapper-errormessage");
     errorCard.style = "display:none";
+    
     // 검색결과영역 보이게 처리 후 초기화
     const itemCard = get(".itemcontainer-cardlist");
     itemCard.style = "";
