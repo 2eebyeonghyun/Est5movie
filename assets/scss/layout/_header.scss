@@ -1,11 +1,14 @@
 @use '../abstracts/' as *;
 
 .header {
-    position: fixed;
+    position: absolute;
     inset: 0 0 auto 0;
     height: 10rem;
     z-index: 1000;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline: $marginInline;
 
     .main-index & {
 
@@ -13,20 +16,6 @@
             height: 15rem;
             position: relative;
         }
-    }
-
-    &.scroll {
-        background-color: rgba(255, 255, 255, 0.6);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-    }
-
-    .inner {
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-inline: $marginInline;
     }
 
     @include w1240 {
