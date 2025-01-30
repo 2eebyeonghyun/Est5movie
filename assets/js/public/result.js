@@ -4,6 +4,7 @@ import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
 import { topButton } from '../components/topButton.js';
+import { scrollHeader } from '../components/scrollHeader.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -11,6 +12,7 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
+    scrollHeader();
 };
 
 document.addEventListener("DOMContentLoaded", () => {

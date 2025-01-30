@@ -6,6 +6,7 @@ import { initializePage } from "../components/search.js";
 import { topButton } from '../components/topButton.js';
 import { getHighPoster } from "../components/highPoster.js";
 import { SwiperGroup } from '../components/swiperGroup.js';
+import { scrollHeader } from '../components/scrollHeader.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -13,6 +14,7 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
+    scrollHeader();
 };
 
 const movieContainer = get("#movie-container");

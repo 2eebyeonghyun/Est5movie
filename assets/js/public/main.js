@@ -5,6 +5,7 @@ import { initializeEvents } from '../base/eventHandler.js';
 import { initializePage } from '../components/search.js';
 import { topButton } from '../components/topButton.js';
 import { SwiperGroup } from '../components/swiperGroup.js';
+import { scrollHeader } from '../components/scrollHeader.js';
 
 // 2025-01-25 추가
 export const initWeb = () => {
@@ -13,6 +14,7 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
+    scrollHeader();
 };
 
 // 메인 슬라이드
