@@ -351,7 +351,7 @@ html[data-mode=light] .logo {
   .utility-list .utility-item:last-of-type {
     position: absolute;
     top: 3rem;
-    right: 0;
+    right: 1.5rem;
   }
 }
 
