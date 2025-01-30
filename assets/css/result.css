@@ -1274,9 +1274,9 @@ html[data-mode=dark] .topButton-box {
 }
 @media (width < 430px) {
   .result-page .informationBox-subList {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2.5rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
   }
 }
 .result-page .itemcontainer-btnbox {

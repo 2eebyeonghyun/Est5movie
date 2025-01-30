@@ -192,9 +192,9 @@
         align-items: center;
 
         @include w430 {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2.5rem;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
         }
     }
 
