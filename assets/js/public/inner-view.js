@@ -29,7 +29,8 @@ async function getActorProfile(actor) {
 
         const response = await fetch(`https://api.themoviedb.org/3/search/person?query=${actor}&include_adult=false&language=en-US&page=1`, options);
         const data = await response.json();
-        return data.results[0].profile_path;
+        // return data.results[0].profile_path;
+        return data;
     } catch (error) {
         console.error(error.message);
     }
@@ -154,11 +155,38 @@ async function fetchMovieDetails() {
         let movieActors = movie.Actors ? movie.Actors.split(',') : [];
 
         let imgArr = [];
+        let actorArr = [];
+    
         for (let i of movieActors) {
-            imgArr.push(getActorProfile(i));
+            imgArr.push(await getActorProfile(i));
+        } 
+        
+        for(let i = 0; i < movieActors.length; i++) {
+            if(movieActors[i] !== "N/A" && imgArr[i].total_results > 0) {
+                actorArr = imgArr.slice(0,3).map((actor) => ({
+                    image : actor.results[0].profile_path ? `https://image.tmdb.org/t/p/w500/${actor.results[0].profile_path}`: `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+                    name: actor.results[0].name ? actor.results[0].name : '',
+                })).filter(actor => actor.image && actor.name);                
+            } else if(imgArr[i].total_results === 0) {
+                actorArr = Array({image : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`, name: movieActors[i]})
+            }
         }
+
+        // if(movieActors !== "N/A") {
+        //     for (let i of movieActors) {
+        //         imgArr.push(await getActorProfile(i));
+        //     }   
+        //     console.log(imgArr);
+        //     actorArr = imgArr.slice(0,3).map((actor) => ({
+        //         image : actor.results[0].profile_path ? `https://image.tmdb.org/t/p/w500/${actor.results[0].profile_path}`: `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+        //         name: actor.results[0].name ? actor.results[0].name : '',
+        //     })).filter(actor => actor.image && actor.name);       
+        // }
+
+
         // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
-        let actorImages = await Promise.all(imgArr);
+        let actorImages = actorArr;
+        console.log(actorImages);
 
         // 영화 해상도 고해상도로 변경
         const Highposter = getHighPoster(movie.Poster);
@@ -227,20 +255,7 @@ async function fetchMovieDetails() {
                 <div class="movie-actors">
                     <span class="detail-text">actors</span>
                     <ul class="actors-list">
-                        <li class="actors-item">
-                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[0]}"/>
-                            <p class="actors-name">${movieActors[0]}</p>
-                        </li>
-
-                        <li class="actors-item">
-                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[1]}"/>
-                            <p class="actors-name">${movieActors[1]}</p>
-                        </li>
-
-                        <li class="actors-item">
-                            <img class="actors-img" src="https://image.tmdb.org/t/p/w500${actorImages[2]}"/>
-                            <p class="actors-name">${movieActors[2]}</p>
-                        </li>
+                     ${actorImages.map(actor => `<li class="actors-item"><img class="actors-img" src="${actor.image}"/><p class="actors-name">${actor.name}</p></li>`).join('')}
                     </ul>
                 </div>
 
