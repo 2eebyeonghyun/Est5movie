@@ -17,10 +17,6 @@ export let page = 1;
 
 export function searchPoint() {
     try {
-        const filterEl = get(".input");
-        const yearEl = get(".select-year");
-        const typeEl = get(".select-type");
-
         const value = filterEl.value.trim();
 
         // 선택된 값이 all이 아니면 선택된 값을 가져온다.
