@@ -142,10 +142,10 @@ async function fetchMovieDetails() {
         
         for(let i = 0; i < movieActors.length; i++) {
             if(movieActors[i] !== "N/A" && imgArr[i].total_results > 0) {
-                actorArr = imgArr.slice(0,3).map((actor) => ({
-                    image : actor.results[0].profile_path ? `https://image.tmdb.org/t/p/w500/${actor.results[0].profile_path}`: `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                    name: actor.results[0].name ? actor.results[0].name : '',
-                })).filter(actor => actor.image && actor.name);                
+                actorArr.push({
+                    image : imgArr[i].results[0].profile_path ? `https://image.tmdb.org/t/p/w500/${imgArr[i].results[0].profile_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+                    name: imgArr[i].results[0].name ? imgArr[i].results[0].name : '',
+                });         
             } else if(imgArr[i].total_results === 0) {
                 actorArr.push({
                     image : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`, 
