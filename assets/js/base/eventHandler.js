@@ -20,52 +20,26 @@ export async function initializeEvents() {
 
         // 다크모드 영역
         const button = get(".btn-change");
-        let theme;
-        try {
-            theme = localStorage.getItem('mode') || 'light';
-        } catch (error) {
-            console.error('localStorage 접근 실패', error);
-            theme = 'light';
-        }
+        if (!button) return;
 
-        let status = theme === 'dark';
+        button.replaceWith(button.cloneNode(true));
+        const newButton = get(".btn-change");
 
-        if (status) {
-            themeDarkMode();
-        } else {
-            themeLightMode();
-        }
+        newButton.addEventListener("click", () => {
+            let currentMode = document.documentElement.getAttribute("data-mode");
+            let newMode = currentMode === "dark" ? "light" : "dark";
 
-        // 버튼 클릭 이벤트
-        button.addEventListener('click', () => {
-            if (status) {
-                themeLightMode();
-            } else {
-                themeDarkMode();
+            try {
+                localStorage.setItem("mode", newMode);
+            } catch (error) {
+                console.error("localStorage 저장 실패", error);
             }
+
+            document.documentElement.setAttribute("data-mode", newMode);
         });
 
-        // 다크 모드 적용
-        function themeDarkMode() {
-            try {
-                localStorage.setItem("mode", "dark");
-            } catch (error) {
-                console.error('localStorage 저장 실패', error);
-            }
-            document.documentElement.setAttribute('data-mode', 'dark');
-            status = true;
-        }
-
-        // 라이트 모드 적용
-        function themeLightMode() {
-            try {
-                localStorage.setItem("mode", "light");
-            } catch (error) {
-                console.error('localStorage 저장 실패', error);
-            }
-            document.documentElement.setAttribute('data-mode', 'light');
-            status = false;
-        }
+        // 페이지 로드 시 localStorage 값 적용
+        applyThemeFromStorage();
     } catch (error) {
         console.error('error', error);
     }
