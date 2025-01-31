@@ -15,6 +15,7 @@ export async function initializeEvents() {
 
         formEl.addEventListener("submit", (e) => {
             e.preventDefault();
+            console.log('검색실행', 검색실행);
             searchPoint();
         });
 
@@ -35,6 +36,7 @@ export async function initializeEvents() {
 
         // 버튼 클릭 이벤트
         button.addEventListener('click', () => {
+            console.log('다크모드 클릭 현재 상태:', status);
             if (!status) {
                 themeDarkMode();
             } else {
