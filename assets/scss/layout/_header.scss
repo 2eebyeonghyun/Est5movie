@@ -1,7 +1,8 @@
 @use '../abstracts/' as *;
 
 .header {
-    position: fixed;
+    // position: fixed;
+    position: absolute;
     inset: 0 0 auto 0;
     height: 10rem;
     z-index: 1000;
