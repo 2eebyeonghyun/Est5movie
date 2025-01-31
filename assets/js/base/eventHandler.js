@@ -1,50 +1,40 @@
 import { get } from "./util.js";
 import { loadHeader } from "../components/loadHF.js";
 import { searchPoint } from "../components/search.js";
-// import { scrollHeader } from '../components/scrollHeader.js';
 
 // 이벤트처리를 따로 분류했더니 중복이벤트오류가 발생하여 이벤트는 한 곳에서 호출
 export async function initializeEvents() {
 
     try {
         await loadHeader();
-        // scrollHeader();
     
         // 서치 검색 영역
         const formEl = get(".form");
 
-        if (formEl) {
-            formEl.addEventListener("submit", (e) => {
-                e.preventDefault();
-                console.log('검색 실행');
-                searchPoint();
-            });
-        } else {
-            console.error("form 요소를 찾을 수 없습니다.");
-        }
+        formEl.addEventListener("submit", (e) => {
+            e.preventDefault();
+            searchPoint();
+        });
 
 
         // 다크모드 영역
         const button = get(".btn-change");
         // 초기 theme 가져오기
         let theme = localStorage.getItem('mode');
-        let status = false;
+        let status = theme === 'dark';
 
-        if (theme === 'dark') {
+        if (status) {
             themeDarkMode();
-        } else if (theme === 'light') {
-            themeLightMode();
         } else {
-            themeDarkMode();
+            themeLightMode();
         }
 
         // 버튼 클릭 이벤트
         button.addEventListener('click', () => {
-            console.log('다크모드 클릭 현재 상태:', status);
-            if (!status) {
-                themeDarkMode();
-            } else {
+            if (status) {
                 themeLightMode();
+            } else {
+                themeDarkMode();
             }
         });
 
