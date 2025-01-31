@@ -17,11 +17,15 @@ export let page = 1;
 
 export function searchPoint() {
     try {
-        const value = filterEl.value.trim();
+        const filterEle = get(".input");
+        const yearEle = get(".select-year");
+        const typeEle = get(".select-type");
+
+        const value = filterEle.value.trim();
 
         // 선택된 값이 all이 아니면 선택된 값을 가져온다.
-        const year = yearEl.value !== "all" ? yearEl.value : "all";
-        const type = typeEl.value !== "all" ? typeEl.value : "all";
+        const year = yearEle.value !== "all" ? yearEle.value : "all";
+        const type = typeEle.value !== "all" ? typeEle.value : "all";
 
         // 페이지 이동하면서 파라미터 값도 전달
         let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
