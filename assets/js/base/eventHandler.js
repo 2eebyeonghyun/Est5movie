@@ -20,14 +20,11 @@ export async function initializeEvents() {
 
         // 다크모드 영역
         const button = get(".btn-change");
-        if (!button) return; // 버튼이 없으면 종료
-
-        // 초기 theme 가져오기 (localStorage 오류 대비)
         let theme;
         try {
             theme = localStorage.getItem('mode') || 'light';
         } catch (error) {
-            console.warn('localStorage 접근 실패', error);
+            console.error('localStorage 접근 실패', error);
             theme = 'light';
         }
 
@@ -46,6 +43,8 @@ export async function initializeEvents() {
             } else {
                 themeDarkMode();
             }
+
+            status = !status;
         });
 
         // 다크 모드 적용
@@ -53,7 +52,7 @@ export async function initializeEvents() {
             try {
                 localStorage.setItem("mode", "dark");
             } catch (error) {
-                console.warn('localStorage 저장 실패', error);
+                console.error('localStorage 저장 실패', error);
             }
             document.documentElement.setAttribute('data-mode', 'dark');
             status = true;
@@ -64,7 +63,7 @@ export async function initializeEvents() {
             try {
                 localStorage.setItem("mode", "light");
             } catch (error) {
-                console.warn('localStorage 저장 실패', error);
+                console.error('localStorage 저장 실패', error);
             }
             document.documentElement.setAttribute('data-mode', 'light');
             status = false;
