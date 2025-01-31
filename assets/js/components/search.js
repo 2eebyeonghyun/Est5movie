@@ -168,12 +168,14 @@ async function moreMovies(searchParam, year, type, page) {
         const response = await getMovies(searchParam, year, type, page);
         let count = response.totalResults;
         const moreBtn = get(".itemcontainer-btn");
+        let countBox = get('.btn-click');
         if (count > 10) {
             moreBtn.addEventListener("click", async () => {
                 page++;
                 let maxPage = Math.ceil(count / 10);
                 const movies = await getMovies(searchParam, year, type, page);
                 renderMovies(movies.Search);
+                countBox.innerHTML = `${page} / ${maxPage}`
                 console.log(page, maxPage);
                 if (page >= maxPage) { // 마지막 페이지 판별
                     moreBtn.style = "display:none";
