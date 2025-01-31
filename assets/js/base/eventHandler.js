@@ -43,8 +43,6 @@ export async function initializeEvents() {
             } else {
                 themeDarkMode();
             }
-
-            status = !status;
         });
 
         // 다크 모드 적용
