@@ -4,7 +4,6 @@ import { initializePage } from "../components/search.js";
 import { getAll } from "../base/util.js";
 import { fetchSearch, fetchType, fetchYear } from "../base/param.js";
 import { topButton } from '../components/topButton.js';
-import { scrollHeader } from '../components/scrollHeader.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -12,7 +11,6 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
-    scrollHeader();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -40,17 +38,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (name === "genre") {
                     genreValue = value;
-                    updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정
+                    updateUrl(searchValue, yearValue, genreValue);
                 } else if (name === "year") {
                     yearValue = value;
-                    updateUrl(searchValue, yearValue, genreValue); // 2025.01.23 수정
+                    updateUrl(searchValue, yearValue, genreValue);
                 }
             });
         });
     }
 
-    // URL 주소 변경 작업( 2025.01.23 이병현)
     // 라디오버튼 변경하면 리다이렉트하고 URL주소 변경
+    // 선택된 라디오의 value값이 파라미터로 전달되고 페이지가 새로고침이 된다.
     function updateUrl(search, year, genre) {
         const urlParams = new URLSearchParams(window.location.search);
 

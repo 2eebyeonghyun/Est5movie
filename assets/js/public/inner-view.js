@@ -6,7 +6,6 @@ import { initializePage } from "../components/search.js";
 import { topButton } from '../components/topButton.js';
 import { getHighPoster } from "../components/highPoster.js";
 import { SwiperGroup } from '../components/swiperGroup.js';
-import { scrollHeader } from '../components/scrollHeader.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -14,7 +13,6 @@ export const initWeb = () => {
     initializeEvents();
     initializePage();
     topButton();
-    scrollHeader();
 };
 
 const movieContainer = get("#movie-container");
@@ -116,7 +114,7 @@ async function fetchMovieDetails() {
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
 
-        // 25.01.28 이병현 비슷한 영화데이터 가져오기 수정
+        // 추천 영화 영화데이터 가져오기
         let similarArray = [];
         if (movieTMDBID) {
             const allIMG = await getSimilarMovie(movieTMDBID);
