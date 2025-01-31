@@ -22,16 +22,13 @@ export async function initializeEvents() {
             }
         });
 
-        document.addEventListener("submit", (e) => {
-            if (e.target.matches(".form")) {
+        const formEl = document.querySelector(".form");
+        if (formEl) {
+            formEl.addEventListener("submit", (e) => {
                 e.preventDefault();
-                const inputEl = e.target.querySelector(".input");
-                if (!inputEl) return;
-                const searchQuery = inputEl.value.trim();
-                if (!searchQuery) return;
-                window.location.href = `search.html?q=${encodeURIComponent(searchQuery)}`;
-            }
-        });
+                searchPoint(); // searchPoint 함수 호출
+            });
+        }
     } catch (error) {
         console.error('error', error);
     }
