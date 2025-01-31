@@ -13,11 +13,15 @@ export async function initializeEvents() {
         // 서치 검색 영역
         const formEl = get(".form");
 
-        formEl.addEventListener("submit", (e) => {
-            e.preventDefault();
-            console.log('검색실행', 검색실행);
-            searchPoint();
-        });
+        if (formEl) {
+            formEl.addEventListener("submit", (e) => {
+                e.preventDefault();
+                console.log('검색 실행');
+                searchPoint();
+            });
+        } else {
+            console.error("form 요소를 찾을 수 없습니다.");
+        }
 
 
         // 다크모드 영역
@@ -42,6 +46,7 @@ export async function initializeEvents() {
             } else {
                 themeLightMode();
             }
+            status = !status;
         });
 
         // 다크 모드 적용
