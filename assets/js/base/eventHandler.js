@@ -13,25 +13,35 @@ export async function initializeEvents() {
         const formEl = get(".form");
         if (formEl) {
             formEl.addEventListener("submit", (e) => {
-                e.preventDefault();
-                searchPoint();
+                e.preventDefault(); // 기본 제출 동작 방지 (iOS에서도 확실하게 막기)
+                
+                const searchInput = formEl.querySelector("input[name='search']"); // 입력 필드 가져오기
+                if (searchInput) {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        searchPoint(query);
+                    } else {
+                        console.warn("검색어가 입력되지 않았습니다.");
+                    }
+                } else {
+                    console.error("검색 입력 필드를 찾을 수 없습니다.");
+                }
             });
         }
 
         // 다크모드 영역
         const button = get(".btn-change");
-        if (!button) return; // 버튼이 없으면 종료
+        if (!button) return;
 
-        // 초기 theme 가져오기 (localStorage 오류 대비)
         let theme;
         try {
-            theme = localStorage.getItem('mode') || 'light';
+            theme = localStorage.getItem("mode") || "light";
         } catch (error) {
-            console.warn('localStorage 접근 실패', error);
-            theme = 'light';
+            console.warn("localStorage 접근 실패", error);
+            theme = "light";
         }
 
-        let status = theme === 'dark';
+        let status = theme === "dark";
 
         if (status) {
             themeDarkMode();
@@ -39,8 +49,7 @@ export async function initializeEvents() {
             themeLightMode();
         }
 
-        // 버튼 클릭 이벤트
-        button.addEventListener('click', () => {
+        button.addEventListener("click", () => {
             if (status) {
                 themeLightMode();
             } else {
@@ -48,28 +57,27 @@ export async function initializeEvents() {
             }
         });
 
-        // 다크 모드 적용
         function themeDarkMode() {
             try {
                 localStorage.setItem("mode", "dark");
             } catch (error) {
-                console.warn('localStorage 저장 실패', error);
+                console.warn("localStorage 저장 실패", error);
             }
-            document.documentElement.setAttribute('data-mode', 'dark');
+            document.documentElement.setAttribute("data-mode", "dark");
             status = true;
         }
 
-        // 라이트 모드 적용
         function themeLightMode() {
             try {
                 localStorage.setItem("mode", "light");
             } catch (error) {
-                console.warn('localStorage 저장 실패', error);
+                console.warn("localStorage 저장 실패", error);
             }
-            document.documentElement.setAttribute('data-mode', 'light');
+            document.documentElement.setAttribute("data-mode", "light");
             status = false;
         }
     } catch (error) {
-        console.error('error', error);
+        console.error("error", error);
     }
 }
+
