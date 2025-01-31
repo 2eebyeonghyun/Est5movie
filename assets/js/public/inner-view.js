@@ -148,7 +148,7 @@ async function fetchMovieDetails() {
                 })).filter(actor => actor.image && actor.name);                
             } else if(imgArr[i].total_results === 0) {
                 actorArr.push({
-                    image : `/assets/images/poster-NotAvailable.png`, 
+                    image : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`, 
                     name: movieActors[i]
                 });
             }
