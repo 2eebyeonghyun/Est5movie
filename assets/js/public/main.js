@@ -22,8 +22,7 @@ async function mainSlide() {
 
     try {
         // json폴더의 main.json 호출
-        // const res = await fetch('../assets/json/main.json');
-        const res = await fetch(`${api.GIT_URL}/assets/json/main.json`, {mode: 'cors', cache: 'no-store'});
+        const res = await fetch(`${api.GIT_URL}/assets/json/main.json`);
         const data = await res.json();
         const movies = data.movies;
 
