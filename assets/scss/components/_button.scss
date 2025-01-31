@@ -183,6 +183,11 @@
     @include w768 {
         width: 15rem;
         height: 4.5rem;
+        font-size: 1.4rem;
+    }
+
+    @include w430 {
+        font-size: 1.2rem;
     }
 }
 

@@ -506,6 +506,12 @@ html[data-mode=dark] .btn-click::after {
   .btn-click {
     width: 15rem;
     height: 4.5rem;
+    font-size: 1.4rem;
+  }
+}
+@media (width < 430px) {
+  .btn-click {
+    font-size: 1.2rem;
   }
 }
 
