@@ -38,6 +38,7 @@ export async function initializeEvents() {
 
         // 버튼 클릭 이벤트
         button.addEventListener('click', () => {
+            console.log('버튼이 눌렸습니다.');
             if (status) {
                 themeLightMode();
             } else {
