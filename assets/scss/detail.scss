@@ -209,6 +209,28 @@
                 width: 100%;
                 height: 100%;
                 display: block;
+
+                .movieOverlay-box {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 70%);
+                    transition: all .3s ease-in-out;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 3rem;
+                }
+
+                &:hover {
+
+                    .movieOverlay-box {
+                        top: 0;
+                    }
+                }
             }
         }
 

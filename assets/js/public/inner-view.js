@@ -103,7 +103,7 @@ async function fetchMovieDetails() {
         `;
 
         // 1.5초 동안 위에 코드를 보여준다.
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 500));
 
         // 영화의 id값을 가져와 저장한다.
         const movieId = getMovieId("id");
@@ -124,10 +124,10 @@ async function fetchMovieDetails() {
             similarArray = allIMG.slice(0, 9).map(movie => ({
                 image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
                 title: movie.original_title ? movie.original_title : '',
-                imdb_id: movie.imdb_id ? movie.imdb_id : ''
+                imdb_id: movie.imdb_id ? movie.imdb_id : '',
+                overview: movie.overview ? movie.overview : ''
             })).filter(movie => movie.title && movie.imdb_id);
         }
-
 
         // let movieActors = movie.Actors.split(",");
         // 만약 movie.Actors에 값이 없으면 빈 배열로 만든다.
@@ -240,6 +240,10 @@ async function fetchMovieDetails() {
                                     <li class="swiper-slide">
                                         <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdb_id}">
                                             <img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
+                                            <div class="movieOverlay-box">
+                                                <h2 class="movie-title">${movie.title}</h2>
+                                                <p class="movie-description">${movie.overview}</p>
+                                            </div>
                                         </a>
                                     </li>
                                 `).join('')}
@@ -258,8 +262,9 @@ async function fetchMovieDetails() {
         </div>
     `;
 
-        // swiper 슬라이드로 만들기
-        SwiperGroup();
+    // swiper 슬라이드로 만들기
+    SwiperGroup();
+    
     } catch (error) {
         movieContainer.innerHTML = 
         `

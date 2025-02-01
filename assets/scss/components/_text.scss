@@ -46,6 +46,12 @@
         }
     }
 
+    .movieOverlay-box & {
+        font-size: 2rem;
+        line-height: 1.3;
+        text-align: center;
+    }
+
     .movie-detailsBox & {
         font-size: 6rem;
         color: $fontBlack;
@@ -148,6 +154,17 @@
         @include w1920 {
             width: 100%;
         }
+    }
+
+    .movieOverlay-box & {
+        font-size: 1.4rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        text-align: center;
+        margin-bottom: 0;
     }
 }
 
