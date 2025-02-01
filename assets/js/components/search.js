@@ -104,40 +104,45 @@ export async function getMovies(value, year, type, page) {
 
 function renderMovies(movies) {
 
-    // error영역 display:none 처리
-    const errorCard = get(".wrapper-errormessage");
-    errorCard.style = "display:none";
+    try {
+        // error영역 display:none 처리
+        const errorCard = get(".wrapper-errormessage");
+        errorCard.style = "display:none";
+        
+        // 검색결과영역 보이게 처리 후 초기화
+        const itemCard = get(".itemcontainer-cardlist");
+        itemCard.style = "";
+
+        // 검색결과영역 반복문을 통해서 card 삽입
+        movies.forEach((movie) => {
+            // 리스트 중 한개의 카드영역을 위한 div 생성
+            const movieCard = document.createElement("li");
+            movieCard.className = "itemcontainer-card";
+
+            // 고해상도 이미지로 변경
+            const Highposter = getHighPoster(movie.Poster);
+
+            // 카드영역 코드
+            movieCard.innerHTML = 
+            `
+                <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="card-item">
+                    <img class="result-image" src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
+                    <div class="result-informationBox">
+                        <h2 class="informationBox-title movie-title">${movie.Title}</h2>
+                        <ul class="informationBox-subList">
+                            <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
+                            <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
+                        </ul>
+                    </div>
+                </a>
+            `;
+            itemCard.appendChild(movieCard);
+        });
+    } catch (error) {
+        console.error('renderMoviesError', error);
+    }
+
     
-    // 검색결과영역 보이게 처리 후 초기화
-    const itemCard = get(".itemcontainer-cardlist");
-    itemCard.style = "";
-    // itemCard.innerHTML = "";
-
-    // 검색결과영역 반복문을 통해서 card 삽입
-    movies.forEach((movie) => {
-        // 리스트 중 한개의 카드영역을 위한 div 생성
-        const movieCard = document.createElement("li");
-        movieCard.className = "itemcontainer-card";
-
-        // 포스터 사진이 있으면 좀 더 좋은 화질의 사진으로 대체 없으면 대체 이미지 삽입
-        const Highposter = getHighPoster(movie.Poster);
-
-        // 카드영역 코드
-        movieCard.innerHTML = 
-        `
-            <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="card-item">
-                <img class="result-image" src="${Highposter}" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
-                <div class="result-informationBox">
-                    <h2 class="informationBox-title movie-title">${movie.Title}</h2>
-                    <ul class="informationBox-subList">
-                        <li class="subList-item"><span class="informationBox-title type-text type-text-${movie.Type}">${movie.Type}</span></li>
-                        <li class="subList-item"><span class="informationBox-title movie-year">${movie.Year}</span></li>
-                    </ul>
-                </div>
-            </a>
-        `;
-        itemCard.appendChild(movieCard);
-    });
 }
 
 export async function loadMovies(searchParam, year, type, page) {
@@ -151,15 +156,23 @@ export async function loadMovies(searchParam, year, type, page) {
 }
 
 function errorPage(data) {
-    // 카드 영역이 grid로 분할하였기 때문에 에러메시지 창은 grid 영역이 아닌 기존 div에 보여주기 위해 display:none처리
-    const cardSection = get(".wrapper-itemcontainer");
-    cardSection.style = "display:none";
-    // 에러 영역을 보이게 처리 후 에러 메시지 출력
-    const errorSection = get(".wrapper-errormessage");
-    errorSection.style = "";
-    errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
-    const moreBtn = get(".itemcontainer-btn");
-    moreBtn.style = "display:none";
+
+    try {
+        // 카드 영역이 grid로 분할하였기 때문에 에러메시지 창은 grid 영역이 아닌 기존 div에 보여주기 위해 display:none처리
+        const cardSection = get(".wrapper-itemcontainer");
+        cardSection.style = "display:none";
+
+        // 에러 영역을 보이게 처리 후 에러 메시지 출력
+        const errorSection = get(".wrapper-errormessage");
+        errorSection.style = "";
+        errorSection.innerHTML = `<span class="row-title item-title">${data.Error}</span>`;
+
+        const moreBtn = get(".itemcontainer-btn");
+        moreBtn.style = "display:none";
+    } catch (error) {
+        console.error('errorPage: ', error);
+    }
+    
 }
 
 async function moreMovies(searchParam, year, type, page) {
@@ -167,8 +180,10 @@ async function moreMovies(searchParam, year, type, page) {
     try {
         const response = await getMovies(searchParam, year, type, page);
         let count = response.totalResults;
+
         const moreBtn = get(".itemcontainer-btn");
         let countBox = get('.btn-click');
+
         if (count > 10) {
             moreBtn.addEventListener("click", async () => {
                 page++;

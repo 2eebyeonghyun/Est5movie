@@ -77,26 +77,32 @@ async function mainSlide() {
 
 // 하단부 인기영화시리즈 버튼 만들기
 function popularSeries() {
-    const slideBox2 = get('.mainBotSwiper .swiper-wrapper');
 
-    // 영화 제목 배열화
-    const popularMovies = ['Avengers', 'Spider-Man', 'Harry Potter', 'Frozen', 'Transformers', 'Dune', 'Home Alone'];
+    try {
+        const slideBox2 = get('.mainBotSwiper .swiper-wrapper');
 
-    // 버튼 구성하기
-    popularMovies.forEach((movie) => {
-        const slideList = document.createElement('li');
-        slideList.classList.add('swiper-slide', 'popular-item');
-
-        slideList.innerHTML = 
-        `
-            <a href="${api.GIT_URL}/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
-        `;
-
-        slideBox2.appendChild(slideList);
-    });
-
-    // swiper 슬라이드로 만들기
-    SwiperGroup();
+        // 영화 제목 배열화
+        const popularMovies = ['Avengers', 'Spider-Man', 'Harry Potter', 'Frozen', 'Transformers', 'Dune', 'Home Alone'];
+    
+        // 버튼 구성하기
+        popularMovies.forEach((movie) => {
+            const slideList = document.createElement('li');
+            slideList.classList.add('swiper-slide', 'popular-item');
+    
+            slideList.innerHTML = 
+            `
+                <a href="${api.GIT_URL}/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
+            `;
+    
+            slideBox2.appendChild(slideList);
+        });
+    
+        // swiper 슬라이드로 만들기
+        SwiperGroup();
+    } catch (error) {
+        console.error('popularSeries error: ', error);
+    }
+    
 }
 
 initWeb();

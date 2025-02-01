@@ -68,6 +68,6 @@ export async function initializeEvents() {
             status = false;
         }
     } catch (error) {
-        console.error('error', error);
+        console.error('initializeEvents error: ', error);
     }
 }
