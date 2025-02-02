@@ -65,4 +65,54 @@ export function SwiperGroup() {
             },
         },
     });
+
+    const swiper4 = new Swiper('.trending-swiper', {
+        slidesPerView: 2.5,
+        spaceBetween: 30,
+        breakpoints: {
+            320: {
+                slidesPerView: 1.5,
+                spaceBetween: 15,
+            },
+            1500: {
+                slidesPerView: 2.5,
+                spaceBetween: 30,
+            },
+        },
+    });
+
+    const swiper5 = new Swiper('.seriesSwiper', {
+        spaceBetween: 30,
+        speed: 1000,
+        loop: true,
+        navigation: {
+            nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
+            prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+            },
+            1500: {
+                slidesPerView: 5,
+                spaceBetween: 20,
+            },
+            2040: {
+                slidesPerView: 7,
+            },
+        },
+    });
 }

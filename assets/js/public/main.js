@@ -105,6 +105,74 @@ function popularSeries() {
     
 }
 
+async function trendingMovies() {
+    
+    try {
+        const res = await fetch('/assets/json/trending.json');
+        const data = await res.json();
+        
+        const trendingMovie = data.trendingMovies;
+        const seriesMovie = data.seriesMovies;
+
+        const trendingWrap = get('.trending-swiper .swiper-wrapper');
+        const seriesWrap = get('.seriesSwiper .swiper-wrapper');
+
+        trendingMovie.forEach(movie => {
+            const item = document.createElement('li');
+            item.classList.add('swiper-slide');
+
+            const Highposter = getHighPoster(movie.Poster);
+
+            item.innerHTML = 
+            `
+                <a href="/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
+                    <div class="movie-imgBox">
+                        <img src="${Highposter}">
+                    </div>
+                    <div class="movie-infoBox">
+                        <h2 class="movie-title">${movie.Title}</h2>
+                        <div class="movie-info">
+                            <p class="movie-time">${movie.Runtime}</p>
+                            <p class="movie-type">${movie.Type}</p>
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            trendingWrap.appendChild(item);
+        });
+
+        seriesMovie.forEach(movie => {
+            const item = document.createElement('li');
+            item.classList.add('swiper-slide');
+
+            const Highposter = getHighPoster(movie.Poster);
+
+            item.innerHTML = 
+            `
+                <a href="/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
+                    <div class="movie-imgBox">
+                        <img src="${Highposter}">
+                    </div>
+                    <div class="movie-infoBox">
+                        <h2 class="movie-title">${movie.Title}</h2>
+                        <div class="movie-info">
+                            <p class="movie-time">${movie.Runtime}</p>
+                            <p class="movie-type">${movie.Type}</p>
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            seriesWrap.appendChild(item);
+        });
+    } catch (error) {
+        console.error('trendingMovies error: ', error);
+    }
+    
+}
+
 initWeb();
 mainSlide();
 popularSeries();
+trendingMovies();
