@@ -75,6 +75,10 @@ export function SwiperGroup() {
                 slidesPerView: 1.1,
                 spaceBetween: 15,
             },
+            768: {
+                slidesPerView: 1.5,
+                spaceBetween: 20,
+            },
             1500: {
                 slidesPerView: 2.5,
                 spaceBetween: 30,
