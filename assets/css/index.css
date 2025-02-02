@@ -198,9 +198,6 @@ html[data-mode=dark] .footer .copyright-text {
 html[data-mode=dark] .footer {
   border-top: 2px solid #242E43;
 }
-.footer.main-footer {
-  border-top: 0;
-}
 html[data-mode=dark] .footer.main-footer {
   border-top: 0;
 }
@@ -1287,6 +1284,9 @@ html[data-mode=light] .main-page .section01 .popular-item:hover > a {
   padding-bottom: 3.5rem;
   margin-bottom: 8rem;
   border-bottom: 2px solid #777;
+}
+html[data-mode=light] .main-page .section02 .item-title {
+  border-bottom: 2px solid #f8f8f8;
 }
 .main-page .section02 .movie-imgBox {
   overflow: hidden;
