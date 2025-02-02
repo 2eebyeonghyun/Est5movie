@@ -1057,6 +1057,11 @@ html[data-mode=dark] .topButton-box {
 .main-page .movie-infoBox .movie-info > p.movie-type {
   text-transform: uppercase;
 }
+@media (width < 430px) {
+  .main-page .movie-infoBox .movie-info > p {
+    font-size: 1.3rem;
+  }
+}
 
 .swiper {
   width: 100%;
@@ -1319,5 +1324,11 @@ html[data-mode=light] .main-page .section01 .popular-item:hover > a {
   }
   .main-page .section02 .contents {
     margin-inline: 1.5rem;
+  }
+  .main-page .section02 .movie-imgBox {
+    height: 45rem;
+  }
+  .main-page .section02 .movie-title {
+    font-size: 1.8rem;
   }
 }

@@ -6,7 +6,7 @@
             "imdbID": "tt0816692",
             "Runtime": "169 min",
             "Type": "movie",
-            "Poster": "/assets/images/poster-Interstellar.jpg"
+            "Poster": "Est5movie/assets/images/poster-Interstellar.jpg"
         },
         {
             "Title": "Dragonkeeper",
@@ -14,7 +14,7 @@
             "imdbID": "tt7093904",
             "Runtime": "98 min",
             "Type": "movie",
-            "Poster": "/assets/images/poster-Dragonkeeper.png"
+            "Poster": "Est5movie/assets/images/poster-Dragonkeeper.png"
         },
         {
             "Title": "Dune: Part Two",
@@ -22,7 +22,7 @@
             "imdbID": "tt15239678",
             "Runtime": "166 min",
             "Type": "movie",
-            "Poster": "/assets/images/poster-Dune2.jpg"
+            "Poster": "Est5movie/assets/images/poster-Dune2.jpg"
         }
     ],
 

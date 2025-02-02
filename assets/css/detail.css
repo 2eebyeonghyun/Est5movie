@@ -1057,6 +1057,11 @@ html[data-mode=dark] .topButton-box {
 .main-page .movie-infoBox .movie-info > p.movie-type {
   text-transform: uppercase;
 }
+@media (width < 430px) {
+  .main-page .movie-infoBox .movie-info > p {
+    font-size: 1.3rem;
+  }
+}
 
 .swiper {
   width: 100%;

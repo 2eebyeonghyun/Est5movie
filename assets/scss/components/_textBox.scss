@@ -218,5 +218,15 @@
                 }
             }
         }
+
+        @include w430 {
+
+            .movie-info {
+    
+                > p {
+                    font-size: 1.3rem;
+                }
+            }
+        }
     }
 }
