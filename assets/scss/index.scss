@@ -133,7 +133,7 @@
             text-transform: uppercase;
             padding-bottom: 3.5rem;
             margin-bottom: 8rem;
-            border-bottom: 2px solid #b74a4a;
+            border-bottom: 2px solid #777;
         }
 
         .movie-imgBox {
@@ -149,23 +149,25 @@
             letter-spacing: -0.03rem;
             text-transform: initial;
         }
+    }
 
-        .movie-info {
-            display: flex;
-            gap: 3rem;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
+    @include w1240 {
+        
+        .section02 {
 
-            > p {
-                position: relative;
-                font-size: 1.6rem;
-                font-weight: 400;
-                color: #9a9a9a;
+            .contents {
+                margin-inline: 3rem;
+            }
+        }
+    }
 
-                &.movie-type {
-                    text-transform: uppercase;
-                }
+    @include w768 {
+
+        .section02 {
+
+            .item-title {
+                padding-bottom: 3rem;
+                margin-bottom: 5rem;
             }
         }
     }
@@ -181,6 +183,13 @@
                 border-radius: 1rem;
                 overflow: hidden;
                 margin-bottom: 3rem;
+            }
+        }
+
+        .section02 {
+
+            .contents {
+                margin-inline: 1.5rem;
             }
         }
     }

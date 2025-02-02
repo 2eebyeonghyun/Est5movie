@@ -1051,6 +1051,23 @@ html[data-mode=dark] .topButton-box {
   align-items: center;
 }
 
+.main-page .movie-infoBox .movie-info {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.main-page .movie-infoBox .movie-info > p {
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #9a9a9a;
+}
+.main-page .movie-infoBox .movie-info > p.movie-type {
+  text-transform: uppercase;
+}
+
 .swiper {
   width: 100%;
   height: 100%;

@@ -71,7 +71,7 @@ export function SwiperGroup() {
         spaceBetween: 30,
         breakpoints: {
             320: {
-                slidesPerView: 1.5,
+                slidesPerView: 1.1,
                 spaceBetween: 15,
             },
             1500: {

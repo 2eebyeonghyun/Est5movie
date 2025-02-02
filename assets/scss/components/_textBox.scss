@@ -195,3 +195,28 @@
     justify-content: center;
     align-items: center;
 }
+
+.movie-infoBox {
+
+    .main-page & {
+
+        .movie-info {
+            display: flex;
+            gap: 3rem;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+
+            > p {
+                position: relative;
+                font-size: 1.6rem;
+                font-weight: 400;
+                color: #9a9a9a;
+
+                &.movie-type {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}

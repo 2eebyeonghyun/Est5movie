@@ -1041,6 +1041,23 @@ html[data-mode=dark] .topButton-box {
   align-items: center;
 }
 
+.main-page .movie-infoBox .movie-info {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.main-page .movie-infoBox .movie-info > p {
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #9a9a9a;
+}
+.main-page .movie-infoBox .movie-info > p.movie-type {
+  text-transform: uppercase;
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -1154,23 +1171,30 @@ html[data-mode=dark] body {
 
 .main-page {
   width: 100%;
-  height: 100vh;
+}
+@media (width < 430px) {
+  .main-index .main-page {
+    flex: 1;
+  }
 }
 .main-page .section {
   width: 100%;
   height: 100%;
 }
-.main-page .contents {
+.main-page .section01 {
+  height: 100vh;
+}
+.main-page .section01 .contents {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.main-page .movie-imgBox {
+.main-page .section01 .movie-imgBox {
   width: 100%;
   height: 100%;
 }
-.main-page .popular-seriesBox {
+.main-page .section01 .popular-seriesBox {
   width: calc(100% - 10rem);
   position: absolute;
   bottom: 5.5rem;
@@ -1179,20 +1203,20 @@ html[data-mode=dark] body {
   margin-inline: 5rem;
 }
 @media (width < 1240px) {
-  .main-page .popular-seriesBox {
+  .main-page .section01 .popular-seriesBox {
     width: calc(100% - 6rem);
     margin-inline: 3rem;
   }
 }
 @media (width < 430px) {
-  .main-page .popular-seriesBox {
+  .main-page .section01 .popular-seriesBox {
     position: relative;
     bottom: 0;
     width: calc(100% - 3rem);
     margin-inline: 1.5rem;
   }
 }
-.main-page .popular-item {
+.main-page .section01 .popular-item {
   width: 100%;
   height: 10rem;
   background-color: rgba(255, 255, 255, 0.75);
@@ -1200,7 +1224,7 @@ html[data-mode=dark] body {
   border-radius: 1.5rem;
   transition: all 0.3s ease-in-out;
 }
-.main-page .popular-item > a {
+.main-page .section01 .popular-item > a {
   width: 100%;
   height: 100%;
   display: flex;
@@ -1211,46 +1235,89 @@ html[data-mode=dark] body {
   letter-spacing: -0.03em;
   color: #000;
 }
-.main-page .popular-item:hover {
+.main-page .section01 .popular-item:hover {
   background-color: rgba(0, 0, 0, 0.75);
 }
-.main-page .popular-item:hover > a {
+.main-page .section01 .popular-item:hover > a {
   color: #fff;
 }
-html[data-mode=light] .main-page .popular-item {
+html[data-mode=light] .main-page .section01 .popular-item {
   background-color: rgba(0, 0, 0, 0.75);
 }
-html[data-mode=light] .main-page .popular-item > a {
+html[data-mode=light] .main-page .section01 .popular-item > a {
   color: #fff;
 }
-html[data-mode=light] .main-page .popular-item:hover {
+html[data-mode=light] .main-page .section01 .popular-item:hover {
   background-color: rgba(255, 255, 255, 0.75);
 }
-html[data-mode=light] .main-page .popular-item:hover > a {
+html[data-mode=light] .main-page .section01 .popular-item:hover > a {
   color: #000;
 }
 @media (width < 768px) {
-  .main-page .popular-item {
+  .main-page .section01 .popular-item {
     height: 7rem;
   }
-  .main-page .popular-item > a {
+  .main-page .section01 .popular-item > a {
     font-size: 1.6rem;
   }
 }
-@media (width < 430px) {
-  .main-index .main-page {
-    flex: 1;
+.main-page .section02 {
+  padding: 10rem 0;
+}
+.main-page .section02 .contents {
+  width: auto;
+  margin-inline: 5rem;
+}
+.main-page .section02 .contents-box {
+  width: 100%;
+  padding-bottom: 15rem;
+}
+.main-page .section02 .contents-box:last-of-type {
+  padding-bottom: 0;
+}
+.main-page .section02 .item-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding-bottom: 3.5rem;
+  margin-bottom: 8rem;
+  border-bottom: 2px solid #777;
+}
+.main-page .section02 .movie-imgBox {
+  overflow: hidden;
+  height: 50rem;
+  border-radius: 1rem;
+  margin-bottom: 4rem;
+}
+.main-page .section02 .movie-title {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: -0.03rem;
+  text-transform: initial;
+}
+@media (width < 1240px) {
+  .main-page .section02 .contents {
+    margin-inline: 3rem;
+  }
+}
+@media (width < 768px) {
+  .main-page .section02 .item-title {
+    padding-bottom: 3rem;
+    margin-bottom: 5rem;
   }
 }
 @media (width < 430px) {
-  .main-page {
+  .main-page .section01 {
     height: auto;
   }
-  .main-page .movie-imgBox {
+  .main-page .section01 .movie-imgBox {
     width: calc(100% - 3rem);
     margin-inline: 1.5rem;
     border-radius: 1rem;
     overflow: hidden;
     margin-bottom: 3rem;
+  }
+  .main-page .section02 .contents {
+    margin-inline: 1.5rem;
   }
 }
