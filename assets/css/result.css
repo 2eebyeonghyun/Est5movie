@@ -24,6 +24,10 @@
     color: #000;
   }
 }
+html, body {
+  touch-action: manipulation;
+}
+
 body {
   scroll-behavior: smooth;
 }
