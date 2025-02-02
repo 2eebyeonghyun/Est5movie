@@ -619,6 +619,11 @@ html[data-mode=light] .movie-title {
 html[data-mode=light] .movieOverlay-box .movie-title {
   color: #fff;
 }
+@media (width < 430px) {
+  .movieOverlay-box .movie-title {
+    font-size: 1.5rem;
+  }
+}
 .movie-detailsBox .movie-title {
   font-size: 6rem;
   color: #000;
@@ -731,6 +736,11 @@ html[data-mode=light] .movie-description {
 }
 html[data-mode=light] .movieOverlay-box .movie-description {
   color: #fff;
+}
+@media (width < 430px) {
+  .movieOverlay-box .movie-description {
+    font-size: 1.2rem;
+  }
 }
 
 .movie-text {
@@ -1065,6 +1075,11 @@ html[data-mode=dark] .topButton-box {
   position: relative;
   top: 0;
   translate: 0 0;
+}
+@media (width < 1920px) {
+  .another-series .swiper-option {
+    width: 10rem;
+  }
 }
 @media (width < 768px) {
   .another-series .swiper-option {

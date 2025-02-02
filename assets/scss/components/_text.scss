@@ -54,6 +54,10 @@
         html[data-mode="light"] & {
             color: $fontWhite;
         }
+
+        @include w430 {
+            font-size: 1.5rem;
+        }
     }
 
     .movie-detailsBox & {
@@ -172,6 +176,10 @@
 
         html[data-mode="light"] & {
             color: $fontWhite;
+        }
+
+        @include w430 {
+            font-size: 1.2rem;
         }
     }
 }

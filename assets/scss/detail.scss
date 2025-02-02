@@ -234,11 +234,31 @@
             }
         }
 
+        @include w1920 {
+
+            .anotherSwiper {
+                width: calc(100% - 15rem);
+            }
+        }
+
         @include w768 {
             gap: 5rem;
 
             .anotherSwiper {
                 width: 100%;
+            }
+        }
+
+        @include w430 {
+
+            .anotherSwiper {
+    
+                a {
+    
+                    .movieOverlay-box {
+                        padding: 1.5rem;
+                    }
+                }
             }
         }
     }

@@ -39,6 +39,10 @@
         top: 0;
         translate: 0 0;
 
+        @include w1920 {
+            width: 10rem;
+        }
+
         @include w768 {
             width: 100%;
         }
