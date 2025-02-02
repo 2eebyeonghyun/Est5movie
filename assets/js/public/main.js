@@ -108,7 +108,7 @@ function popularSeries() {
 async function trendingMovies() {
     
     try {
-        const res = await fetch('/assets/json/trending.json');
+        const res = await fetch(`${api.GIT_URL}/assets/json/trending.json`);
         const data = await res.json();
         
         const trendingMovie = data.trendingMovies;
