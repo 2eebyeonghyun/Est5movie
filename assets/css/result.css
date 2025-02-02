@@ -792,6 +792,9 @@ html[data-mode=dark] .informationBox-subList .movie-text {
 .type-text-episode {
   background-color: #1118ff;
 }
+.type-text-game {
+  background-color: #62c70f;
+}
 @media (width < 768px) {
   .type-text {
     font-size: 1.2rem;

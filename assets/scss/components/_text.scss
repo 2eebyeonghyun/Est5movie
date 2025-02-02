@@ -244,6 +244,10 @@
         background-color: #1118ff;
     }
 
+    &-game {
+        background-color: #62c70f;
+    }
+
     @include w768 {
         font-size: 1.2rem;
     }
