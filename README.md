@@ -85,5 +85,8 @@
  ┗ 📜README.md
 ```
 
+### 배포사이트
+<a href="https://2eebyeonghyun.github.io/Est5movie/" target="_blank">https://2eebyeonghyun.github.io/Est5movie/</a>
+
 ### 사이트 QR
 <img src="./assets/images/img-siteURL.jpg" alt="이스트소프트 5팀 영화사이트"/>
