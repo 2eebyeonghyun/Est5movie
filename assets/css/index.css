@@ -1325,6 +1325,9 @@ html[data-mode=light] .main-page .section02 .item-title {
   .main-page .section02 .contents {
     margin-inline: 1.5rem;
   }
+  .main-page .section02 .contents-box {
+    padding-bottom: 5rem;
+  }
   .main-page .section02 .movie-imgBox {
     height: 45rem;
   }

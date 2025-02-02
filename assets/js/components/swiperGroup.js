@@ -69,6 +69,7 @@ export function SwiperGroup() {
     const swiper4 = new Swiper('.trending-swiper', {
         slidesPerView: 2.5,
         spaceBetween: 30,
+        loop: false,
         breakpoints: {
             320: {
                 slidesPerView: 1.1,
