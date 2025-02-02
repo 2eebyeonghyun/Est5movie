@@ -148,7 +148,6 @@ html[data-mode=light] .spinner-img {
 @media (width < 430px) {
   .main-index .header {
     height: 15rem;
-    position: relative;
   }
 }
 html[data-mode=light] .header.scroll {

@@ -7,13 +7,6 @@
 .main-page {
     width: 100%;
 
-    .main-index & {
-
-        @include w430 {
-            flex: 1;
-        }
-    }
-
     .section {
         width: 100%;
         height: 100%;
@@ -178,6 +171,7 @@
     }
 
     @include w430 {
+        padding-top: 15rem;
 
         .section01 {
             height: auto;
