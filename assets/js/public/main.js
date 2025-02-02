@@ -126,7 +126,7 @@ async function trendingMovies() {
 
             item.innerHTML = 
             `
-                <a href="/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
+                <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
                     <div class="movie-imgBox">
                         <img src="${Highposter}">
                     </div>
@@ -151,7 +151,7 @@ async function trendingMovies() {
 
             item.innerHTML = 
             `
-                <a href="/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
+                <a href="${api.GIT_URL}/public/inner-view.html?id=${movie.imdbID}" class="slide-item">
                     <div class="movie-imgBox">
                         <img src="${Highposter}">
                     </div>
