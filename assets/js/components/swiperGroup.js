@@ -89,7 +89,7 @@ export function SwiperGroup() {
     const swiper5 = new Swiper('.seriesSwiper', {
         spaceBetween: 30,
         speed: 1000,
-        loop: true,
+        loop: false,
         navigation: {
             nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
             prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
