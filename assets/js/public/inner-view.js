@@ -52,7 +52,7 @@ async function fetchMovieDetails() {
             // 비슷한 영화를 최대 10개까지 보이도록 한다.
             // 참/거짓을 통해 값을 불러온다.
             // filter를 통해 해당 내용이 있는 영화만 가져온다.
-            similarArray = allIMG.slice(0, 9).map(movie => ({
+            similarArray = allIMG.slice(0, 10).map(movie => ({
                 image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
                 title: movie.original_title ? movie.original_title : '',
                 imdb_id: movie.imdb_id ? movie.imdb_id : '',
