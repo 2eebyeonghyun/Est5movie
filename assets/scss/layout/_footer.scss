@@ -27,10 +27,6 @@
 
     &.main-footer {
 
-        html[data-mode="dark"] & {
-            border-top: 0;
-        }
-
         @include w430 {
             border-top: 2px solid $boxColor;
 
