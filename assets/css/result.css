@@ -1177,13 +1177,15 @@ html[data-mode=dark] .topButton-box {
   top: 0 !important;
   bottom: 0 !important;
   text-align: right;
+  padding-right: 3rem;
 }
 .swiper-pagination .swiper-pagination-bullet {
   width: 5rem;
-  height: 0.5rem;
+  height: 0.3rem;
   border-radius: 0;
   background-color: #fff;
   opacity: 20%;
+  margin: 0 1rem;
 }
 .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #fff;
