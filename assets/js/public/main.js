@@ -170,7 +170,6 @@ async function trendingMovies() {
     } catch (error) {
         console.error('trendingMovies error: ', error);
     }
-    
 }
 
 initWeb();

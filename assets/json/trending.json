@@ -23,6 +23,33 @@
             "Runtime": "166 min",
             "Type": "movie",
             "Poster": "./assets/images/poster-Dune2.jpg"
+        },
+        {
+            "Title": "The Garfield Movie",
+            "Year": "2024",
+            "imdbID": "tt5779228",
+            "Runtime": "101 min",
+            "Genre": "Animation, Adventure, Comedy",
+            "Type": "movie",
+            "Poster": "./assets/images/poster-Thegarfield.jpg"
+        },
+        {
+            "Title": "Alien: Romulus",
+            "Year": "2024",
+            "imdbID": "tt18412256",
+            "Runtime": "119 min",
+            "Genre": "Horror, Sci-Fi, Thriller",
+            "Type": "movie",
+            "Poster": "./assets/images/poster-Alien.jpg"
+        },
+        {
+            "Title": "Kingdom of the Planet of the Apes",
+            "Year": "2024",
+            "imdbID": "tt11389872",
+            "Runtime": "145 min",
+            "Genre": "Action, Adventure, Drama",
+            "Type": "movie",
+            "Poster": "./assets/images/poster-Planetoftheapes.jpg"
         }
     ],
 
@@ -73,7 +100,8 @@
             "imdbID": "tt4574334",
             "Runtime": "51 min",
             "Type": "series",
-            "Poster": "https://m.media-amazon.com/images/M/MV5BOWU2NjY5NWQtMjdkZi00ODJlLThkZTAtMzFlYmJmMGE2NjZkXkEyXkFqcGc@._V1_SX300.jpg"        },
+            "Poster": "https://m.media-amazon.com/images/M/MV5BOWU2NjY5NWQtMjdkZi00ODJlLThkZTAtMzFlYmJmMGE2NjZkXkEyXkFqcGc@._V1_SX300.jpg"
+        },
         {
             "Title": "Modern Family",
             "Year": "2009–2020",
@@ -82,6 +110,33 @@
             "Genre": "Comedy, Drama, Romance",
             "Type": "series",
             "Poster": "https://m.media-amazon.com/images/M/MV5BYzFlOWFjNzQtODViNC00NzgzLThhZmItZTc1N2VlZDgwODUwXkEyXkFqcGc@._V1_SX300.jpg"
-        }
+        },
+        {
+            "Title": "Wednesday",
+            "Year": "2022–",
+            "imdbID": "tt13443470",
+            "Runtime": "N/A",
+            "Genre": "Comedy, Crime, Fantasy",
+            "Type": "series",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BY2E1NDI5OWEtODJmYi00Nzg2LWI4MjUtODFiMTU2YWViOTU3XkEyXkFqcGc@._V1_SX300.jpg"
+          },
+          {
+            "Title": "Stranger Things",
+            "Year": "2016–2025",
+            "imdbID": "tt4574334",
+            "Runtime": "51 min",
+            "Genre": "Drama, Fantasy, Horror",
+            "Type": "series",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_SX300.jpg"
+          },
+          {
+            "Title": "Desperate Housewives",
+            "Year": "2004–2012",
+            "imdbID": "tt0410975",
+            "Runtime": "45 min",
+            "Genre": "Comedy, Drama, Mystery",
+            "Type": "series",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BMDljYmI5OTktNDFmNC00NmIxLWFhODktM2YyM2JlODVmMWUwXkEyXkFqcGc@._V1_SX300.jpg"
+          }
     ]
 }

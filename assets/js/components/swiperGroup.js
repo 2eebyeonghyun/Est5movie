@@ -70,6 +70,10 @@ export function SwiperGroup() {
         slidesPerView: 2.5,
         spaceBetween: 30,
         loop: false,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         breakpoints: {
             320: {
                 slidesPerView: 1.1,

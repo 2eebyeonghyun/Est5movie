@@ -242,7 +242,6 @@ async function fetchMovieDetails() {
                                             <img src="${movie.image}" alt="${movie.title} Poster" onerror="this.src='${api.GIT_URL}/assets/images/poster-NotAvailable.png'"/>
                                             <div class="movieOverlay-box">
                                                 <h2 class="movie-title">${movie.title}</h2>
-                                                <p class="movie-description">${movie.overview}</p>
                                             </div>
                                         </a>
                                     </li>
