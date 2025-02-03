@@ -147,6 +147,7 @@ async function trendingMovies() {
             const item = document.createElement('li');
             item.classList.add('swiper-slide');
 
+            const firstGender = movie.Genre.split(',')[0];
             const Highposter = getHighPoster(movie.Poster);
 
             item.innerHTML = 
@@ -159,7 +160,7 @@ async function trendingMovies() {
                         <h2 class="movie-title">${movie.Title}</h2>
                         <div class="movie-info">
                             <p class="movie-time">${movie.Runtime}</p>
-                            <p class="movie-type">${movie.Type}</p>
+                            <p class="movie-type">${firstGender}</p>
                         </div>
                     </div>
                 </a>
