@@ -44,6 +44,7 @@
         .movie-img {
             width: 100%;
             margin-bottom: 5rem;
+            border-radius: 1rem;
         }
 
         @include w1920 {
@@ -209,6 +210,8 @@
                 width: 100%;
                 height: 100%;
                 display: block;
+                border-radius: 1rem;
+                overflow: hidden;
 
                 .movieOverlay-box {
                     position: absolute;
@@ -223,6 +226,7 @@
                     justify-content: center;
                     align-items: center;
                     padding: 3rem;
+                    border-radius: 1rem;
                 }
 
                 &:hover {

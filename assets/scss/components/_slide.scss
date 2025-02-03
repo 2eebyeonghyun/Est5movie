@@ -112,3 +112,26 @@
 .swiper-rtl .swiper-button-prev {
     right: 0;
 }
+
+.swiper-pagination {
+
+    .seriesSwiper & {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        text-align: right;
+    }
+
+    .swiper-pagination-bullet {
+        width: 5rem;
+        height: 0.5rem;
+        border-radius: 0;
+        background-color: $bgwhite;
+        opacity: 20%;
+
+        &-active {
+            background-color: $bgwhite;
+            opacity: 100%;
+        }
+    }
+}

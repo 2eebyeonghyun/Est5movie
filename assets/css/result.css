@@ -1167,6 +1167,24 @@ html[data-mode=dark] .topButton-box {
   right: 0;
 }
 
+.seriesSwiper .swiper-pagination {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  text-align: right;
+}
+.swiper-pagination .swiper-pagination-bullet {
+  width: 5rem;
+  height: 0.5rem;
+  border-radius: 0;
+  background-color: #fff;
+  opacity: 20%;
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 100%;
+}
+
 .result-page .section {
   padding: 15rem 0 10rem;
   margin-inline: 5rem;

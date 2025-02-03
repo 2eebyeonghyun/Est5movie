@@ -97,6 +97,9 @@ export function SwiperGroup() {
         spaceBetween: 30,
         speed: 1000,
         loop: false,
+        pagination: {
+            el: ".seriesSwiper .swiper-option .swiper-pagination",
+        },
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
