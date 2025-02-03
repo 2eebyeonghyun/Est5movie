@@ -13,7 +13,7 @@
   font-style: normal;
 }
 @layer Typography {
-  * {
+  :is(*, *::before, *::after) {
     font-family: "Pretendard Variable";
   }
   html {

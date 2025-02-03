@@ -97,10 +97,6 @@ export function SwiperGroup() {
         spaceBetween: 30,
         speed: 1000,
         loop: false,
-        navigation: {
-            nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
-            prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
-        },
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
