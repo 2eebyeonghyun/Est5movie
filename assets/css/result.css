@@ -1093,6 +1093,11 @@ html[data-mode=dark] .topButton-box {
   top: 0;
   translate: none;
 }
+@media (width < 768px) {
+  .seriesSwiper .swiper-option {
+    display: none;
+  }
+}
 .another-series .swiper-option {
   width: 20rem;
   position: relative;

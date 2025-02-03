@@ -108,11 +108,11 @@ export function SwiperGroup() {
             320: {
                 slidesPerView: 1,
                 spaceBetween: 10,
+                pagination: false,
             },
             768: {
                 slidesPerView: 2,
                 spaceBetween: 15,
-                pagination: false,
             },
             1024: {
                 slidesPerView: 3,

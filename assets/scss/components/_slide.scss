@@ -37,6 +37,10 @@
         position: relative;
         top: 0;
         translate: none;
+
+        @include w768 {
+            display: none;
+        }
     }
 
     .another-series & {
