@@ -1078,6 +1078,11 @@ html[data-mode=dark] .topButton-box {
   translate: 0 -50%;
   z-index: 100;
 }
+.seriesSwiper .swiper-option {
+  position: relative;
+  top: 0;
+  translate: none;
+}
 .another-series .swiper-option {
   width: 20rem;
   position: relative;
@@ -1159,8 +1164,8 @@ html[data-mode=dark] .topButton-box {
 
 .seriesSwiper .swiper-pagination {
   position: relative;
-  top: 0;
-  bottom: 0;
+  top: 0 !important;
+  bottom: 0 !important;
   text-align: right;
 }
 .swiper-pagination .swiper-pagination-bullet {
