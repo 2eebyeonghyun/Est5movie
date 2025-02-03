@@ -76,9 +76,6 @@ export function SwiperGroup() {
         },
         breakpoints: {
             320: {
-                slidesPerView: 1.1,
-            },
-            768: {
                 slidesPerView: 1.2,
                 spaceBetween: 15,
             },
