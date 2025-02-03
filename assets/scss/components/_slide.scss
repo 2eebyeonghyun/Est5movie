@@ -123,8 +123,6 @@
 
     .seriesSwiper & {
         position: relative;
-        top: 0 !important;
-        bottom: 0 !important;
         text-align: right;
         padding-right: 3rem;
     }
@@ -141,5 +139,24 @@
             background-color: $bgwhite;
             opacity: 100%;
         }
+    }
+}
+
+.swiper-horizontal>.swiper-pagination-bullets, 
+.swiper-pagination-bullets.swiper-pagination-horizontal, 
+.swiper-pagination-custom, 
+.swiper-pagination-fraction {
+
+    .seriesSwiper & {
+        top: 0;
+        bottom: 0;
+    }
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, 
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+
+    .seriesSwiper & {
+        margin: 0 1rem;
     }
 }

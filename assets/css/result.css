@@ -1174,8 +1174,6 @@ html[data-mode=dark] .topButton-box {
 
 .seriesSwiper .swiper-pagination {
   position: relative;
-  top: 0 !important;
-  bottom: 0 !important;
   text-align: right;
   padding-right: 3rem;
 }
@@ -1190,6 +1188,19 @@ html[data-mode=dark] .topButton-box {
 .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #fff;
   opacity: 100%;
+}
+
+.seriesSwiper .swiper-horizontal > .swiper-pagination-bullets,
+.seriesSwiper .swiper-pagination-bullets.swiper-pagination-horizontal,
+.seriesSwiper .swiper-pagination-custom,
+.seriesSwiper .swiper-pagination-fraction {
+  top: 0;
+  bottom: 0;
+}
+
+.seriesSwiper .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.seriesSwiper .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 1rem;
 }
 
 .result-page .section {
