@@ -1315,7 +1315,7 @@ html[data-mode=light] .main-page .section02 .item-title {
   letter-spacing: -0.03rem;
   text-transform: initial;
 }
-.main-page .section02 .seriesSwiper {
+.main-page .section02 .seriesSwiper .swiper-wrapper {
   margin-bottom: 5rem;
 }
 @media (width < 1240px) {

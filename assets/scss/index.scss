@@ -150,7 +150,10 @@
         }
 
         .seriesSwiper {
-            margin-bottom: 5rem;
+
+            .swiper-wrapper {
+                margin-bottom: 5rem;
+            }
         }
     }
 
