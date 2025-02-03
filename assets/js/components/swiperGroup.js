@@ -112,6 +112,7 @@ export function SwiperGroup() {
             768: {
                 slidesPerView: 2,
                 spaceBetween: 15,
+                pagination: false,
             },
             1024: {
                 slidesPerView: 3,
