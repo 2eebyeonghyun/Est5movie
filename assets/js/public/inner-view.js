@@ -154,6 +154,10 @@ async function fetchMovieDetails() {
             }
         }
 
+        if (actorArr.length >= 3) {
+            actorArr = actorArr.slice(0, 3);
+        }
+
         // getActorProfile함수가 비동기적으로 반환되므로, return 직후에는 결과를 직접 사용할 수 없습니다. 그래서 Promise.all이 없으면 promise상태인 배열로 콘솔에 작성된다.
         let actorImages = actorArr;
 
