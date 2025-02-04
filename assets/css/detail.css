@@ -1162,6 +1162,7 @@ html[data-mode=dark] .topButton-box {
 .trending-swiper .swiper-button-next .btn-prev, .trending-swiper .swiper-button-next .btn-next,
 .trending-swiper .swiper-button-prev .btn-prev,
 .trending-swiper .swiper-button-prev .btn-next {
+  width: 2rem;
   filter: invert(0);
 }
 .another-series .swiper-button-next,

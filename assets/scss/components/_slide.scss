@@ -118,6 +118,7 @@
         background-color: $bgwhite;
 
         .btn-prev, .btn-next {
+            width: 2rem;
             filter: invert(0);
         }
     }
