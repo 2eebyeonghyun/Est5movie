@@ -1070,9 +1070,6 @@ html[data-mode=dark] .topButton-box {
 .main-page .swiper-slide-active .movie-title {
   animation: 1s showText forwards;
 }
-.anotherSwiper .swiper-slide {
-  height: 43rem;
-}
 
 .swiper-option {
   width: 100%;
