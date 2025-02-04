@@ -28,6 +28,8 @@ export function searchPoint() {
         const type = typeEle.value !== "all" ? typeEle.value : "all";
 
         // 페이지 이동하면서 파라미터 값도 전달
+        // encodeURIComponent() -> JS에서 문자열을 URL-인코딩하는데 사용하는 내장 함수
+        //  -> 특수한 의미를 가진 문자들을 대체 문자열로 변환시켜준다.
         let newUrl = `${api.GIT_URL}/public/result.html?search=${encodeURIComponent(value)}`;
 
         if (year) {
