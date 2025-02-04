@@ -157,8 +157,8 @@ async function fetchMovieDetails() {
                         <span class="detail-text">movie information</span>
                         <div class="movie-informationBox">
                             <div class="movie-meta"><strong class="movie-infoTitle">평점</strong><p class="movie-text">${movie.imdbRating}</p></div>
-                            <div class="movie-yeaer"><strong class="movie-infoTitle">년도</strong><p class="movie-text">${movie.Released}</p></div>
-                            <div class="movie-yeaer"><strong class="movie-infoTitle">년도</strong><p class="movie-text">${movie.Runtime}</p></div>
+                            <div class="movie-yeaer"><strong class="movie-infoTitle">개봉</strong><p class="movie-text">${movie.Released}</p></div>
+                            <div class="movie-yeaer"><strong class="movie-infoTitle">시간</strong><p class="movie-text">${movie.Runtime}</p></div>
                             <div class="movie-meta"><strong class="movie-infoTitle">장르</strong><p class="movie-text">${movie.Genre}</p></div>
                             <div class="movie-meta"><strong class="movie-infoTitle">배우</strong><p class="movie-text">${movie.Actors}</p></div>
                             <div class="movie-meta"><strong class="movie-infoTitle">감독</strong><p class="movie-text">${movie.Director}</p></div>
