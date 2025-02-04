@@ -120,10 +120,14 @@
             height: 50rem;
             border-radius: 1rem;
             margin-bottom: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             transition: all .3s ease-in-out;
 
             img {
                 transition: all .3s ease-in-out;
+                border-radius: 1rem;
             }
 
             &:hover {
