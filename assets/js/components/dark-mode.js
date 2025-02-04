@@ -5,6 +5,9 @@ export function initDarkMode() {
     try {
         const button = get(".btn-change");
         let theme;
+
+        // 로컬스토리지에 값이 있으면 로컬값을 가져오고 그게 아니면 light값을 가져온다.
+        // 로컬값을 못가져오는 경우 기본값을 light로 준다.
         try {
             theme = localStorage.getItem('mode') || 'light';
         } catch (error) {
