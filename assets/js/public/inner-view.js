@@ -63,14 +63,11 @@ async function fetchMovieDetails() {
 
         else if (!movieTMDBID && seriesid) {
             const allIMG = await getSimilarSeries(seriesid);
-            similarArray = allIMG
-                .slice(0, 10)
-                .map((series) => ({
-                    image: series.poster_path ? `https://image.tmdb.org/t/p/w500/${series.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                    title: series.original_name ? series.original_name : "",
-                    imdb_id: series.imdb_id ? series.imdb_id : "",
-                }))
-                .filter((series) => series.title && series.imdb_id);
+            similarArray = allIMG.slice(0, 10).map((series) => ({
+                image: series.poster_path ? `https://image.tmdb.org/t/p/w500/${series.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+                title: series.original_name ? series.original_name : "",
+                imdb_id: series.imdb_id ? series.imdb_id : "",
+            })).filter((series) => series.title && series.imdb_id);
         } 
 
         // let movieActors = movie.Actors.split(",");
