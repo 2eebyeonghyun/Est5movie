@@ -77,6 +77,9 @@ async function fetchMovieDetails() {
             imgArr.push(await getActorProfile(i));
         } 
         
+        // 반복문을 사용하여 배우의 정보를 가져온다.
+        // 만약 배우 이름이 N/A가 아니거나 결과값이 있는 경우 내용을 actorArr배열에 추가한다.
+        // 해당 배우의 결과값이 없을 경우에도 배열에 추가하지만 이미지는 대체 이미지로 추가한다.
         for(let i = 0; i < movieActors.length; i++) {
             if(movieActors[i] !== "N/A" && imgArr[i].total_results > 0) {
                 actorArr.push({
