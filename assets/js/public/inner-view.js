@@ -35,11 +35,12 @@ async function fetchMovieDetails() {
         // 영화의 id값을 가져와 저장한다.
         const movieId = fetchId();
 
-        const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`); // OMDb API 호출
-        const movie = await response.json(); // JSON 데이터로 변환
+        // OMDb API 호출
+        const response = await fetch(`${api.BASE_URL}?apikey=${api.API_KEY}&i=${movieId}`);
+        const movie = await response.json();
 
         const movieimdbID = movie.imdbID;
-        const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
+        const movieTMDBID = await getMovieTMDBID(movieimdbID);
         const seriesid = await getSeriesTMDBID(movieId);
 
         // 추천 영화 영화데이터 가져오기
