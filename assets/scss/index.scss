@@ -35,18 +35,6 @@
             left: 0;
             z-index: 10;
             margin-inline: $marginInline;
-    
-            @include w1240 {
-                width: calc(100% - 6rem);
-                margin-inline: 3rem;
-            }
-    
-            @include w430 {
-                position: relative;
-                bottom: 0;
-                width: calc(100% - 3rem);
-                margin-inline: 1.5rem;
-            }
         }
     
         .popular-item {
@@ -91,14 +79,6 @@
                     > a {
                         color: $fontBlack;
                     }
-                }
-            }
-    
-            @include w768 {
-                height: 7rem;
-    
-                > a {
-                    font-size: 1.6rem;
                 }
             }
         }
@@ -158,6 +138,14 @@
     }
 
     @include w1240 {
+
+        .section01 {
+
+            .popular-seriesBox {
+                width: calc(100% - 6rem);
+                margin-inline: 3rem;
+            }
+        }
         
         .section02 {
 
@@ -168,6 +156,17 @@
     }
 
     @include w768 {
+
+        .section01 {
+
+            .popular-item {
+                height: 7rem;
+    
+                > a {
+                    font-size: 1.6rem;
+                }
+            }
+        }
 
         .section02 {
 
@@ -197,6 +196,13 @@
                 border-radius: 1rem;
                 overflow: hidden;
                 margin-bottom: 3rem;
+            }
+
+            .popular-seriesBox {
+                position: relative;
+                bottom: 0;
+                width: calc(100% - 3rem);
+                margin-inline: 1.5rem;
             }
         }
 
