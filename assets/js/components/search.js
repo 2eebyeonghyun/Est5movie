@@ -189,11 +189,13 @@ async function moreMovies(searchParam, year, type, page) {
         if (count > 10) {
             moreBtn.addEventListener("click", async () => {
                 page++;
+                // 올림처리한다.
                 let maxPage = Math.ceil(count / 10);
                 const movies = await getMovies(searchParam, year, type, page);
                 renderMovies(movies.Search);
+
+                // 버튼에 현재 페이지/총페이지
                 countBox.innerHTML = `${page} / ${maxPage}`
-                console.log(page, maxPage);
                 if (page >= maxPage) { // 마지막 페이지 판별
                     moreBtn.style = "display:none";
                     console.log("last page!");
@@ -201,7 +203,6 @@ async function moreMovies(searchParam, year, type, page) {
             });
         } else if (count < 10) {
             moreBtn.style = "display:none";
-            console.log("last page!");
         }
     } catch (error) {
         console.error('error', error);
