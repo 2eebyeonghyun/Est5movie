@@ -38,7 +38,7 @@ export function SwiperGroup() {
     const swiper3 = new Swiper(".anotherSwiper", {
         slidesPerView: 5,
         spaceBetween: 30,
-        loop: true,
+        loop: false,
         navigation: {
             nextEl: ".another-series .swiper-option .swiper-navigation .swiper-button-next",
             prevEl: ".another-series .swiper-option .swiper-navigation .swiper-button-prev",
