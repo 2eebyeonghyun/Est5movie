@@ -111,6 +111,17 @@
         width: 2.8rem;
     }
 
+    .trending-swiper & {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 100%;
+        background-color: $bgwhite;
+
+        .btn-prev, .btn-next {
+            filter: invert(0);
+        }
+    }
+
     .another-series & {
         position: relative;
         top: 0;

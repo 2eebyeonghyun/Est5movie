@@ -151,6 +151,7 @@
             &:hover {
 
                 .swiper-option {
+                    transition: all .3s ease-in-out;
                     display: block;
                 }
             }

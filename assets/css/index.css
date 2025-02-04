@@ -1152,6 +1152,18 @@ html[data-mode=dark] .topButton-box {
   margin-top: 0;
   width: 2.8rem;
 }
+.trending-swiper .swiper-button-next,
+.trending-swiper .swiper-button-prev {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background-color: #fff;
+}
+.trending-swiper .swiper-button-next .btn-prev, .trending-swiper .swiper-button-next .btn-next,
+.trending-swiper .swiper-button-prev .btn-prev,
+.trending-swiper .swiper-button-prev .btn-next {
+  filter: invert(0);
+}
 .another-series .swiper-button-next,
 .another-series .swiper-button-prev {
   position: relative;
@@ -1337,6 +1349,7 @@ html[data-mode=light] .main-page .section02 .item-title {
   text-transform: initial;
 }
 .main-page .section02 .trending-swiper:hover .swiper-option {
+  transition: all 0.3s ease-in-out;
   display: block;
 }
 .main-page .section02 .seriesSwiper .swiper-wrapper {
