@@ -1375,6 +1375,9 @@ html[data-mode=light] .main-page .section02 .item-title {
     padding-bottom: 3rem;
     margin-bottom: 5rem;
   }
+  .main-page .section02 .trending-swiper:hover .swiper-option {
+    display: none;
+  }
   .main-page .section02 .seriesSwiper .swiper-wrapper {
     margin-bottom: 0;
   }

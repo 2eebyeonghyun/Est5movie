@@ -203,6 +203,16 @@
                 margin-bottom: 5rem;
             }
 
+            .trending-swiper {
+
+                &:hover {
+    
+                    .swiper-option {
+                        display: none;
+                    }
+                }
+            }
+
             .seriesSwiper {
 
                 .swiper-wrapper {
