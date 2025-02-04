@@ -5,6 +5,7 @@ export function topButton() {
         const main = get('main');
         let topButton = get('.topButton-box');
 
+        // topButton 변수가 없으면 아래 내용을 만든다.
         if(!topButton) {
             topButton = document.createElement('div');
             topButton.classList.add('topButton-box');
