@@ -120,6 +120,19 @@
             height: 50rem;
             border-radius: 1rem;
             margin-bottom: 4rem;
+            transition: all .3s ease-in-out;
+
+            img {
+                transition: all .3s ease-in-out;
+            }
+
+            &:hover {
+
+                img {
+                    width: 85%;
+                    height: 85%;
+                }
+            }
         }
 
         .movie-title {

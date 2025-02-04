@@ -1304,6 +1304,14 @@ html[data-mode=light] .main-page .section02 .item-title {
   height: 50rem;
   border-radius: 1rem;
   margin-bottom: 4rem;
+  transition: all 0.3s ease-in-out;
+}
+.main-page .section02 .movie-imgBox img {
+  transition: all 0.3s ease-in-out;
+}
+.main-page .section02 .movie-imgBox:hover img {
+  width: 85%;
+  height: 85%;
 }
 .main-page .section02 .movie-title {
   font-size: 2.2rem;
