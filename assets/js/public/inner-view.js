@@ -6,7 +6,7 @@ import { initializePage } from "../components/search.js";
 import { topButton } from '../components/topButton.js';
 import { getHighPoster } from "../components/highPoster.js";
 import { SwiperGroup } from '../components/swiperGroup.js';
-import { getActorProfile, getMovieTMDBID, getSimilarMovie } from '../components/getTMDb.js';
+import { getActorProfile, getMovieTMDBID, getSimilarMovie, getSeriesTMDBID, getSimilarSeries } from '../components/getTMDb.js';
 
 export const initWeb = () => {
     loadHeader();
@@ -22,7 +22,7 @@ function getMovieId(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
- 
+
 // 영화 데이터를 가져오는 함수
 async function fetchMovieDetails() {
     try {
@@ -44,6 +44,7 @@ async function fetchMovieDetails() {
 
         const movieimdbID = movie.imdbID;
         const movieTMDBID = await getMovieTMDBID(movieimdbID); // TMDBID값 가져오기
+        const seriesid = await getSeriesTMDBID(movieId);
 
         // 추천 영화 영화데이터 가져오기
         let similarArray = [];
@@ -59,6 +60,18 @@ async function fetchMovieDetails() {
                 overview: movie.overview ? movie.overview : ''
             })).filter(movie => movie.title && movie.imdb_id);
         }
+
+        else if (!movieTMDBID && seriesid) {
+            const allIMG = await getSimilarSeries(seriesid);
+            similarArray = allIMG
+                .slice(0, 10)
+                .map((series) => ({
+                    image: series.poster_path ? `https://image.tmdb.org/t/p/w500/${series.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
+                    title: series.original_name ? series.original_name : "",
+                    imdb_id: series.imdb_id ? series.imdb_id : "",
+                }))
+                .filter((series) => series.title && series.imdb_id);
+        } 
 
         // let movieActors = movie.Actors.split(",");
         // 만약 movie.Actors에 값이 없으면 빈 배열로 만든다.
