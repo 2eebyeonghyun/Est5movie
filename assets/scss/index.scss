@@ -146,6 +146,16 @@
             text-transform: initial;
         }
 
+        .trending-swiper {
+
+            &:hover {
+
+                .swiper-option {
+                    display: block;
+                }
+            }
+        }
+
         .seriesSwiper {
 
             .swiper-wrapper {

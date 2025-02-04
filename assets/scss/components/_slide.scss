@@ -41,10 +41,6 @@
         translate: 0 -50%;
         display: none;
         transition: all .3s ease-in-out;
-
-        &:hover {
-            display: block;
-        }
     }
 
     .seriesSwiper & {

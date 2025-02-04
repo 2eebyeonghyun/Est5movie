@@ -1098,9 +1098,6 @@ html[data-mode=dark] .topButton-box {
   display: none;
   transition: all 0.3s ease-in-out;
 }
-.trending-swiper .swiper-option:hover {
-  display: block;
-}
 .seriesSwiper .swiper-option {
   position: relative;
   top: 0;
