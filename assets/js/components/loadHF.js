@@ -4,6 +4,7 @@ import { get } from "../base/util.js";
 export async function loadHeader() {
     try {
         const res = await fetch(`${api.GIT_URL}/components/header.html`);
+        // 응답 받은 값을 텍스트 형태로 받아온다.
         const data = await res.text();
         
         const header = get('.header');
