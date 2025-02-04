@@ -23,7 +23,7 @@ export function searchPoint() {
 
         const value = filterEle.value.trim();
 
-        // 선택된 값이 all이 아니면 선택된 값을 가져온다.
+        // 선택된 값이 all이 아닐 경우 선택된 value값을 가져오고 그게 아니면 all을 가져온다.
         const year = yearEle.value !== "all" ? yearEle.value : "all";
         const type = typeEle.value !== "all" ? typeEle.value : "all";
 

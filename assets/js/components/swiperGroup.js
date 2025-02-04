@@ -74,6 +74,10 @@ export function SwiperGroup() {
             delay: 3000,
             disableOnInteraction: false,
         },
+        navigation: {
+            nextEl: ".trending-swiper .swiper-option .swiper-navigation .swiper-button-next",
+            prevEl: ".trending-swiper .swiper-option .swiper-navigation .swiper-button-prev",
+        },
         breakpoints: {
             320: {
                 slidesPerView: 1.2,

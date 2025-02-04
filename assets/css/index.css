@@ -1079,6 +1079,18 @@ html[data-mode=dark] .topButton-box {
   translate: 0 -50%;
   z-index: 100;
 }
+.trending-swiper .swiper-option {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: 0 -50%;
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+.trending-swiper .swiper-option:hover {
+  display: block;
+}
 .seriesSwiper .swiper-option {
   position: relative;
   top: 0;
@@ -1110,6 +1122,9 @@ html[data-mode=dark] .topButton-box {
   display: flex;
   justify-content: space-between;
   margin-inline: 5rem;
+}
+.trending-swiper .swiper-navigation {
+  margin-inline: 2rem;
 }
 .another-series .swiper-navigation {
   width: 100%;

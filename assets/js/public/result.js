@@ -29,9 +29,11 @@ function checkMovie(radios, targetValue) {
 
     try {
         radios.forEach((radio) => {
+            // 현재페이지 검색창에서 선택된 값과 쿼리파라미터 값을 통해 검색된 결과페이지 좌측에 있는 라디오 버튼에 체크를 한다.
             if (radio.value === targetValue) {
                 radio.checked = true;
             }
+
             radio.addEventListener("click", (e) => {
                 // name을 통해서 genre와 year 구분해서 getMovies를 실행
                 const name = e.target.name;

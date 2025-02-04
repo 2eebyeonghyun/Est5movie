@@ -33,6 +33,20 @@
     translate: 0 -50%;
     z-index: 100;
 
+    .trending-swiper & {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        translate: 0 -50%;
+        display: none;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+            display: block;
+        }
+    }
+
     .seriesSwiper & {
         position: relative;
         top: 0;
@@ -63,6 +77,10 @@
     display: flex;
     justify-content: space-between;
     margin-inline: $marginInline;
+
+    .trending-swiper & {
+        margin-inline: 2rem;
+    }
 
     .another-series & {
         width: 100%;
