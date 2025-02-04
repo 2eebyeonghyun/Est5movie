@@ -61,6 +61,12 @@
             "Runtime": "60 min",
             "Genre": "Drama, Romance",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "7.4/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BZmRjNDNlMDMtNDZlMS00NzE4LTk0OGMtYjQyMWY3YWFmY2I5XkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -70,6 +76,12 @@
             "Runtime": "N/A",
             "Genre": "Comedy, Drama, Romance",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "6.5/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BYmQ0MzJlODUtYjI2ZS00ZWQzLTkxYzYtNjRjNDZlZTgzNmRkXkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -79,6 +91,12 @@
             "Runtime": "N/A",
             "Genre": "Drama, Romance",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "7.9/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BYzVkNWY5M2EtZjk0NC00MjY2LTgzNzYtMjZhMTI1NzAxMDBhXkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -88,6 +106,12 @@
             "Runtime": "30 min",
             "Genre": "Comedy, Drama, Romance",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "6.8/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BODI5Y2YxM2UtZjhjYy00ZjM0LTg3NjQtYjQxMTBmZjM4ZTlkXkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -97,6 +121,12 @@
             "Runtime": "88 min",
             "Genre": "Crime, Drama, Mystery",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "9.1/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BNTQzNGZjNDEtOTMwYi00MzFjLWE2ZTYtYzYxYzMwMjZkZDc5XkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -106,6 +136,12 @@
             "Runtime": "51 min",
             "Genre": "Drama, Fantasy, Horror",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "8.7/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BOWU2NjY5NWQtMjdkZi00ODJlLThkZTAtMzFlYmJmMGE2NjZkXkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -115,6 +151,12 @@
             "Runtime": "22 min",
             "Genre": "Comedy, Drama, Romance",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "8.5/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BYzFlOWFjNzQtODViNC00NzgzLThhZmItZTc1N2VlZDgwODUwXkEyXkFqcGc@._V1_SX300.jpg"
         },
         {
@@ -124,6 +166,12 @@
             "Runtime": "N/A",
             "Genre": "Comedy, Crime, Fantasy",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "8.1/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BY2E1NDI5OWEtODJmYi00Nzg2LWI4MjUtODFiMTU2YWViOTU3XkEyXkFqcGc@._V1_SX300.jpg"
           },
           {
@@ -133,6 +181,12 @@
             "Runtime": "N/A",
             "Genre": "Action, Drama, Mystery",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "8.0/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BMTg5NjY0NGEtMDFhOS00MzJiLTg1NWEtZDhhNWQ5MmE4ZWIxXkEyXkFqcGc@._V1_SX300.jpg"
           },
           {
@@ -142,6 +196,12 @@
             "Runtime": "45 min",
             "Genre": "Comedy, Drama, Mystery",
             "Type": "series",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "7.6/10"
+                }
+            ],
             "Poster": "https://m.media-amazon.com/images/M/MV5BMDljYmI5OTktNDFmNC00NmIxLWFhODktM2YyM2JlODVmMWUwXkEyXkFqcGc@._V1_SX300.jpg"
           }
     ]

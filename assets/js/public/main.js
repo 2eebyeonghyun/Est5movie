@@ -159,7 +159,7 @@ async function trendingMovies() {
                     <div class="movie-infoBox">
                         <h2 class="movie-title">${movie.Title}</h2>
                         <div class="movie-info">
-                            <p class="movie-time">${movie.Runtime}</p>
+                            <p class="movie-ratings">${movie.Ratings[0].Value}</p>
                             <p class="movie-type">${firstGender}</p>
                         </div>
                     </div>
