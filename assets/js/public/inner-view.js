@@ -33,7 +33,7 @@ async function fetchMovieDetails() {
             </div>
         `;
 
-        // 1.5초 동안 위에 코드를 보여준다.
+        // 0.5초 동안 위에 코드를 보여준다.
         await new Promise(resolve => setTimeout(resolve, 500));
 
         // 영화의 id값을 가져와 저장한다.

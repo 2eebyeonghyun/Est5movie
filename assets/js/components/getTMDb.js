@@ -71,59 +71,76 @@ export async function getSimilarMovie(movieId) {
 }
 
 export async function getSeriesTMDBID(seriesID) {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${api.TMDB_KEY}`,
-        },
-    };
 
-    const response = await fetch(`https://api.themoviedb.org/3/find/${seriesID}?external_source=imdb_id`, options);
-    const data = await response.json();
-
-    if (!data.tv_results[0]) {
-        return null;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `${api.TMDB_KEY}`,
+            },
+        };
+    
+        const response = await fetch(`https://api.themoviedb.org/3/find/${seriesID}?external_source=imdb_id`, options);
+        const data = await response.json();
+    
+        if (!data.tv_results[0]) {
+            return null;
+        }
+    
+        return data.tv_results[0].id;
+    } catch (error) {
+        console.error('getSeriesTMDBID error: ', error);
     }
-
-    return data.tv_results[0].id;
+    
 }
 
 export async function getSimilarSeries(seriesId) {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${api.TMDB_KEY}`,
-        },
-    };
 
-    const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}/recommendations?language=en-US&page=1`, options);
-    const data = await response.json();
-    // 2025-01-25 추가 작업
-    const similarData = data.results;
-    // imdb_id값 가져오기
-    const getImdbID = await Promise.all(
-        similarData.map(async (movie) => {
-            const detailResponse = await getSeriesIMDBID(movie.id);
-            // 기존 데이터에 imdb_id값을 더한다.
-            return { ...movie, imdb_id: detailResponse };
-        })
-    );
-    return getImdbID;
-    // return data.results;
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `${api.TMDB_KEY}`,
+            },
+        };
+    
+        const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}/recommendations?language=en-US&page=1`, options);
+        const data = await response.json();
+        // 2025-01-25 추가 작업
+        const similarData = data.results;
+        // imdb_id값 가져오기
+        const getImdbID = await Promise.all(
+            similarData.map(async (movie) => {
+                const detailResponse = await getSeriesIMDBID(movie.id);
+                // 기존 데이터에 imdb_id값을 더한다.
+                return { ...movie, imdb_id: detailResponse };
+            })
+        );
+        return getImdbID;
+        // return data.results;
+    } catch (error) {
+        console.error('getSimilarSeries error: ', error);
+    }
+    
 }
 
 export async function getSeriesIMDBID(seriesId) {
-    const options = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `${api.TMDB_KEY}`,
-        },
-    };
-
-    const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}/external_ids`, options);
-    const data = await response.json();
-    return data.imdb_id;
+    
+    try {
+        const options = {
+            method: "GET",
+            headers: {
+                accept: "application/json",
+                Authorization: `${api.TMDB_KEY}`,
+            },
+        };
+    
+        const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}/external_ids`, options);
+        const data = await response.json();
+        return data.imdb_id;
+    } catch (error) {
+        console.error('getSeriesIMDBID error: ', error);
+    }
 }
