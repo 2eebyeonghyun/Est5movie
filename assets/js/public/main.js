@@ -67,7 +67,7 @@ async function mainSlide() {
             `;
 
             return item;
-        }).filter(Boolean);
+        }).filter(Boolean); // undefined나 null값이 포함되는 경우를 방지하기 위해 사용한다.
 
         slideBox.append(...mainMovie);
 
