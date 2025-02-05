@@ -28,7 +28,8 @@ async function mainSlide() {
         const slideBox = get('.mainSwiper .swiper-wrapper');
 
         // li 생성후 내용 만들기
-        movies.forEach(movie => {
+        // 멘토님 피드백 후 기존 forEach문을 map함수로 재수정 해보기
+        const mainMovie = movies.map((movie) => {
             const item = document.createElement('li');
             item.classList.add('swiper-slide');
 
@@ -65,12 +66,13 @@ async function mainSlide() {
                 </div>
             `;
 
-            // slideBox의 자식 요소로 뿌리기
-            slideBox.appendChild(item);
+            return item;
+        });
 
-            // swiper 슬라이드 효과주기
-            SwiperGroup();
-        })
+        slideBox.appendChild(...mainMovie);
+
+        // swiper 슬라이드 효과주기
+        SwiperGroup();
     } catch (error) {
         console.error('에러 발생:', error.message);
     }
