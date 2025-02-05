@@ -88,7 +88,7 @@ function popularSeries() {
         const popularMovies = ['Avengers', 'Spider-Man', 'Harry Potter', 'Frozen', 'Transformers', 'Dune', 'Home Alone'];
     
         // 버튼 구성하기
-        popularMovies.forEach((movie) => {
+        const popularMovie = popularMovies.map((movie) => {
             const slideList = document.createElement('li');
             slideList.classList.add('swiper-slide', 'popular-item');
     
@@ -96,9 +96,11 @@ function popularSeries() {
             `
                 <a href="${api.GIT_URL}/public/result.html?search=${encodeURIComponent(movie)}&year=all&type=all">${movie}</a>
             `;
-    
-            slideBox2.appendChild(slideList);
-        });
+
+            return slideList;
+        }).filter(Boolean);
+        
+        slideBox2.append(...popularMovie);
     
         // swiper 슬라이드로 만들기
         SwiperGroup();
@@ -114,13 +116,13 @@ async function trendingMovies() {
         const res = await fetch(`${api.GIT_URL}/assets/json/trending.json`);
         const data = await res.json();
         
-        const trendingMovie = data.trendingMovies;
-        const seriesMovie = data.seriesMovies;
+        const trendingMovies = data.trendingMovies;
+        const seriesMovies = data.seriesMovies;
 
         const trendingWrap = get('.trending-swiper .swiper-wrapper');
         const seriesWrap = get('.seriesSwiper .swiper-wrapper');
 
-        trendingMovie.forEach(movie => {
+        const trendingMovie = trendingMovies.map((movie) => {
             const item = document.createElement('li');
             item.classList.add('swiper-slide');
 
@@ -141,11 +143,11 @@ async function trendingMovies() {
                     </div>
                 </a>
             `;
+        }).filter(Boolean);
 
-            trendingWrap.appendChild(item);
-        });
+        trendingWrap.append(...trendingMovie);
 
-        seriesMovie.forEach(movie => {
+        const seriesMovie = seriesMovies.map((movie) => {
             const item = document.createElement('li');
             item.classList.add('swiper-slide');
 
@@ -168,8 +170,12 @@ async function trendingMovies() {
                 </a>
             `;
 
-            seriesWrap.appendChild(item);
-        });
+            return item;
+        }).filter(Boolean);
+
+        seriesWrap.append(...seriesMovie);
+
+        SwiperGroup();
     } catch (error) {
         console.error('trendingMovies error: ', error);
     }
