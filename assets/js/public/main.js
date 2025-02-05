@@ -67,9 +67,9 @@ async function mainSlide() {
             `;
 
             return item;
-        });
+        }).filter(Boolean);
 
-        mainMovie.forEach(item => slideBox.appendChild(item));
+        slideBox.append(...mainMovie);
 
         // swiper 슬라이드 효과주기
         SwiperGroup();
