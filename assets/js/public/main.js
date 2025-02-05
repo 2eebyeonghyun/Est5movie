@@ -143,6 +143,8 @@ async function trendingMovies() {
                     </div>
                 </a>
             `;
+
+            return item;
         }).filter(Boolean);
 
         trendingWrap.append(...trendingMovie);
