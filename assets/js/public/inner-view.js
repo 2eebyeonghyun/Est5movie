@@ -50,11 +50,12 @@ async function fetchMovieDetails() {
             // 비슷한 영화를 최대 10개까지 보이도록 한다.
             // 필요한 데이터만 map함수를 통해 가져와 새로운 객체로 만든다.
             // filter를 통해 해당 내용을 모두 가지고있는 영화만 배열에 포함한다.
+            // 멘토님 피드백 삼항연사자를 사용할 때 거짓이 ''값이면 ?대신 &&으로 바꿔도 된다.
             similarArray = allIMG.slice(0, 10).map(movie => ({
                 image: movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                title: movie.original_title ? movie.original_title : '',
-                imdb_id: movie.imdb_id ? movie.imdb_id : '',
-                overview: movie.overview ? movie.overview : ''
+                title: movie.original_title && movie.original_title,
+                imdb_id: movie.imdb_id && movie.imdb_id,
+                overview: movie.overview && movie.overview
             })).filter(movie => movie.title && movie.imdb_id);
         }
 
@@ -62,8 +63,8 @@ async function fetchMovieDetails() {
             const allIMG = await getSimilarSeries(seriesid);
             similarArray = allIMG.slice(0, 10).map((series) => ({
                 image: series.poster_path ? `https://image.tmdb.org/t/p/w500/${series.poster_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                title: series.original_name ? series.original_name : "",
-                imdb_id: series.imdb_id ? series.imdb_id : "",
+                title: series.original_name && series.original_name,
+                imdb_id: series.imdb_id && series.imdb_id
             })).filter((series) => series.title && series.imdb_id);
         } 
 
@@ -85,7 +86,8 @@ async function fetchMovieDetails() {
             if(movieActors[i] !== "N/A" && imgArr[i].total_results > 0) {
                 actorArr.push({
                     image : imgArr[i].results[0].profile_path ? `https://image.tmdb.org/t/p/w500/${imgArr[i].results[0].profile_path}` : `${api.GIT_URL}/assets/images/poster-NotAvailable.png`,
-                    name: imgArr[i].results[0].name ? imgArr[i].results[0].name : '',
+                    // name: imgArr[i].results[0].name ? imgArr[i].results[0].name : '',
+                    name: imgArr[i].results[0].name && imgArr[i].results[0].name
                 });         
             } else if(imgArr[i].total_results === 0) {
                 actorArr.push({
